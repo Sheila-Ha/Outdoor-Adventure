@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "concurrently \"cd client && pnpm install\" ",
+    "install": "concurrently \"cd client && pnpm install\" \"cd server && pnpm install\" ",
     "build": "concurrently \"cd client && pnpm build\"",
-    "dev": "concurrently \"cd client && pnpm dev \""
+    "dev": "concurrently \"cd client && pnpm dev\" \"cd server && pnpm dev\""
   },
   "keywords": [],
   "author": "",
