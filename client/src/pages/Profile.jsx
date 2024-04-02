@@ -7,7 +7,7 @@ export default function Profile() {
   }, []);
 
   async function fetchUser() {
-    const userData = await fetch("http://localhost:3000/api/users", {
+    const userData = await fetch("/api/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
