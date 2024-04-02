@@ -11,8 +11,8 @@ export default function Profile() {
     <ul>
       {data.findUsers.map((user) => {
         return (
-          <li key={user.id}>
-            {user.id}.{user.name}
+          <li className="p-4" key={user.id}>
+            {user.id}. {user.name}
           </li>
         );
       })}
