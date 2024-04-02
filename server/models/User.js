@@ -1,3 +1,4 @@
+
 const user = {
   id: 1,
   name: "Salida",
@@ -7,4 +8,4 @@ const user = {
 function findAll() {
   return [user];
 }
-module.exports = { findAll };
+export { findAll };

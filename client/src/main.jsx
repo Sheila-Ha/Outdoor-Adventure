@@ -1,25 +1,16 @@
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile.jsx";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-    ],
-  },
-]);
+import { RouterProvider } from "react-router-dom";
+import router from "./routes.jsx";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <ApolloProvider client={client}>
+    <RouterProvider router={router} />
+  </ApolloProvider>
 );
