@@ -20,17 +20,6 @@ export default function Component() {
           </NavItem>
         </div>
         <Button className="ml-4" size="icon" variant="outline">
-          {/* <img
-            alt="Avatar"
-            className="rounded-full"
-            height="32"
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "32/32",
-              objectFit: "cover",
-            }}
-            width="32"
-          /> */}
           <Avatar>
             {/* we can replace with other avatar */}
             <AvatarImage src="https://github.com/shadcn.png" />
