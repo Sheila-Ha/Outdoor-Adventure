@@ -1,4 +1,4 @@
-# project-3# My-Portfolio-React <!-- omit from toc -->
+# project-3<!-- omit from toc -->
 by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![Github license](https://img.shields.io/badge/license-MIT-blue.svg)  
 
 ## Description <!-- omit from toc -->
