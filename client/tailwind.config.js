@@ -9,7 +9,7 @@
 // const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
-import { fontFamily } from "tailwindcss/defaultTheme";
+// import { fontFamily } from "tailwindcss/defaultTheme";
 import tailwindcss from "tailwindcss-animate";
 
 export default {
@@ -65,7 +65,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        // sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
@@ -84,4 +84,4 @@ export default {
     },
   },
   plugins: [tailwindcss],
-}
+};
