@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Button from "../components/Button.jsx";
+import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
 
 export default function Component() {
   const { pathname } = useLocation();
@@ -19,7 +20,7 @@ export default function Component() {
           </NavItem>
         </div>
         <Button className="ml-4" size="icon" variant="outline">
-          <img
+          {/* <img
             alt="Avatar"
             className="rounded-full"
             height="32"
@@ -29,7 +30,13 @@ export default function Component() {
               objectFit: "cover",
             }}
             width="32"
-          />
+          /> */}
+          <Avatar>
+            {/* we can replace with other avatar */}
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+
           <span className="sr-only">Toggle user menu</span>
         </Button>
       </nav>
