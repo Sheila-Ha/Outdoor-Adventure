@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import Button from "../components/Button.jsx";
+import { Button } from "../components/Button.jsx";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
 
 export default function Component() {
@@ -7,7 +7,12 @@ export default function Component() {
   return (
     <div className="grid gap-4">
       <nav className="flex h-14 items-center px-4 border-b border-gray-200 w-full shrink-0 dark:border-gray-800">
-        <Link className="flex items-center font-semibold" href="#">
+        <Link className="flex items-center gap-2 font-semibold" href="#">
+          <Avatar>
+            {/* we can replace with other avatar */}
+            <AvatarImage src="/images/logo.jpeg" />
+            <AvatarFallback>logo</AvatarFallback>
+          </Avatar>
           Outdoor Antics
         </Link>
         <div className="flex-1" />
@@ -23,7 +28,7 @@ export default function Component() {
           <Avatar>
             {/* we can replace with other avatar */}
             <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>user</AvatarFallback>
           </Avatar>
 
           <span className="sr-only">Toggle user menu</span>
