@@ -23,6 +23,12 @@ export default function Component() {
           <NavItem to={"/profile"} active={pathname === "/profile"}>
             Profile
           </NavItem>
+          <NavItem to={"/login"} active={pathname === "/login"}>
+            Login
+          </NavItem>
+          <NavItem to={"/sign-up"} active={pathname === "/sign-up"}>
+            Sign Up
+          </NavItem>
         </div>
         <Button className="ml-4" size="icon" variant="outline">
           <Avatar>
