@@ -6,7 +6,7 @@ export default function Component() {
   const { pathname } = useLocation();
   return (
     <div className="grid gap-4">
-      <nav className="flex h-14 items-center px-4 border-b border-gray-400 w-full shrink-0 dark:border-gray-800">
+      <nav className="flex h-14 items-center px-4 border-b border-gray-200 w-full shrink-0 dark:border-gray-800">
         <Link className="flex items-center gap-2 font-semibold" href="#">
           <Avatar>
             {/* we can replace with other avatar */}
