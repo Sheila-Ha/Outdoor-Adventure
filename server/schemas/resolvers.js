@@ -1,5 +1,9 @@
 // import { User } from "../models/User.js";
+import dotenv from "dotenv";
+dotenv.config();
+
 import { GraphQLError } from "graphql";
+import jwt from "jsonwebtoken";
 const user = [
   {
     id: 1,
@@ -26,6 +30,10 @@ export const resolvers = {
           }
         );
       }
+      const token = jwt.sign({ email, password }, process.env.SECRET_KEY, {
+        expiresIn: 60 * 60 * 2,
+      });
+      return token;
     },
   },
 };

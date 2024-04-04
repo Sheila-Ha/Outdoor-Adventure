@@ -9,6 +9,5 @@ type Query {
 }
 type Mutation {
     login(email: String!, password: String!): String
-
 }
 `;
