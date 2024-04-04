@@ -6,4 +6,9 @@ type User {
 }
 type Query {
     findUsers: [User]
-}`;
+}
+type Mutation {
+    login(email: String!, password: String!): String
+
+}
+`;
