@@ -22,19 +22,49 @@ by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![G
 
   
 ### User Story  
-* AS AN 
-    I WANT to 
-    SO THAT I  
+* AS AN outdoor enthusiast  
+    I WANT to have random missions generated  
+    SO THAT I can explore the outdoors, earn badges and climb the leader boards  
 ### Acceptance Criteria  
-* GIVEN a  
-    WHEN I  
-    THEN I am  
+* GIVEN an outdoor adventure app
+  
+    WHEN I open the app  
+    THEN I am able to signup or login  
+    
+    WHEN I signup  
+    THEN I am able to set my preferences  
+
+    WHEN I login with valid credentials
+    THEN I am redirected to the homepage  
+
+    WHEN I provide an incorrect user name or password  
+    THEN I get an error message while still on the login page
+
+    WHEN I am on the homepage  
+    THEN I am able to view daily/weekly/monthly missions, new missions that I can complete, and my profile  
+
+    WHEN I have missions available  
+    THEN I get a pop-up that displays the new mission  
+
+    WHEN I do not have new missions
+    THEN I do not get a pop-up  
+
+    WHEN I view my profile  
+    THEN I am able to edit my profile and update my preferences  
+
+    WHEN I logout  
+    THEN I am brought to the login page  
+
+    
       
 ## Usage  
   -    
   
 ## Features  
 - Tailwind  
+- Apollo Graphql  
+- React  
+- Vite  
 - 
 ## Challenges  
 - 
@@ -86,6 +116,6 @@ salidamaharjan@outlook.com
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)   ![Google Chrome](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)    
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)  ![W3schools](https://img.shields.io/badge/W3Schools-04AA6D?style=for-the-badge&logo=W3Schools&logoColor=white) ![JSON](https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=red)  ![netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)  
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E) ![Zoom](https://img.shields.io/badge/Zoom-2D8CFF?style=for-the-badge&logo=zoom&logoColor=white) ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)  ![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?logo=linkedin&logoColor=white)  
-![Stack Overflow](https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)  ![Lenovo](https://img.shields.io/badge/lenovo%20laptop-E2231A?style=for-the-badge&logo=lenovo&logoColor=white)  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)  
+![Stack Overflow](https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)  ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)  ![Apollo Graphql](https://img.shields.io/badge/Apollo%20GraphQL-311C87?&style=for-the-badge&logo=Apollo%20GraphQL&logoColor=white)  
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?logo=bootstrap&logoColor=white)  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  ![ESLint](https://img.shields.io/badge/ESLint-4B3263?logo=eslint&logoColor=white)  
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  ![Babel](  https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=white)  ![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)  
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  ![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)   
