@@ -17,9 +17,12 @@ export const resolvers = {
     async findUsers() {
       return user;
     },
+    async loginUser(parent, args, req) {
+      return req.user;
+    },
   },
   Mutation: {
-    async login(parent, { email, password }, context) {
+    async login(parent, { email, password }, req) {
       if (email !== "admin" || password !== "admin") {
         throw new GraphQLError(
           "You are not authorized to perform this action.",

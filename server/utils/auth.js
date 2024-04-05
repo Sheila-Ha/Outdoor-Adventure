@@ -7,14 +7,16 @@ export function authMiddleware({ req }) {
   if (req.headers.authorization) {
     token = token.split(" ").pop().trim();
   }
+  console.log(token);
   if (!token) {
     return req;
   }
   try {
-    const { data } = jwt.verify(token, process.env.SECRET_KEY, {
+    const  data = jwt.verify(token, process.env.SECRET_KEY, {
       maxAge: 60 * 60 * 2,
     });
-    req.user = data;
+    console.log(data);
+   req.user = data; 
   } catch {
     console.log("Invalid token");
   }
