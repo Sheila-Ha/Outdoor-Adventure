@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Activity extends Model {}
+class Category extends Model {}
 
-Activity.init(
+Category.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,11 +11,14 @@ Activity.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activityDescription: {
+    categoryName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // This column will store a reference of the `id` of the `CurrentMission` that "owns" this Activity
+    categoryLogo: {
+      type: DataTypes.STRING,
+    },
+    // This column will store a reference of the `id` of the `CurrentMission` that "owns" this Category
     currentMissionId: {
         type: DataTypes.INTEGER,
         references: {
@@ -29,8 +32,8 @@ Activity.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'activity',
+    modelName: 'category',
   }
 );
 
-module.exports = Activity;
+module.exports = Category;
