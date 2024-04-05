@@ -32,6 +32,12 @@ export default function SignUpPage() {
         },
       });
       localStorage.setItem("token", data.signUp);
+      setNewUser({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
       return data;
     } catch (err) {
       console.log(err);
