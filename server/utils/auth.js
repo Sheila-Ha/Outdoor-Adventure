@@ -15,7 +15,7 @@ export function authMiddleware({ req }) {
       maxAge: 60 * 60 * 2,
     });
     console.log(data);
-   req.user = data; 
+   req.userInfo = data.userInfo; 
   } catch {
     console.log("Invalid token");
   }
