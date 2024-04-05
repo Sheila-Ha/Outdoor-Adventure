@@ -32,6 +32,9 @@ dependencies:
   sequelize:
     specifier: ^6.37.2
     version: 6.37.2(pg-hstore@2.3.4)(pg@8.11.5)
+  unique-username-generator:
+    specifier: ^1.3.0
+    version: 1.3.0
 
 devDependencies:
   nodemon:
@@ -1701,6 +1704,10 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: false
+
+  /unique-username-generator@1.3.0:
+    resolution: {integrity: sha512-oPs+Jq9UlXmcrpzrpYvWOWVUVLkJ0/x8zM66ikWEBe1l/hBqXS5fofsDvdScLIlPtqQKlu8/Y91b6T2XtIFubQ==}
     dev: false
 
   /unpipe@1.0.0:
