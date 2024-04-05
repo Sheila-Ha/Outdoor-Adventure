@@ -1,10 +1,37 @@
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
 import { Button } from "../components/Button.jsx";
 import { Input } from "../components/Input.jsx";
 import { Label } from "../components/Label.jsx";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../graphql/mutation/index.js";
 
 export default function LoginPage() {
+  const [user, setUser] = useState({ email: "", password: "" });
+  const [login] = useMutation(LOGIN);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  }
+  async function handleClick() {
+    try {
+      const { data } = await login({
+        variables: {
+          ...user,
+        },
+      });
+      localStorage.setItem("token", data.login);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+    setUser({ email: "", password: "" });
+  }
+
   return (
     <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
       <div className="p-4 lg:block">
@@ -31,16 +58,26 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                name="email"
+                value={user.email}
                 required
+                onChange={handleChange}
               />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
               </div>
-              <Input id="password" type="password" required />
+              <Input
+                id="password"
+                type="password"
+                name="password"
+                value={user.password}
+                required
+                onChange={handleChange}
+              />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" onClick={handleClick}>
               Login
             </Button>
           </div>
