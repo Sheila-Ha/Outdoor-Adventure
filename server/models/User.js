@@ -49,10 +49,10 @@ User.init(
       type: DataTypes.STRING,
     },
     lastLogin: {
-      type: DataTypes.DateTypes,
+      type: DataTypes.DATE,
     },
     memberSince: {
-      type: DataTypes.DateTypes,
+      type: DataTypes.DATE,
     },
   },
   {
@@ -70,11 +70,11 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "user",
   }
 );
 
-module.exports = User;
+export default User;
