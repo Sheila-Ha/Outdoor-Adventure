@@ -5,10 +5,15 @@ import { Input } from "../components/Input.jsx";
 import { Label } from "../components/Label.jsx";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../graphql/mutation/index.js";
+import { useLoggedInUser } from "../context/UserContext.jsx";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [user, setUser] = useState({ email: "", password: "" });
+  const { setLoggedInUser } = useLoggedInUser();
   const [login] = useMutation(LOGIN);
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -25,6 +30,10 @@ export default function LoginPage() {
         },
       });
       localStorage.setItem("token", data.login);
+      const decode = jwtDecode(data.login);
+      // console.log(decode, "decode");
+      setLoggedInUser(decode.userInfo);
+      navigate("/");
       return data;
     } catch (error) {
       console.log(error);
@@ -75,6 +84,12 @@ export default function LoginPage() {
                 value={user.password}
                 required
                 onChange={handleChange}
+                onKeyPress={(event) => {
+                  // console.log(event.key);
+                  if (event.key === "Enter") {
+                    handleClick();
+                  }
+                }}
               />
             </div>
             <Button type="submit" className="w-full" onClick={handleClick}>

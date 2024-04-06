@@ -44,9 +44,11 @@ User.init(
     },
     firstName: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     lastName: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     lastLogin: {
       type: DataTypes.DATE,

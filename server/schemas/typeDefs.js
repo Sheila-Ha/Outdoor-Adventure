@@ -9,6 +9,13 @@ type LoginUser{
     password: String
 }
 
+input SignUp {
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+}
+
 type Query {
     findUsers: [User]
     loginUser: LoginUser
@@ -16,5 +23,6 @@ type Query {
 
 type Mutation {
     login(email: String!, password: String!): String
+    signUp(signUpDetails: SignUp!): String
 }
 `;
