@@ -5,8 +5,10 @@ import { Label } from "../components/Label.jsx";
 import { useMutation } from "@apollo/client";
 import { SIGNUP } from "../graphql/mutation/index.js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
+  const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
@@ -32,6 +34,7 @@ export default function SignUpPage() {
         },
       });
       localStorage.setItem("token", data.signUp);
+      navigate("/");
       setNewUser({
         firstName: "",
         lastName: "",

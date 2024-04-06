@@ -1,4 +1,14 @@
 export const typeDefs = `
+type User {
+    id: ID
+    name: String
+    interest: [String]
+}
+type LoginUser{
+    email: String
+    password: String
+}
+
 input SignUp {
     firstName: String!
     lastName: String!
@@ -7,7 +17,8 @@ input SignUp {
 }
 
 type Query {
-    
+    findUsers: [User]
+    loginUser: LoginUser
 }
 
 type Mutation {
