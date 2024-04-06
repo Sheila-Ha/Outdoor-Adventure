@@ -37,6 +37,16 @@ export default function Component() {
               >
                 Logout
               </NavItem>
+              <Button className="ml-4" size="icon" variant="outline">
+                <Link to={"/profile"}>
+                  <Avatar>
+                    {/* we can replace with other avatar */}
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>user</AvatarFallback>
+                  </Avatar>
+                </Link>
+                <span className="sr-only">Toggle user menu</span>
+              </Button>
             </>
           ) : (
             <>
@@ -49,16 +59,6 @@ export default function Component() {
             </>
           )}
         </div>
-        <Button className="ml-4" size="icon" variant="outline">
-          <Link to={"/profile"}>
-            <Avatar>
-              {/* we can replace with other avatar */}
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>user</AvatarFallback>
-            </Avatar>
-          </Link>
-          <span className="sr-only">Toggle user menu</span>
-        </Button>
       </nav>
     </div>
   );
