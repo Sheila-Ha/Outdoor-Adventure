@@ -84,6 +84,12 @@ export default function LoginPage() {
                 value={user.password}
                 required
                 onChange={handleChange}
+                onKeyPress={(event) => {
+                  // console.log(event.key);
+                  if (event.key === "Enter") {
+                    handleClick();
+                  }
+                }}
               />
             </div>
             <Button type="submit" className="w-full" onClick={handleClick}>

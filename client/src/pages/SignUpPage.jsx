@@ -109,6 +109,12 @@ export default function SignUpPage() {
               name="password"
               value={newUser.password}
               onChange={handleChange}
+              onKeyPress={(event) => {
+                // console.log(event.key);
+                if (event.key === "Enter") {
+                  handleClick();
+                }
+              }}
             />
           </div>
           <Button type="submit" className="w-full" onClick={handleClick}>
