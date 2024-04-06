@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
 import { useLoggedInUser } from "../context/UserContext.jsx";
 
 export default function Component() {
-  const { loggedInUser } = useLoggedInUser();
+  const { loggedInUser, setLoggedInUser } = useLoggedInUser();
   // console.log("loggedInUser", loggedInUser);
   const { pathname } = useLocation();
   return (
@@ -27,6 +27,15 @@ export default function Component() {
               </NavItem>
               <NavItem to={"/profile"} active={pathname === "/profile"}>
                 Profile
+              </NavItem>
+              <NavItem
+                to={"/login"}
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setLoggedInUser(null);
+                }}
+              >
+                Logout
               </NavItem>
             </>
           ) : (
@@ -55,13 +64,14 @@ export default function Component() {
   );
 }
 
-function NavItem({ to, children, active }) {
+function NavItem({ to, children, active, onClick }) {
   return (
     <Link
       className={`flex h-10 items-center justify-center p-2 rounded-md hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-300 focus:text-gray-900 ${
         active ? "bg-gray-300" : ""
       }`}
       to={to}
+      onClick={onClick}
     >
       {children}
     </Link>
