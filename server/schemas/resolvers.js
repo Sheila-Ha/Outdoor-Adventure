@@ -2,14 +2,7 @@
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 
 export const resolvers = {
-  Query: {
-    async findUsers() {
-      return [];
-    },
-    async loginUser(parent, args, req) {
-      return req.user;
-    },
-  },
+  Query: {},
   Mutation: {
     ...LogInSignUpMutation,
   },

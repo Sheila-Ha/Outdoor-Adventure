@@ -1,8 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../components/Button.jsx";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
+import { useLoggedInUser } from "../context/UserContext.jsx";
 
 export default function Component() {
+  const { loggedInUser } = useLoggedInUser();
+  // console.log("loggedInUser", loggedInUser);
   const { pathname } = useLocation();
   return (
     <div className="grid gap-4">
@@ -17,18 +20,25 @@ export default function Component() {
         </Link>
         <div className="flex-1" />
         <div className="flex gap-4 text-center">
-          <NavItem to={"/"} active={pathname === "/"}>
-            Home
-          </NavItem>
-          <NavItem to={"/profile"} active={pathname === "/profile"}>
-            Profile
-          </NavItem>
-          <NavItem to={"/login"} active={pathname === "/login"}>
-            Login
-          </NavItem>
-          <NavItem to={"/sign-up"} active={pathname === "/sign-up"}>
-            Sign Up
-          </NavItem>
+          {loggedInUser?.email ? (
+            <>
+              <NavItem to={"/"} active={pathname === "/"}>
+                Home
+              </NavItem>
+              <NavItem to={"/profile"} active={pathname === "/profile"}>
+                Profile
+              </NavItem>
+            </>
+          ) : (
+            <>
+              <NavItem to={"/login"} active={pathname === "/login"}>
+                Login
+              </NavItem>
+              <NavItem to={"/sign-up"} active={pathname === "/sign-up"}>
+                Sign Up
+              </NavItem>
+            </>
+          )}
         </div>
         <Button className="ml-4" size="icon" variant="outline">
           <Link to={"/profile"}>
