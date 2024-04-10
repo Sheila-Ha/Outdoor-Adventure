@@ -4,14 +4,14 @@ const CurrentMission = require('./CurrentMission');
 const Category = require('./Category');
 const Activity = require('./Activity');
 
-// one to one User has one ExploreLevel
-User.hasOne(ExploreLevel, {
-  foreignKey: 'userId',
+// User connection to ExploreLevel
+ExploreLevel.hasMany(User, {
+  foreignKey: 'id',
   onDelete: 'CASCADE',
 });
 
-ExploreLevel.belongsTo(User, {
-  foreignKey: 'userId',
+User.belongsTo(ExploreLevel, {
+  foreignKey: 'id',
 });
 
 // one to one User has one CurrentMission
