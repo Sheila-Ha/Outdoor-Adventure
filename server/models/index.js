@@ -14,14 +14,14 @@ User.belongsTo(ExploreLevel, {
   foreignKey: 'id',
 });
 
-// one to one User has one CurrentMission
-User.hasOne(CurrentMission, {
-  foreignKey: 'userId',
+// User connection to CurrentMission
+CurrentMission.hasMany(User, {
+  foreignKey: 'id',
   onDelete: 'CASCADE',
 });
 
-CurrentMission.belongsTo(User, {
-  foreignKey: 'userId',
+User.belongsTo(CurrentMission, {
+  foreignKey: 'id',
 });
 
 // one to one CurrentMission has one Category

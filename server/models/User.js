@@ -36,9 +36,6 @@ User.init(
         len: [8],
       },
     },
-    currentMission: {
-      type: DataTypes.INTEGER,
-    },
     currentLeaderBoardLevel: {
         type: DataTypes.INTEGER
     },
@@ -55,6 +52,13 @@ User.init(
     },
     memberSince: {
       type: DataTypes.DATE,
+    },
+    currentMission: {
+      type: DataTypes.INTEGER,
+      references: {
+        model:'currentMission',
+        key: 'id',
+      },
     },
     currentExploreLevel: {
       type: DataTypes.INTEGER,
