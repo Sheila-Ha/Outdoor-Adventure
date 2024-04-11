@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+import { Activity } from "./Activity.js";
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
 
 class CurrentMission extends Model {}
 
@@ -10,6 +11,15 @@ CurrentMission.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    activities: {
+      type: [Activity],
+    },
+    missionName: {
+      type: DataTypes.STRING,
+    },
+    missionType: {
+      type: DataTypes.INTEGER,
     },
     timer: {
       type: DataTypes.INTEGER,

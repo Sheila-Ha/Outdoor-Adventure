@@ -1,36 +1,37 @@
 const User = require('./User');
 const ExploreLevel = require('./ExploreLevel');
 const CurrentMission = require('./CurrentMission');
-const Category = require('./Category');
+const Mission = require('./Mission');
 const Activity = require('./Activity');
+const MissionActivity = require('./MissionActivity');
 
-// one to one User has one ExploreLevel
-User.hasOne(ExploreLevel, {
-  foreignKey: 'userId',
+// User connection to ExploreLevel
+ExploreLevel.hasMany(User, {
+  foreignKey: 'id',
   onDelete: 'CASCADE',
 });
 
-ExploreLevel.belongsTo(User, {
-  foreignKey: 'userId',
+User.belongsTo(ExploreLevel, {
+  foreignKey: 'id',
 });
 
-// one to one User has one CurrentMission
-User.hasOne(CurrentMission, {
-  foreignKey: 'userId',
+// User connection to CurrentMission
+CurrentMission.hasMany(User, {
+  foreignKey: 'id',
   onDelete: 'CASCADE',
 });
 
-CurrentMission.belongsTo(User, {
-  foreignKey: 'userId',
+User.belongsTo(CurrentMission, {
+  foreignKey: 'id',
 });
 
-// one to one CurrentMission has one Category
-CurrentMission.hasOne(Category, {
+// one to one CurrentMission has one Mission
+CurrentMission.hasOne(Mission, {
   foreignKey: 'currentMissionId',
   onDelete: 'CASCADE',
 });
 
-Category.belongsTo(CurrentMission, {
+Mission.belongsTo(CurrentMission, {
   foreignKey: 'currentMissionId',
 });
 
@@ -44,5 +45,28 @@ CurrentMission.hasMany(Activity, {
     foreignKey: 'currentMissionId',
   });
 
+// This is a many to many between Activity and Mission. The FK table is 
+// name MissionActivity
+Mission.belongsToMany(Activity, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: MissionActivity,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'mission_activity'
+});
+
+Activity.belongsToMany(Mission, {
+  // Define the third table needed to store the foreign keys
+  through: {
+    model: MissionActivity,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'activity_mission'
+});
+
 // We package our models and export them as an object so we can import them together and use their proper names
-module.exports = { User, ExploreLevel, CurrentMission, Category, Activity };
+module.exports = { User, ExploreLevel, CurrentMission, Mission, Activity, MissionActivity };
+

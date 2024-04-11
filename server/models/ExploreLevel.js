@@ -18,18 +18,9 @@ ExploreLevel.init(
     levelRequirement: {
       type: DataTypes.INTEGER,
     },
-    levelIcon: {
+    levelBadge: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    // This column will store a reference of the `id` of the `User` that has this ExploreLevel
-    userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          // This references the `user` model, which we set in `User.js` as its `modelName` property
-          model: 'user',
-          key: 'id',
-        },
     },
   },
   {

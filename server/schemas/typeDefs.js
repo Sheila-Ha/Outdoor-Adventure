@@ -16,13 +16,21 @@ input SignUp {
     password: String!
 }
 
+type CurrentMission {
+    id: ID
+    timer: Int
+    userId: Int
+}
+
 type Query {
     findUsers: [User]
     loginUser: LoginUser
+    getCurrentMission(userId: Int): CurrentMission
 }
 
 type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
+    deleteCurrentMission(id: ID): String
 }
 `;

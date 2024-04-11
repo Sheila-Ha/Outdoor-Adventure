@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
 
 class Activity extends Model {}
 
@@ -11,15 +11,19 @@ Activity.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    activityName: {
+      type: DataTypes.STRING,
+    },
     activityDescription: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
-    // This column will store a reference of the `id` of the `CurrentMission` that "owns" this Activity
-    currentMissionId: {
+    activityImage: {
+      type: DataTypes.STRING,
+    },
+    missionType: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'currentMission',
+          model: 'missionActivity',
           key: 'id',
         },
       },
