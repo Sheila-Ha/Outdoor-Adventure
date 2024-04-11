@@ -1,5 +1,5 @@
 import sequelize from "../config/connection.js";
-import User from "../models/User.js";
+import { User } from "../models/User.js";
 
 (async function syncSequelize() {
   await sequelize.sync({ force: true });
@@ -7,9 +7,9 @@ import User from "../models/User.js";
     username: "salidam",
     email: "email@email.com",
     password: "password",
-    currentExploreLevel: 1,
+    currentLeaderBoardLevel: 1,
     firstName: "Salida",
-    lastName: "M"
+    lastName: "M",
   });
   console.log("user data seeded");
 })();

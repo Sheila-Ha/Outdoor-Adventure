@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
 
 class ExploreLevel extends Model {}
 
@@ -28,8 +28,8 @@ ExploreLevel.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exploreLevel',
+    modelName: "exploreLevel",
   }
 );
 
-module.exports = ExploreLevel;
+export { ExploreLevel };

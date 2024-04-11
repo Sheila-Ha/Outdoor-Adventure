@@ -37,15 +37,15 @@ User.init(
       },
     },
     currentLeaderBoardLevel: {
-        type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastLogin: {
       type: DataTypes.DATE,
@@ -53,21 +53,20 @@ User.init(
     memberSince: {
       type: DataTypes.DATE,
     },
-    currentMission: {
-      type: DataTypes.INTEGER,
-      references: {
-        model:'currentMission',
-        key: 'id',
-      },
-    },
     currentExploreLevel: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'exploreLevel',
-        key: 'id',
+        model: "exploreLevel",
+        key: "id",
       },
     },
-
+    currentMissionId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "currentMission",
+        key: "id",
+      },
+    },
   },
   {
     hooks: {
@@ -91,4 +90,4 @@ User.init(
   }
 );
 
-export default User;
+export { User };

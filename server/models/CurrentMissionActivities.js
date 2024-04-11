@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class MissionActivity extends Model {}
+class CurrentMissionActivities extends Model {}
 
-MissionActivity.init(
+CurrentMissionActivities.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,18 +11,21 @@ MissionActivity.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    missionType: {
+    missionActivityComplete: {
+      type: DataTypes.BOOLEAN,
+    },
+    currentMissionId: {
       type: DataTypes.INTEGER,
       references: {
-        model: "activity",
+        model: "currentModel",
         key: "id",
         unique: false,
       },
     },
-    activityType: {
+    activityTypeId: {
       type: DataTypes.INTEGER,
       references: {
-        model: "mission",
+        model: "activityType",
         key: "id",
         unique: false,
       },
@@ -33,8 +36,7 @@ MissionActivity.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "missionActivity",
+    modelName: "currentMissionActivities",
   }
 );
-
-module.exports = MissionActivity;
+export { CurrentMissionActivities };

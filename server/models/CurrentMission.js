@@ -1,4 +1,3 @@
-import { Activity } from "./Activity.js";
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
@@ -13,12 +12,12 @@ CurrentMission.init(
       autoIncrement: true,
     },
     activities: {
-      type: [Activity],
+      type: [],
     },
     missionName: {
       type: DataTypes.STRING,
     },
-    missionType: {
+    missionTypeId: {
       type: DataTypes.INTEGER,
     },
     timer: {
@@ -43,4 +42,4 @@ CurrentMission.init(
   }
 );
 
-module.exports = CurrentMission;
+export { CurrentMission };
