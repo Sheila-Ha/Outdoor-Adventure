@@ -3,7 +3,6 @@ import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 
 export const resolvers = {
   Query: {
-
     async findUsers() {
       return [];
     },
@@ -12,6 +11,14 @@ export const resolvers = {
       return req.user;
     },
 
+    async funFact(parent, args) {
+      return (
+        <div>
+          <h2>{args.title}</h2>
+          <p>{args.description}</p>
+        </div>
+      );
+    },
     // async getCurrentMission(parent, {userId}, req) {
     //   return CurrentMission.findById( userId );
     // },
@@ -25,5 +32,5 @@ export const resolvers = {
     //   }
   },
 
-  // 
+  //
 };
