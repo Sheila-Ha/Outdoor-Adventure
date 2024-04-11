@@ -11,13 +11,8 @@ export const resolvers = {
       return req.user;
     },
 
-    async funFact(parent, args) {
-      return (
-        <div>
-          <h2>{args.title}</h2>
-          <p>{args.description}</p>
-        </div>
-      );
+    async funFact(parent, args, req) {
+      return req.funFact
     },
     // async getCurrentMission(parent, {userId}, req) {
     //   return CurrentMission.findById( userId );
