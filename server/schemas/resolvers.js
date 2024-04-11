@@ -11,8 +11,12 @@ export const resolvers = {
       return req.user;
     },
 
-    async funFact(parent, args, req) {
-      return req.funFact
+    async funFact(parent, args) {
+      return {
+        title: "The World's Longest Hiking Trail",
+        description:
+          "The Great Trail, formerly known as the Trans Canada Trail, is a network of trails that stretches across the entire country, covering over 27,000 kilometers. It's the longest recreational trail in the world and offers a wide variety of activities, including hiking, cycling, cross-country skiing, and snowmobiling.",
+      };
     },
     // async getCurrentMission(parent, {userId}, req) {
     //   return CurrentMission.findById( userId );
