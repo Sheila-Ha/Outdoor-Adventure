@@ -23,7 +23,6 @@ type CurrentMission {
 }
 
 type FunFact {
-    id: ID
     title: String!
     description: String!
 }
@@ -32,6 +31,7 @@ type Query {
     findUsers: [User]
     loginUser: LoginUser
     getCurrentMission(userId: Int): CurrentMission
+    funFact: FunFact
 }
 
 type Mutation {
