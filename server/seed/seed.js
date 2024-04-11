@@ -7,7 +7,7 @@ import User from "../models/User.js";
     username: "salidam",
     email: "email@email.com",
     password: "password",
-    currentExploreLevel: 1,
+    currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M"
   });

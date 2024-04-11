@@ -1,21 +1,35 @@
-const User = require('./User');
-const ExploreLevel = require('./ExploreLevel');
-const CurrentMission = require('./CurrentMission');
-const Mission = require('./Mission');
-const Activity = require('./Activity');
-const MissionActivity = require('./MissionActivity');
+import { User } from './User.js';
+import { ExploreLevel } from './ExploreLevel.js';
+import { CurrentMission } from './CurrentMission.js';
+import { MissionType } from './MissionType.js';
+import { ActivityType } from './ActivityType.js';
+import { ActivityArchive } from './ActivityArchive.js';
+import {CurrentMissionActivities} from './CurrentMissionActivities.js';
 
 // User connection to ExploreLevel
+// User has one ExploreLevel but ExploreLevel can have many Users
 ExploreLevel.hasMany(User, {
-  foreignKey: 'id',
+  foreignKey: 'currentExploreLevel',
   onDelete: 'CASCADE',
 });
 
 User.belongsTo(ExploreLevel, {
+  foreignKey: 'currentExploreLevel',
+});
+
+// ActivityType connection to MissionType
+// ActivityType has one MissionType but MissionTypes can have many ActivityTypes
+MissionType.hasMany(ActivityType, {
+  foreignKey: 'id',
+  onDelete: 'CASCADE',
+});
+
+ActivityType.belongsTo(MissionType, {
   foreignKey: 'id',
 });
 
 // User connection to CurrentMission
+// User has one CurrentMission but CurrentMission can have many Users
 CurrentMission.hasMany(User, {
   foreignKey: 'id',
   onDelete: 'CASCADE',
@@ -25,48 +39,39 @@ User.belongsTo(CurrentMission, {
   foreignKey: 'id',
 });
 
-// one to one CurrentMission has one Mission
-CurrentMission.hasOne(Mission, {
-  foreignKey: 'currentMissionId',
-  onDelete: 'CASCADE',
-});
-
-Mission.belongsTo(CurrentMission, {
-  foreignKey: 'currentMissionId',
-});
-
-// one to many CurrentMission has many Activity
-CurrentMission.hasMany(Activity, {
-  foreignKey: 'currentMissionId',
+// CurrentMission connection with MissionType
+// CurrentMission has one MissionType but MissionType can have many CurrentMissions
+MissionType.hasMany(CurrentMission, {
+  foreignKey: 'id',
   onDelete: 'CASCADE',
   });
 
-  Activity.belongsTo(CurrentMission, {
-    foreignKey: 'currentMissionId',
+  CurrentMission.belongsTo(MissionType, {
+    foreignKey: 'id',
   });
 
-// This is a many to many between Activity and Mission. The FK table is 
-// name MissionActivity
-Mission.belongsToMany(Activity, {
-  // Define the third table needed to store the foreign keys
+// CurrentMission connection with ActivityType
+// CurrentMission has many ActivityTypes AND ActivityType has many CurrentMissions
+// For each CurrentMission ActivityType, there is a completion boolean that indicates
+// whether or not the activity for that mission has been completed.
+CurrentMission.hasMany(ActivityType, {
   through: {
-    model: MissionActivity,
+    model: CurrentMissionActivities,
     unique: false
   },
-  // Define an alias for when data is retrieved
-  as: 'mission_activity'
+    // Define an alias for when data is retrieved
+  as: 'current_activities'
 });
 
-Activity.belongsToMany(Mission, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: MissionActivity,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'activity_mission'
+ActivityType.hasMany(CurrentMission, {
+ through: {
+  model: CurrentMissionActivities,
+  unique: false
+ },
+   // Define an alias for when data is retrieved
+ as: 'activities_for_missions'
 });
 
+// 
 // We package our models and export them as an object so we can import them together and use their proper names
-module.exports = { User, ExploreLevel, CurrentMission, Mission, Activity, MissionActivity };
-
+module.exports = { User, ExploreLevel, CurrentMission, MissionType, ActivityType, ActivityArchive, CurrentMissionActivities };
