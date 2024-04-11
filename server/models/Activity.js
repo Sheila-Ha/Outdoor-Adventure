@@ -37,4 +37,4 @@ Activity.init(
   }
 );
 
-module.exports = Activity;
+export default Activity;

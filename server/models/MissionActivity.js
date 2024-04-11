@@ -37,4 +37,4 @@ MissionActivity.init(
   }
 );
 
-module.exports = MissionActivity;
+export default MissionActivity;

@@ -53,7 +53,7 @@ User.init(
     memberSince: {
       type: DataTypes.DATE,
     },
-    currentMission: {
+    currentMissionId: {
       type: DataTypes.INTEGER,
       references: {
         model:'currentMission',

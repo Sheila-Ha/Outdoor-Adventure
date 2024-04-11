@@ -1,10 +1,8 @@
-const { CurrentMission } = require("../models");
-// import { User } from "../models/User.js";
+import CurrentMission from "../models/CurrentMission.js";
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 
 export const resolvers = {
   Query: {
-
     async findUsers() {
       return [];
     },
@@ -13,17 +11,16 @@ export const resolvers = {
       return req.user;
     },
 
-    async getCurrentMission(parent, {userId}, req) {
-      return CurrentMission.findById( userId );
+    async getCurrentMission(parent, { userId }, req) {
+      return CurrentMission.findById(userId);
     },
   },
   Mutation: {
     ...LogInSignUpMutation,
+    async deleteCurrentMission(parent, { id }, req) {
+      return CurrentMission.findOneAndDelete({
+        _id: id,
+      });
+    },
   },
-
-  async deleteCurrentMission(parent, {id}, req) {
-    return CurrentMission.findOneAndDelete({
-      _id: id,
-    });
-  }
 };
