@@ -22,6 +22,12 @@ type CurrentMission {
     userId: Int
 }
 
+type FunFact {
+    id: ID
+    title: String!
+    description: String!
+}
+
 type Query {
     findUsers: [User]
     loginUser: LoginUser
