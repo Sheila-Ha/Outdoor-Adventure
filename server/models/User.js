@@ -36,25 +36,36 @@ User.init(
         len: [8],
       },
     },
-    currentExploreLevel: {
-      type: DataTypes.INTEGER,
-    },
     currentLeaderBoardLevel: {
-        type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastLogin: {
       type: DataTypes.DATE,
     },
     memberSince: {
       type: DataTypes.DATE,
+    },
+    currentExploreLevel: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "exploreLevel",
+        key: "id",
+      },
+    },
+    currentMissionId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "currentMission",
+        key: "id",
+      },
     },
   },
   {
@@ -79,4 +90,4 @@ User.init(
   }
 );
 
-export default User;
+export { User };

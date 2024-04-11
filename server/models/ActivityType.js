@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class ActivityArchive extends Model {}
+class ActivityType extends Model {}
 
-ActivityArchive.init(
+ActivityType.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,30 +11,30 @@ ActivityArchive.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activityName: {
+    activityTypeName: {
       type: DataTypes.STRING,
     },
-    activityDescription: {
+    activityTypeDescription: {
       type: DataTypes.STRING,
     },
-    activityImage: {
+    activityTypeImage: {
       type: DataTypes.STRING,
     },
-    missionType: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'missionActivity',
-          key: 'id',
-        },
+    missionTypeId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "missionType",
+        key: "id",
       },
     },
+  },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'activityArchive',
+    modelName: "activityType",
   }
 );
 
-export {ActivityArchive};
+export { ActivityType };
