@@ -1,6 +1,6 @@
 const OpenAI = require("openai");
 
-const ai = new OpenAI({ apiKey: '<your api key here>' });
+const ai = new OpenAI({ apiKey: process.env.REACT_APP_OPENAI_KEY });
 
 export const aiTest = async () => {
   const completion = await ai.chat.completions.create({
