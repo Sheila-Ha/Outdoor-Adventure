@@ -37,4 +37,4 @@ ActivityArchive.init(
   }
 );
 
-export default ActivityArchive;
+export {ActivityArchive};

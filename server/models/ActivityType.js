@@ -20,22 +20,21 @@ ActivityType.init(
     activityTypeImage: {
       type: DataTypes.STRING,
     },
-    missionType: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'missionType',
-          key: 'id',
-        },
+    missionTypeId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "missionType",
+        key: "id",
       },
     },
+  },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'activityType',
+    modelName: "activityType",
   }
 );
 
-export default ActivityType;
-//module.exports = { ActivityType };
+export { ActivityType };

@@ -31,4 +31,4 @@ MissionType.init(
   }
 );
 
-export default MissionType;
+export { MissionType };

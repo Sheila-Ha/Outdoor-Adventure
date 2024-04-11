@@ -17,7 +17,7 @@ CurrentMission.init(
     missionName: {
       type: DataTypes.STRING,
     },
-    missionType: {
+    missionTypeId: {
       type: DataTypes.INTEGER,
     },
     timer: {
@@ -42,4 +42,4 @@ CurrentMission.init(
   }
 );
 
-export default CurrentMission;
+export { CurrentMission };
