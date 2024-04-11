@@ -16,6 +16,7 @@ MissionActivity.init(
       references: {
         model: "activity",
         key: "id",
+        unique: false,
       },
     },
     activityType: {
@@ -23,6 +24,7 @@ MissionActivity.init(
       references: {
         model: "mission",
         key: "id",
+        unique: false,
       },
     },
   },
