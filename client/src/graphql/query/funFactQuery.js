@@ -1,5 +1,5 @@
 import { gql} from '@apollo/client';
-export const Fun_Fact = gql`
+export const FUN_FACT = gql`
     query FunFact {
         funFact {
             title
