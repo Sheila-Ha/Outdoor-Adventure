@@ -1,17 +1,13 @@
 import { useState } from "react";
 
 const LeaderboardRow = ({ rank, name, score }) => {
-  // Determine the color based on the rank
   const color =
     rank === 1 ? "bg-yellow-400" :
     rank === 2 ? "bg-gray-300" :
     rank === 3 ? "bg-orange-300" :
     "bg-white";
-
-  // Determine additional styles for the medal winners
   const textStyle =
     rank <= 3 ? "text-xl font-bold" : "font-medium";
-
   return (
     <tr className={`${color}`}>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -54,39 +50,45 @@ const Home = () => {
 	{ id: 10, name: "ShadowWar04", score: 210 },
   ];
 
-	return (
-		<div className="p-4">
-		<h2 className="text-lg font-bold mb-2">Daily Leaderboard</h2>
-		<div className="max-h-96 overflow-y-auto">
-		<table className="min-w-full divide-y divide-gray-200">
-			<tbody>
-			{leaderboardData.map((user, index) => (
-				<LeaderboardRow
-				key={user.id}
-				rank={index + 1}
-				name={user.name}
-				score={user.score}
-				/>
-			))}
-			</tbody>
-		</table>
-		</div>
-
-      <h2 className="text-lg font-bold mb-2 mt-8">Weekly Mission</h2>
-      <div key={missions.weeklyMission.id} className="border p-4 mb-4">
-        <h3 className="text-md font-semibold">
-          {missions.weeklyMission.title}
-        </h3>
-        <p>{missions.weeklyMission.description}</p>
+  return (
+    <div className="flex flex-col h-screen">
+      <div className="flex-none">
+        <h2 className="text-lg font-bold p-4">Daily Leaderboard</h2>
+        <div className="overflow-y-auto" style={{ height: '20vh' }}>
+          <table className="min-w-full divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200">
+              {leaderboardData.map((user, index) => (
+                <LeaderboardRow
+                  key={user.id}
+                  rank={index + 1}
+                  name={user.name}
+                  score={user.score}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <h2 className="text-lg font-bold mb-2">Daily Missions</h2>
-      {missions.dailyMissions.map((mission) => (
-        <div key={mission.id} className="border p-4 mb-2">
-          <h3 className="text-md font-semibold">{mission.title}</h3>
-          <p>{mission.description}</p>
+      <div className="p-4" style={{ height: '30vh' }}>
+        <h2 className="text-lg font-bold">Weekly Mission</h2>
+        <div key={missions.weeklyMission.id} className="border p-4 h-full overflow-y-auto">
+          <h3 className="text-md font-semibold">{missions.weeklyMission.title}</h3>
+          <p>{missions.weeklyMission.description}</p>
         </div>
-      ))}
+      </div>
+
+      <div className="p-4 flex-grow">
+        <h2 className="text-lg font-bold">Daily Missions</h2>
+        <div className="overflow-y-auto">
+          {missions.dailyMissions.map((mission) => (
+            <div key={mission.id} className="border p-4 my-2">
+              <h3 className="text-md font-semibold">{mission.title}</h3>
+              <p>{mission.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
