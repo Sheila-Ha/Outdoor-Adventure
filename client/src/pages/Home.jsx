@@ -6,7 +6,7 @@ const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
     rank === 2 ? "bg-gray-300" :
     rank === 3 ? "bg-orange-300" :
     "bg-white";
-
+  
   const textStyle =
     rank <= 3 ? "text-xl font-bold" : "font-medium";
 
@@ -30,19 +30,37 @@ const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
   );
 };
 
+const MissionCard = ({ title, description, categoryColor }) => {
+  return (
+    <div className="relative border p-4 mb-2">
+      <span className={`absolute top-0 left-0 h-1 w-full ${categoryColor}`}></span> {/* Colored bar */}
+      <h3 className="text-md font-semibold">{title}</h3>
+      <p className="text-sm">{description}</p>
+    </div>
+  );
+};
+
 const Home = () => {
-  const [missions] = useState({
-    dailyMissions: [
-      { id: 1, title: "Fitness Mission", description: "Complete a 5k run." },
-      { id: 2, title: "Fitness Mission", description: "Bike for 30 minutes." },
-      { id: 3, title: "Exploration Mission", description: "Hike any local trail." },
-    ],
-    weeklyMission: {
-      id: 1,
-      title: "Weekly Mission",
-      description: "Climb a total of 1000 meters elevation.",
-    },
-  });
+	const [missions] = useState({
+	dailyMissions: [
+		{ id: 1, title: "Astrology Mission", description: "Read your daily horoscope.", category: 'astrology' },
+		{ id: 2, title: "Fitness Mission", description: "Bike for 30 minutes.", category: 'fitness' },
+		{ id: 3, title: "Exploration Mission", description: "Hike any local trail.", category: 'exploration' },
+	],
+	weeklyMission: {
+		id: 1,
+		title: "Weekly Mission",
+		description: "Climb a total of 1000 meters elevation.",
+		category: 'gold'
+	},
+	});
+
+	const missionCategoryColors = {
+	fitness: "bg-blue-500",
+	exploration: "bg-green-500",
+	astrology: "bg-purple-500",
+	gold: "bg-yellow-400"
+	};
 
 //   TODO: Update with real data
 const [leaderboardData] = useState([
@@ -147,13 +165,14 @@ const [leaderboardData] = useState([
 
   const randomTrivia = trivia[Math.floor(Math.random() * trivia.length)];
 
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <div className="p-2 text-center bg-green-300">
         <p className="text-sm">{randomTrivia}</p>
       </div>
 
-      <div className="overflow-y-auto" style={{ height: '40vh' }}>
+      <div className="overflow-y-auto" style={{ height: '30vh' }}>
         <h2 className="text-lg font-bold p-2">Daily Leaderboard</h2>
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
@@ -171,24 +190,24 @@ const [leaderboardData] = useState([
         </table>
       </div>
 
-      <div className="flex-none p-4" style={{ height: '15vh' }}>
-        <h2 className="text-lg font-bold">Weekly Mission</h2>
-        <div className="h-full overflow-y-auto">
-          <div className="border p-4">
-            <h3 className="text-md font-semibold">{missions.weeklyMission.title}</h3>
-            <p>{missions.weeklyMission.description}</p>
-          </div>
-        </div>
+      <div className="p-4" style={{ height: '15vh' }}>
+        <MissionCard
+          title={missions.weeklyMission.title}
+          description={missions.weeklyMission.description}
+          categoryColor={missionCategoryColors[missions.weeklyMission.category]}
+        />
       </div>
 
-      <div className="flex-grow p-4 overflow-y-auto">
+      <div className="p-4 overflow-y-auto" style={{ height: 'calc(45vh - 4rem)' }}>
         <h2 className="text-lg font-bold">Daily Missions</h2>
         <div className="space-y-2">
-          {missions.dailyMissions.map((mission) => (
-            <div key={mission.id} className="border p-4">
-              <h3 className="text-md font-semibold">{mission.title}</h3>
-              <p>{mission.description}</p>
-            </div>
+          {missions.dailyMissions.map(mission => (
+            <MissionCard
+              key={mission.id}
+              title={mission.title}
+              description={mission.description}
+              categoryColor={missionCategoryColors[mission.category]}
+            />
           ))}
         </div>
       </div>
