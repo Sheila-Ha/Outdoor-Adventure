@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const LeaderboardRow = ({ rank, name, score }) => {
-	// Special appearance for top 3
   const color =
     rank === 1 ? "bg-yellow-400" :
     rank === 2 ? "bg-gray-300" :
@@ -9,22 +8,22 @@ const LeaderboardRow = ({ rank, name, score }) => {
     "bg-white";
   const textStyle =
     rank <= 3 ? "text-xl font-bold" : "font-medium";
+
   return (
-    <tr className={`${color}`}>
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    <tr className={`${color} text-gray-900`}>
+      <td className="px-3 py-2 whitespace-nowrap text-sm font-medium">
         #{rank}
       </td>
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td className="text-sm font-light px-3 py-2 whitespace-nowrap">
         {name}
       </td>
-      <td className={`text-sm ${textStyle} px-6 py-4 whitespace-nowrap`}>
+      <td className={`text-sm ${textStyle} px-3 py-2 whitespace-nowrap`}>
         {score}
       </td>
     </tr>
   );
 };
 
-// TODO: Update with real data
 const Home = () => {
   const [missions] = useState({
     dailyMissions: [
@@ -41,7 +40,7 @@ const Home = () => {
 
 //   TODO: Update with real data
   const leaderboardData = [
-    { id: 1, name: "JanePHD92", score: 1250 },
+    { id: 1, name: "JanePHD92", score: '1,250' },
     { id: 2, name: "BobbyB0y11", score: 950 },
     { id: 3, name: "Mary1968", score: 800 },
     { id: 4, name: "HollyB518", score: 625 },
@@ -53,27 +52,58 @@ const Home = () => {
 	{ id: 10, name: "ShadowWar04", score: 210 },
   ];
 
-    return (
+//   TODO: Update with a trivia API or something
+  const trivia = [
+	"A group of flamingos is called a flamboyance.",
+	"The Amazon rainforest produces 20% of the world's oxygen.",
+	"The world's tallest tree is a coast redwood measuring 115.55 meters (379.1 feet).",
+	"There are over 3 trillion trees on Earth.",
+	"Fungi play a crucial role in the health of forests by breaking down dead organic matter.",
+	"Soil contains more microorganisms than there are people on Earth.",
+	"Up to 30 million species of insects live in the world's tropical forests.",
+	"Forests remove about one-third of human-caused emissions of carbon dioxide from the atmosphere each year.",
+	"Old growth forests can continue accumulating carbon for hundreds of years.",
+	"Mangrove forests protect coastlines from erosion and provide nursery habitat for young fish.",
+	"Coral reefs support 25% of all marine life with less than 1% of the ocean's surface area.",
+	"Kelp forests absorb massive amounts of carbon dioxide from the atmosphere.",
+	"The Amazon River carries about 20% of the world's flowing freshwater.",
+	"Wetlands act as natural water filters by absorbing pollutants.",
+	"Peat bogs store more carbon per square meter than any other ecosystem.",
+	"Grasslands sequester carbon in their deep root systems and soil organic matter.",
+	"Permafrost soils contain huge amounts of frozen organic matter and methane.",
+	"Up to 80% of Earth's oxygen comes from phytoplankton in the oceans.",
+	"Whales help fertilize the oceans by releasing iron-rich fecal plumes.",
+	"Sea otters play a key role in kelp forest health by preying on sea urchins.",
+	"Beavers create wetlands that support high levels of biodiversity.",
+	"Dragonflies are important predators that help regulate mosquito populations.",
+    
+  ];
+
+  const randomTrivia = trivia[Math.floor(Math.random() * trivia.length)];
+
+  return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <div className="flex-none">
-        <h2 className="text-lg font-bold p-4">Daily Leaderboard</h2>
-        <div className="overflow-y-auto" style={{ height: '30vh' }}>
-          <table className="min-w-full divide-y divide-gray-200">
-            <tbody>
-              {leaderboardData.map((user, index) => (
-                <LeaderboardRow
-                  key={user.id}
-                  rank={index + 1}
-                  name={user.name}
-                  score={user.score}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <div className="p-2 text-center bg-green-300">
+        <p className="text-sm">{randomTrivia}</p>
       </div>
 
-      <div className="flex-none p-4" style={{ height: '13vh' }}>
+      <div className="overflow-y-auto" style={{ height: '25vh' }}>
+        <h2 className="text-lg font-bold p-2">Daily Leaderboard</h2>
+        <table className="min-w-full divide-y divide-gray-200">
+          <tbody>
+            {leaderboardData.map((user, index) => (
+              <LeaderboardRow
+                key={user.id}
+                rank={index + 1}
+                name={user.name}
+                score={user.score}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex-none p-4" style={{ height: '15vh' }}>
         <h2 className="text-lg font-bold">Weekly Mission</h2>
         <div className="h-full overflow-y-auto">
           <div className="border p-4">
