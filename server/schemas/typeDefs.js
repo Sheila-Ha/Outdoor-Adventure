@@ -27,11 +27,16 @@ type FunFact {
     description: String!
 }
 
+type ChatGPTResponse {
+    response: String!
+}
+
 type Query {
     findUsers: [User]
     loginUser: LoginUser
     getCurrentMission(userId: Int): CurrentMission
     funFact: FunFact
+    askChatGPT: ChatGPTResponse
 }
 
 type Mutation {
