@@ -1,25 +1,29 @@
 import { useState } from "react";
 
 const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
-  const color =
+  const rowColor =
     rank === 1 ? "bg-yellow-400" :
     rank === 2 ? "bg-gray-300" :
     rank === 3 ? "bg-orange-300" :
     "bg-white";
+
   const textStyle =
     rank <= 3 ? "text-xl font-bold" : "font-medium";
 
+  const scoreStyle =
+    rank <= 3 ? "text-lg font-extrabold text-yellow-600" : "text-lg font-light";
+
   return (
-    <tr className={`${color} text-gray-900`}>
+    <tr className={`${rowColor} text-gray-900`}>
       <td className="px-3 py-2 whitespace-nowrap text-sm font-medium flex items-center">
-        <span className="mr-2">#{rank}</span>
-        <img className="h-10 w-10 rounded-full mr-2" src={image} alt={`Profile of ${name}`} />
-        <div>
+        <span className={`mr-2 ${textStyle}`}>#{rank}</span>
+        <img className="h-10 w-10 rounded-full" src={image} alt={`Profile of ${name}`} />
+        <div className="ml-4">
           <div className={textStyle}>{name}</div>
           <div className="text-xs text-gray-500">{subtitle}</div>
         </div>
       </td>
-      <td className="text-lg font-light px-3 py-2 whitespace-nowrap">
+      <td className={`${scoreStyle} px-3 py-2 whitespace-nowrap`}>
         {score}
       </td>
     </tr>
@@ -149,7 +153,7 @@ const [leaderboardData] = useState([
         <p className="text-sm">{randomTrivia}</p>
       </div>
 
-      <div className="overflow-y-auto" style={{ height: '25vh' }}>
+      <div className="overflow-y-auto" style={{ height: '40vh' }}>
         <h2 className="text-lg font-bold p-2">Daily Leaderboard</h2>
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
