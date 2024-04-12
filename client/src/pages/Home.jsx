@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LeaderboardRow = ({ rank, name, score }) => {
+const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
   const color =
     rank === 1 ? "bg-yellow-400" :
     rank === 2 ? "bg-gray-300" :
@@ -11,13 +11,15 @@ const LeaderboardRow = ({ rank, name, score }) => {
 
   return (
     <tr className={`${color} text-gray-900`}>
-      <td className="px-3 py-2 whitespace-nowrap text-sm font-medium">
-        #{rank}
+      <td className="px-3 py-2 whitespace-nowrap text-sm font-medium flex items-center">
+        <span className="mr-2">#{rank}</span>
+        <img className="h-10 w-10 rounded-full mr-2" src={image} alt={`Profile of ${name}`} />
+        <div>
+          <div className={textStyle}>{name}</div>
+          <div className="text-xs text-gray-500">{subtitle}</div>
+        </div>
       </td>
-      <td className="text-sm font-light px-3 py-2 whitespace-nowrap">
-        {name}
-      </td>
-      <td className={`text-sm ${textStyle} px-3 py-2 whitespace-nowrap`}>
+      <td className="text-lg font-light px-3 py-2 whitespace-nowrap">
         {score}
       </td>
     </tr>
@@ -27,9 +29,9 @@ const LeaderboardRow = ({ rank, name, score }) => {
 const Home = () => {
   const [missions] = useState({
     dailyMissions: [
-      { id: 1, title: "Daily Mission 1", description: "Complete a 5k run." },
-      { id: 2, title: "Daily Mission 2", description: "Bike for 30 minutes." },
-      { id: 3, title: "Daily Mission 3", description: "Hike any local trail." },
+      { id: 1, title: "Fitness Mission", description: "Complete a 5k run." },
+      { id: 2, title: "Fitness Mission", description: "Bike for 30 minutes." },
+      { id: 3, title: "Exploration Mission", description: "Hike any local trail." },
     ],
     weeklyMission: {
       id: 1,
@@ -39,18 +41,78 @@ const Home = () => {
   });
 
 //   TODO: Update with real data
-  const leaderboardData = [
-    { id: 1, name: "JanePHD92", score: '1,250' },
-    { id: 2, name: "BobbyB0y11", score: 950 },
-    { id: 3, name: "Mary1968", score: 800 },
-    { id: 4, name: "HollyB518", score: 625 },
-	{ id: 5, name: "MarkM93", score: 540 },
-	{ id: 6, name: "NatureFr3Ak63", score: 480 },
-	{ id: 7, name: "Woodstock87", score: 320 },
-	{ id: 8, name: "VenusG22", score: 300 },
-	{ id: 9, name: "IFoundRocks66", score: 280 },
-	{ id: 10, name: "ShadowWar04", score: 210 },
-  ];
+const [leaderboardData] = useState([
+		{
+			id: 1,
+			name: "JanePHD92",
+			score: '1,250',
+			image: "https://randomuser.me/api/portraits/women/1.jpg",
+			subtitle: "Elk",
+		},
+		{
+			id: 2,
+			name: "BobbyB0y11",
+			score: 950,
+			image: "https://randomuser.me/api/portraits/men/1.jpg",
+			subtitle: "Squirrel",
+		},
+		{
+			id: 3,
+			name: "Mary1968",
+			score: 800,
+			image: "https://randomuser.me/api/portraits/women/12.jpg",
+			subtitle: "Lion",
+		},
+		{
+			id: 4,
+			name: "HollyB518",
+			score: 750,
+			image: "https://randomuser.me/api/portraits/women/3.jpg",
+			subtitle: "Squirrel",
+		},
+		{
+			id: 5,
+			name: "MarkM93",
+			score: 700,
+			image: "https://randomuser.me/api/portraits/men/3.jpg",
+			subtitle: "Zebra",
+		},
+		{
+			id: 6,
+			name: "NatureFr3Ak63",
+			score: 650,
+			image: "https://randomuser.me/api/portraits/women/49.jpg",
+			subtitle: "Red Fox",
+		},
+		{
+			id: 7,
+			name: "Woodstock87",
+			score: 600,
+			image: "https://randomuser.me/api/portraits/men/4.jpg",
+			subtitle: "Mouse",
+		},
+		{
+			id: 8,
+			name: "VenusG22",
+			score: 550,
+			image: "https://randomuser.me/api/portraits/women/4.jpg",
+			subtitle: "Pig",
+		},
+		{
+			id: 9,
+			name: "IFoundRocks66",
+			score: 500,
+			image: "https://randomuser.me/api/portraits/men/5.jpg",
+			subtitle: "Mouse",
+		},
+		{
+			id: 10,
+			name: "ShadowWar04",
+			score: 450,
+			image: "https://randomuser.me/api/portraits/women/5.jpg",
+			subtitle: "Tortoise",
+		},
+  ]);
 
 //   TODO: Update with a trivia API or something
   const trivia = [
@@ -97,6 +159,8 @@ const Home = () => {
                 rank={index + 1}
                 name={user.name}
                 score={user.score}
+                image={user.image}
+                subtitle={user.subtitle}
               />
             ))}
           </tbody>
