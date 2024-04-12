@@ -53,20 +53,20 @@ User.init(
     memberSince: {
       type: DataTypes.DATE,
     },
-    currentExploreLevel: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "exploreLevel",
-        key: "id",
-      },
-    },
-    currentMissionId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "currentMission",
-        key: "id",
-      },
-    },
+    // currentExploreLevel: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "exploreLevel",
+    //     key: "id",
+    //   },
+    // },
+    // currentMissionId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "currentMission",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     hooks: {
