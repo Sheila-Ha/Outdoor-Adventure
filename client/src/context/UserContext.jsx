@@ -14,10 +14,9 @@ export function UserProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("token") || "";
     try {
-      if (token != "") {
-        const decode = jwtDecode(token);
-        setLoggedInUser(decode.userInfo);
-      }
+      const decode = jwtDecode(token);
+      setLoggedInUser(decode.userInfo);
+      
     } catch (err) {
       console.log(err);
       localStorage.removeItem("token");
