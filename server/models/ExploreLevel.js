@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/connection.js";
 
 class ExploreLevel extends Model {}
 
@@ -18,18 +18,9 @@ ExploreLevel.init(
     levelRequirement: {
       type: DataTypes.INTEGER,
     },
-    levelIcon: {
+    levelBadge: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    // This column will store a reference of the `id` of the `User` that has this ExploreLevel
-    userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          // This references the `user` model, which we set in `User.js` as its `modelName` property
-          model: 'user',
-          key: 'id',
-        },
     },
   },
   {
@@ -37,8 +28,8 @@ ExploreLevel.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exploreLevel',
+    modelName: "exploreLevel",
   }
 );
 
-module.exports = ExploreLevel;
+export { ExploreLevel };
