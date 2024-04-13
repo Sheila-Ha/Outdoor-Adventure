@@ -1,6 +1,6 @@
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
-import { User, Activities, Current_Mission, Explore_Level, Mission_Activities, Mission_Types  } from '../models';
+import { User, Activities, Current_Mission, Explore_Level, Mission_Activities, Mission_Types  } from '../models/index.js';
 
 export const resolvers = {
   Query: {

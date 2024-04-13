@@ -42,9 +42,9 @@ Current_Mission.init(
       references: {
         // This references the 'mission_types' model, which we set in 'Mission_Types.js' as its modelname property
         model: "mission_types",
-        key: "id"
+        key: "id",
       },
-    }
+    },
   },
   {
     sequelize,
@@ -55,4 +55,4 @@ Current_Mission.init(
   }
 );
 
-export default Current_Mission;
+export { Current_Mission };

@@ -21,20 +21,20 @@ Activities.init(
       type: DataTypes.STRING,
     },
     missionTypeId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'mission_types',
-          key: 'id',
-        },
+      type: DataTypes.INTEGER,
+      references: {
+        model: "mission_types",
+        key: "id",
       },
     },
+  },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'activities',
+    modelName: "activities",
   }
 );
 
-export default Activities;
+export { Activities };

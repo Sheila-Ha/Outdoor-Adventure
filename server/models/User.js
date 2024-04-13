@@ -37,8 +37,8 @@ User.init(
       },
     },
     currentLeaderBoardLevel: {
-        type: DataTypes.INTEGER,
-        defaultValue: 1
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -57,8 +57,8 @@ User.init(
     exploreLevelId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'explore_level',
-        key: 'id'
+        model: "explore_level",
+        key: "id",
       },
     },
   },
@@ -84,4 +84,4 @@ User.init(
   }
 );
 
-export default User;
+export { User };
