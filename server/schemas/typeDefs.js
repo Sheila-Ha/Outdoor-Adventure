@@ -41,8 +41,3 @@ type Mutation {
     triggerMyMission(userId: ID!, missionType: String!): String
 }
 `;
-
-// type TriggerMissionResponse {
-//     response: String
-// }
-

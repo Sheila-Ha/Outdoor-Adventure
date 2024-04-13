@@ -19,28 +19,9 @@ export const resolvers = {
           "The Great Trail, formerly known as the Trans Canada Trail, is a network of trails that stretches across the entire country, covering over 27,000 kilometers. It's the longest recreational trail in the world and offers a wide variety of activities, including hiking, cycling, cross-country skiing, and snowmobiling.",
       };
     },
-
-    // async getCurrentMission(parent, {userId}, req) {
-    //   return CurrentMission.findById( userId );
-    // },
   },
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
-    // async deleteCurrentMission(parent, {id}, req) {
-    //     return CurrentMission.findOneAndDelete({
-    //       _id: id,
-    //     });
-    //   }
   },
-  //
 };
-
-  // async triggerMissionForUser(parent, args, req) {
-  //   console.log('triggerMissionForUser');
-  //   console.log(req);
-  //   const chatGPTResponse = await askChatGPT(req.missionType);
-  //   return {
-  //     chatGPTResponse
-  //   };
-  // },
