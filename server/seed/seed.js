@@ -1,10 +1,19 @@
 import sequelize from "../config/connection.js";
-import User from "../models/User.js";
+/*import User from "../models/User.js";
 import Explore_Level from "../models/Explore_Level.js";
 import Current_Mission from "../models/Current_Mission.js";
 import Activities from "../models/Activities.js";
 import Mission_Activities from "../models/Mission_Activities.js";
 import Mission_Types from "../models/Mission_Types.js";
+*/
+import {
+  User,
+  Explore_Level,
+  Current_Mission,
+  Activities,
+  Mission_Activities,
+  Mission_Types,
+} from "../models/index.js";
 
 (async function syncSequelize() {
   await sequelize.sync({ force: true });
