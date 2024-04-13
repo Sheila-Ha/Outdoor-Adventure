@@ -67,7 +67,7 @@ type Activities {
 type Query {
     findUsers: [User]
     loginUser: LoginUser
-    getCurrentMission(userId: Int): CurrentMission
+    getCurrentMission(userId: Int): Current_Mission
     funFact: FunFact
     getAllExploreLevels: [Explore_Level]
     getAllCurrentMissions: [Current_Mission]
