@@ -30,16 +30,8 @@ Explore_Level.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-<<<<<<< HEAD:server/models/Explore_Level.js
     modelName: 'explore_level',
   }
 );
 
 export default Explore_Level;
-=======
-    modelName: "exploreLevel",
-  }
-);
-
-export { ExploreLevel };
->>>>>>> Develop:server/models/ExploreLevel.js
