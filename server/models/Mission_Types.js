@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class ExploreLevel extends Model {}
+class Mission_Types extends Model {}
 
-ExploreLevel.init(
+Mission_Types.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,16 +11,18 @@ ExploreLevel.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    levelName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    levelRequirement: {
+    description: {
+      type: DataTypes.STRING,
+    },
+    image: {
+      type: DataTypes.STRING,
+    },
+    pointValue: {
       type: DataTypes.INTEGER,
-    },
-    levelBadge: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
   },
   {
@@ -28,8 +30,8 @@ ExploreLevel.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "exploreLevel",
+    modelName: "mission_types",
   }
 );
 
-export { ExploreLevel };
+export default Mission_Types;

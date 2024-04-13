@@ -1,11 +1,12 @@
-// import { CurrentMission } from "../models/index.js";
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
+import { User, Activities, Current_Mission, Explore_Level, Mission_Activities, Mission_Types  } from '../models';
 
 export const resolvers = {
   Query: {
+
     async findUsers() {
-      return [];
+      return User.findAll();
     },
 
     async loginUser(parent, args, req) {
@@ -18,6 +19,26 @@ export const resolvers = {
         description:
           "The Great Trail, formerly known as the Trans Canada Trail, is a network of trails that stretches across the entire country, covering over 27,000 kilometers. It's the longest recreational trail in the world and offers a wide variety of activities, including hiking, cycling, cross-country skiing, and snowmobiling.",
       };
+    },
+
+    async getallExploreLevels() {
+      return Explore_Level.findAll();
+    },
+
+    async getAllCurrentMissions() {
+      return Current_Mission.findAll();
+    },
+
+    async getAllMissionTypes() {
+      return Mission_Types.findAll();
+    },
+
+    async getAllActivities() {
+      return Activities.findAll();
+    },
+
+    async getAllMissionActivities() {
+      return Mission_Activities.findAll();
     },
   },
   Mutation: {
