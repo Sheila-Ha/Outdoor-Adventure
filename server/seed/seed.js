@@ -12,10 +12,11 @@ import Mission_Types from "../models/Mission_Types.js";
   await Mission_Types.create({
     id: 1,
     name: "Scavenger Hunt",
-    description: "Find items or do activities for points.",
+    description: "Find items or do activities for points."
   });
 
   await Activities.create({
+    id: 1,
     name: "Find a leaf.",
     description: "Leaves can be found on the ground under trees and bushes",
     missionTypeId: 1
@@ -35,8 +36,9 @@ import Mission_Types from "../models/Mission_Types.js";
   });
 
   await Explore_Level.create({
+    id: 1,
     name: "Tortoise",
-    pointsRequired: 1,
+    pointsRequired: 1
   });
 
   await User.create({
@@ -45,9 +47,20 @@ import Mission_Types from "../models/Mission_Types.js";
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
-    lastName: "M",
-    lastName: "M",
+    lastName: "M"
   });
-  await 
+  //await
   console.log("user data seeded");
+  const userData = await User.findAll();
+  console.log(userData);
+  const exploreData = await Explore_Level.findAll();
+  console.log(exploreData);  
+  const activitiesData = await Activities.findAll();
+  console.log(activitiesData);
+  const maData = await Mission_Activities.findAll();
+  console.log(maData);
+  const cmData = await Current_Mission.findAll();
+  console.log(cmData);
+  const mTypes = await Mission_Types.findAll();
+  console.log(mTypes);
 })();

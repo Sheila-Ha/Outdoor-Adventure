@@ -21,6 +21,9 @@ Mission_Types.init(
     image: {
       type: DataTypes.STRING,
     },
+    pointValue: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,
