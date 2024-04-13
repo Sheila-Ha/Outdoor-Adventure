@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 
 const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
   const rowColor =
@@ -15,9 +16,9 @@ const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
 
   return (
     <tr className={`${rowColor} text-gray-900`}>
-      <td className="px-3 py-2 whitespace-nowrap text-sm font-medium flex items-center">
+      <td className="flex items-center px-3 py-2 text-sm font-medium whitespace-nowrap">
         <span className={`mr-2 ${textStyle}`}>#{rank}</span>
-        <img className="h-10 w-10 rounded-full" src={image} alt={`Profile of ${name}`} />
+        <img className="w-10 h-10 rounded-full" src={image} alt={`Profile of ${name}`} />
         <div className="ml-4">
           <div className={textStyle}>{name}</div>
           <div className="text-xs text-gray-500">{subtitle}</div>
@@ -32,9 +33,9 @@ const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
 
 const MissionCard = ({ title, description, categoryColor }) => {
   return (
-    <div className="relative border p-4 mb-2">
+    <div className="relative p-4 mb-2 border">
       <span className={`absolute top-0 left-0 h-1 w-full ${categoryColor}`}></span> {/* Colored bar */}
-      <h3 className="text-md font-semibold">{title}</h3>
+      <h3 className="font-semibold text-md">{title}</h3>
       <p className="text-sm">{description}</p>
     </div>
   );
@@ -173,7 +174,7 @@ const [leaderboardData] = useState([
       </div>
 
       <div className="overflow-y-auto" style={{ height: '30vh' }}>
-        <h2 className="text-lg font-bold p-2">Daily Leaderboard</h2>
+        <h2 className="p-2 text-lg font-bold">Daily Leaderboard</h2>
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
             {leaderboardData.map((user, index) => (
@@ -211,6 +212,7 @@ const [leaderboardData] = useState([
           ))}
         </div>
       </div>
+	  <div className="p-4"><TriggerMyMission /></div>
     </div>
   );
 };
