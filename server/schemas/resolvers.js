@@ -1,9 +1,11 @@
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
+import { User, Activities, Current_Mission, Explore_Level, Mission_Activities, Mission_Types  } from '../models';
 
 export const resolvers = {
   Query: {
+
     async findUsers() {
-      return [];
+      return User.findAll();
     },
 
     async loginUser(parent, args, req) {
@@ -19,23 +21,23 @@ export const resolvers = {
     },
 
     async getallExploreLevels() {
-      return [];
+      return Explore_Level.findAll();
     },
 
     async getAllCurrentMissions() {
-      return [];
+      return Current_Mission.findAll();
     },
 
     async getAllMissionTypes() {
-      return [];
+      return Mission_Types.findAll();
     },
 
     async getAllActivities() {
-      return [];
+      return Activities.findAll();
     },
 
     async getAllMissionActivities() {
-      return [];
+      return Mission_Activities.findAll();
     },
   },
   Mutation: {

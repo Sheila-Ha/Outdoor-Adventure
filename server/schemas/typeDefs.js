@@ -1,4 +1,4 @@
-export const typeDefs = `
+export const typeDefs = `#graphql
 type User {
     id: ID
     name: String
@@ -17,7 +17,7 @@ input SignUp {
 }
 
 type Current_Mission {
-    id: ID
+    _id: ID
     name: String
     type: Int
     points: Int
@@ -28,7 +28,7 @@ type Current_Mission {
 }
 
 type Explore_Level {
-    id: ID
+    _id: ID
     name: String
     pointsRequired: Int
     badge: String
@@ -36,7 +36,7 @@ type Explore_Level {
 }
 
 type Mission_Activities {
-    id: ID
+    _id: ID
     complete: Boolean
     pointValue: Int
     missionId: Int
@@ -44,7 +44,7 @@ type Mission_Activities {
 }
 
 type Mission_Types {
-    id: ID
+    _id: ID
     name: String
     description: String
     image: String
@@ -56,7 +56,7 @@ type FunFact {
 }
 
 type Activities {
-    id: ID
+    _id: ID
     name: String
     description: String
     image: String
@@ -78,6 +78,5 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
-    deleteCurrentMission(id: ID): String
 }
 `;
