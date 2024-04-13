@@ -3,7 +3,7 @@ import { Explore_Level } from './Explore_Level.js';
 import { Current_Mission } from './Current_Mission.js';
 import { Mission_Types } from './Mission_Types.js';
 import { Activities } from './Activities.js';
-import {Mission_Activities} from './Mission_Activities.js';
+import { Mission_Activities } from './Mission_Activities.js';
 
 // User connection to ExploreLevel
 // User has one ExploreLevel but ExploreLevel can have many Users

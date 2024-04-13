@@ -30,8 +30,8 @@ export const QUERY_ALL_MISSIONS = gql`
   }
 `;
 export const QUERY_All_Explore_Levels = gql`
-  query getallExploreLevels() {
-    getallExploreLevels() {
+  query getAllExploreLevels() {
+    getAllExploreLevels() {
       _id
       name
       pointsRequired

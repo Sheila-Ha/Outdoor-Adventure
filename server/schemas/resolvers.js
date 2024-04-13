@@ -21,7 +21,7 @@ export const resolvers = {
       };
     },
 
-    async getallExploreLevels() {
+    async getAllExploreLevels() {
       return Explore_Level.findAll();
     },
 
