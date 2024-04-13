@@ -15,9 +15,6 @@ Mission_Activities.init(
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
-        pointValue: {
-            type: DataTypes.INTEGER
-        },
         missionId: {
             type: DataTypes.INTEGER,
             references: {

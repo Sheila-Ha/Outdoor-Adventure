@@ -48,6 +48,7 @@ type Mission_Types {
     name: String
     description: String
     image: String
+    pointValue: String
 }
 
 type FunFact {
