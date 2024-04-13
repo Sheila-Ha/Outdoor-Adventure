@@ -1,6 +1,6 @@
 // import { CurrentMission } from "../models/index.js";
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
-import { askChatGPT } from "../utils/openai-routes.js";
+import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
 
 export const resolvers = {
   Query: {
@@ -20,25 +20,27 @@ export const resolvers = {
       };
     },
 
-    async askChatGPT(parent, args, req) {
-      console.log(req);
-      const chatGPTResponse = await askChatGPT();
-      return {
-        response: chatGPTResponse
-      };
-    },
     // async getCurrentMission(parent, {userId}, req) {
     //   return CurrentMission.findById( userId );
     // },
   },
   Mutation: {
     ...LogInSignUpMutation,
+    ...TriggerMyMissionMutation,
     // async deleteCurrentMission(parent, {id}, req) {
     //     return CurrentMission.findOneAndDelete({
     //       _id: id,
     //     });
     //   }
   },
-
   //
 };
+
+  // async triggerMissionForUser(parent, args, req) {
+  //   console.log('triggerMissionForUser');
+  //   console.log(req);
+  //   const chatGPTResponse = await askChatGPT(req.missionType);
+  //   return {
+  //     chatGPTResponse
+  //   };
+  // },

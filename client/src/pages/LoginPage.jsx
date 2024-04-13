@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button } from "../components/Button.jsx";
 import { Input } from "../components/Input.jsx";
 import { Label } from "../components/Label.jsx";
-import { ChatGPTButton } from "../components/APIs/ChatGPT.jsx";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../graphql/mutation/index.js";
 import { useLoggedInUser } from "../context/UserContext.jsx";
@@ -102,7 +101,6 @@ export default function LoginPage() {
             <Link className="underline" to={"/sign-up"}>
               Sign up
             </Link>
-            <ChatGPTButton />
           </div>
         </div>
       </div>
