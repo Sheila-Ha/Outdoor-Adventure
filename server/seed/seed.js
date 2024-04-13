@@ -46,6 +46,7 @@ import Mission_Types from "../models/Mission_Types.js";
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M",
+    lastName: "M",
   });
   await 
   console.log("user data seeded");

@@ -28,6 +28,9 @@ export default function Component() {
               <NavItem to={"/profile"} active={pathname === "/profile"}>
                 Profile
               </NavItem>
+              <NavItem to={"/funFact"} active={pathname === "/funFact"}>
+                Fun Fact
+              </NavItem>
               <NavItem
                 to={"/login"}
                 onClick={() => {
