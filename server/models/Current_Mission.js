@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class CurrentMission extends Model {}
+class Current_Mission extends Model {}
 
-CurrentMission.init(
+Current_Mission.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,14 +11,19 @@ CurrentMission.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activities: {
-      type: [],
-    },
-    missionName: {
+    name: {
       type: DataTypes.STRING,
     },
-    missionTypeId: {
+    type: {
       type: DataTypes.INTEGER,
+    },
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     timer: {
       type: DataTypes.INTEGER,
@@ -32,14 +37,22 @@ CurrentMission.init(
         key: "id",
       },
     },
+    missionTypeId: {
+      type: DataTypes.INTEGER,
+      references: {
+        // This references the 'mission_types' model, which we set in 'Mission_Types.js' as its modelname property
+        model: "mission_types",
+        key: "id"
+      },
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "currentMission",
+    modelName: "current_mission",
   }
 );
 
-export { CurrentMission };
+export default Current_Mission;
