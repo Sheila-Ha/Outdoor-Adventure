@@ -73,4 +73,4 @@ Activities.hasMany(Current_Mission, {
 
 //
 // We package our models and export them as an object so we can import them together and use their proper names
-module.exports = { User, Explore_Level, Current_Mission, Mission_Types, Activities, Mission_Activities };
+export { User, Explore_Level, Current_Mission, Mission_Types, Activities, Mission_Activities };

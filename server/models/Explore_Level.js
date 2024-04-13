@@ -30,8 +30,8 @@ Explore_Level.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'explore_level',
+    modelName: "explore_level",
   }
 );
 
-export default Explore_Level;
+export { Explore_Level };
