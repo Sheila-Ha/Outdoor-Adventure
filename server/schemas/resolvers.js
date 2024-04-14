@@ -21,12 +21,19 @@ export const resolvers = {
       };
     },
 
+    async getUserCurrentMission(user) {
+      return Current_Mission.findAll();
+    },
+
     async getAllExploreLevels() {
       return Explore_Level.findAll();
     },
 
     async getAllCurrentMissions() {
       return Current_Mission.findAll();
+    },
+    async getUserMissionActivities(user) {
+      return Mission_Activities.findAll();
     },
 
     async getAllMissionTypes() {
@@ -41,6 +48,7 @@ export const resolvers = {
       return Mission_Activities.findAll();
     },
   },
+
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
