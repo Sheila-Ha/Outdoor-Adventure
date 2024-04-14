@@ -52,8 +52,7 @@ type Mission_Types {
 }
 
 type FunFact {
-    title: String!
-    description: String!
+    fact: String!
 }
 
 type Activities {
