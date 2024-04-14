@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "../components/Button.jsx";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
 import { useLoggedInUser } from "../context/UserContext.jsx";
-import FunFact from "./FunFact.jsx";
+// import FunFact from "./FunFact.jsx";
 
 export default function Component() {
   const { loggedInUser, setLoggedInUser } = useLoggedInUser();
@@ -19,7 +19,7 @@ export default function Component() {
           </Avatar>
           Outdoor Antics
         </Link>
-        <div>{FunFact()}</div>
+        {/* <div>{FunFact()}</div> */}
         <div className="flex-1" />
         <div className="flex gap-4 text-center">
           {loggedInUser?.email ? (

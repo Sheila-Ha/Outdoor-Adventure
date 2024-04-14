@@ -21,7 +21,7 @@ export default function FunFact() {
     <div className="p-4">
       <AlertDialog>
         <AlertDialogTrigger>
-          <div className="border-2 rounded-md px-2">Fun Fact</div>
+          <div className="border-2 rounded-md text-md font-bold px-1">Fun Fact</div>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

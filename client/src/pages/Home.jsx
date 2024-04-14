@@ -188,13 +188,16 @@ const Home = () => {
   const randomTrivia = trivia[Math.floor(Math.random() * trivia.length)];
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col h-screen px-4 overflow-hidden">
       {/* <div className="p-2 text-center bg-green-300">
         <p className="text-sm">{randomTrivia}</p>
       </div> */}
 
       <div className="overflow-y-auto" style={{ height: "30vh" }}>
-        <h2 className="p-2 text-lg font-bold">Daily Leaderboard</h2>
+        <div className="flex gap-4">
+          <div className="text-lg font-bold pt-4">Daily Leaderboard</div>
+          <div>{FunFact()}</div>
+        </div>
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
             {leaderboardData.map((user, index) => (
@@ -211,7 +214,7 @@ const Home = () => {
         </table>
       </div>
 
-      <div className="p-4" style={{ height: "15vh" }}>
+      <div style={{ height: "15vh" }}>
         <MissionCard
           title={missions.weeklyMission.title}
           description={missions.weeklyMission.description}
@@ -219,10 +222,7 @@ const Home = () => {
         />
       </div>
 
-      <div
-        className="p-4 overflow-y-auto"
-        style={{ height: "calc(45vh - 4rem)" }}
-      >
+      <div className="overflow-y-auto" style={{ height: "calc(45vh - 4rem)" }}>
         <h2 className="text-lg font-bold">Daily Missions</h2>
         <div className="space-y-2">
           {missions.dailyMissions.map((mission) => (
@@ -235,7 +235,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className="p-4">
+      <div>
         <TriggerMyMission />
       </div>
     </div>
