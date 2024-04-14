@@ -20,11 +20,15 @@ export default function FunFact() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-    // console.log("timer");
+      // console.log("timer");
+
+      //setInterval will be called when there is array of facts.
       if (data) {
         setIndex(Math.floor(Math.random() * data.funFact.length));
       }
     }, 15000);
+
+    // Return in useEffect to clear the interval when detached from reactDOM
     return () => clearInterval(interval);
   }, [loading, error, data]);
   if (loading) return <p>Loading...</p>;
@@ -35,6 +39,7 @@ export default function FunFact() {
         <BookOpenCheck className="h-4 w-4" />
         <AlertTitle>Did you know?</AlertTitle>
         <AlertDescription className="text-sm">
+          {/*Displays fact of random index */}
           {data.funFact[index]}
         </AlertDescription>
       </Alert>
