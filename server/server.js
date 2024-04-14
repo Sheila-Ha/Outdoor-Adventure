@@ -6,7 +6,7 @@ import { authMiddleware } from "../server/utils/auth.js";
 import  sequelize  from "./config/connection.js";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = new ApolloServer({ typeDefs, resolvers });
 
 app.use(express.urlencoded({ extended: false }));
