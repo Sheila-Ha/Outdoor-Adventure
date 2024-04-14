@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { FUN_FACT } from "../graphql/query/index.js";
 import { Alert, AlertDescription, AlertTitle } from "./Alert.jsx";
-import { InfoIcon } from "lucide-react";
+import { BookOpenCheck } from "lucide-react";
 
 // export default function FunFact() {
 //   const { loading, error, data } = useQuery(FUN_FACT);
@@ -21,8 +21,8 @@ export default function FunFact() {
   if (error) return <p>Error : {error.message}</p>;
   return (
     <div>
-      <Alert>
-        <InfoIcon className="h-4 w-4" />
+      <Alert variant="success">
+        <BookOpenCheck className="h-4 w-4" />
         <AlertTitle>Did you know?</AlertTitle>
         <AlertDescription className="text-sm">
           {data.funFact.fact}
