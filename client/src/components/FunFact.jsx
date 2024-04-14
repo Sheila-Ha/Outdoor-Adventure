@@ -18,6 +18,7 @@ import { BookOpenCheck } from "lucide-react";
 export default function FunFact() {
   const { loading, error, data } = useQuery(FUN_FACT);
   const [index, setIndex] = useState(0);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       // console.log("timer");

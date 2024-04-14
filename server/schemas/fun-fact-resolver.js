@@ -1,6 +1,9 @@
 import { ai } from "../config/openAI.config.js";
+import { GraphQLError } from "graphql";
 
+//This hard coded to fall back if OpenAI crash or API call exceeds
 const funFact = [
+  "Forests are home to a diverse range of plants and animals, with some species yet to be discovered by scientists.",
   "A group of flamingos is called a flamboyance.",
   "The Amazon rainforest produces 20% of the world's oxygen.",
   "The world's tallest tree is a coast redwood measuring 115.55 meters (379.1 feet).",
@@ -30,7 +33,6 @@ const funFact = [
   "Biking to work can reduce your carbon footprint and save you money on transportation costs.",
   "The Perseid meteor shower, one of the most spectacular meteor showers, occurs every August.",
   "Stargazing can help reduce stress and improve mental well-being.",
-  "Forests are home to a diverse range of plants and animals, with some species yet to be discovered by scientists.",
   "Biking is a low-impact exercise that is easy on the joints and can be enjoyed by people of all ages.",
   "Scavenger hunts in forests can help participants learn about local flora and fauna while having fun.",
   "Trail running can improve balance, agility, and cardiovascular health compared to running on pavement.",
@@ -48,6 +50,13 @@ const funFact = [
 
 export const FunFactQuery = {
   async funFact(parent, args, req) {
+    if (!req.userInfo) {
+      throw new GraphQLError("You are not authorized to perform this action.", {
+        extensions: {
+          code: "FORBIDDEN",
+        },
+      });
+    }
     try {
       const completion = await ai.chat.completions.create({
         messages: [
