@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { FUN_FACT } from "../graphql/query/index.js";
 import { Alert, AlertDescription, AlertTitle } from "./Alert.jsx";
-import { Terminal } from "lucide-react"
+import { InfoIcon } from "lucide-react";
 
 // export default function FunFact() {
 //   const { loading, error, data } = useQuery(FUN_FACT);
@@ -22,10 +22,10 @@ export default function FunFact() {
   return (
     <div>
       <Alert>
-        <Terminal className="h-4 w-4" />
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>
-          You can add components and dependencies to your app using the cli.
+        <InfoIcon className="h-4 w-4" />
+        <AlertTitle>Did you know?</AlertTitle>
+        <AlertDescription className="text-sm">
+          {data.funFact.fact}
         </AlertDescription>
       </Alert>
     </div>
