@@ -3,6 +3,14 @@ type User {
     id: ID
     name: String
     interest: [String]
+    username: String
+    email: String
+    currentLeaderBoardLevel: Int
+    firstName: String
+    lastName: String
+    lastLogin: String
+    memberSince: String
+    exploreLevelId: Int
 }
 type LoginUser{
     email: String
@@ -67,9 +75,9 @@ type Activities {
 type Query {
     findUsers: [User]
     loginUser: LoginUser
-    getCurrentMission(userId: Int): Current_Mission
     funFact: FunFact
     getAllExploreLevels: [Explore_Level]
+    getCurrentMission(userId: Int): Current_Mission
     getAllCurrentMissions: [Current_Mission]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
