@@ -1,11 +1,6 @@
 import sequelize from "../config/connection.js";
-/*import User from "../models/User.js";
-import Explore_Level from "../models/Explore_Level.js";
-import Current_Mission from "../models/Current_Mission.js";
-import Activities from "../models/Activities.js";
-import Mission_Activities from "../models/Mission_Activities.js";
-import Mission_Types from "../models/Mission_Types.js";
-*/
+//import { missionTypesSeeds } from "./missionTypesSeeds.json";
+
 import {
   User,
   Explore_Level,
@@ -18,11 +13,66 @@ import {
 (async function syncSequelize() {
   await sequelize.sync({ force: true });
 
+  await Mission_Types.bulkCreate( [
+    {
+      "id": 1,
+      "name": "Scavenger Hunt",
+      "description": "Find the items in your list outside and earn points towards your Mission",
+      "image": "",
+      "pointValue": 1
+    },
+    {
+        "id": 2,
+        "name": "Exercise",
+        "description": "Bring your exercise routines to the outdoors and earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      },
+      {
+        "id": 3,
+        "name": "Exploration",
+        "description": "Explore the outdoors in your community to earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      },
+      {
+        "id": 4,
+        "name": "Survival Skills",
+        "description": "Learn skills to camp and play outside to earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      },
+      {
+        "id": 5,
+        "name": "Nighttime",
+        "description": "Explore the outdoors at night. Find items and accomplish tasks to earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      },
+      {
+        "id": 6,
+        "name": "Astronomy",
+        "description": "Find items in the night sky to earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      },
+      {
+        "id": 7,
+        "name": "Wildlife Spotting",
+        "description": "Find creatures in the wild, birds, reptiles and more outside to earn points towards your Mission",
+        "image": "",
+        "pointValue": 1
+      }
+  ]
+  
+  );
+
+  /*
   await Mission_Types.create({
     id: 1,
     name: "Scavenger Hunt",
     description: "Find items or do activities for points."
-  });
+  });*/
 
   await Activities.create({
     id: 1,
