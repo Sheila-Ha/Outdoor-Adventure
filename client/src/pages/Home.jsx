@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
+
 const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
   const rowColor =
     rank === 1
@@ -160,13 +161,13 @@ const Home = () => {
   ]);
 
   //   TODO: Update with a funFact API or something
- 
 
   return (
-    <div className="flex flex-col h-screen px-4 overflow-hidden">
-      {FunFact()}
+    <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
+      <FunFact/>
+
       <div className="overflow-y-auto" style={{ height: "30vh" }}>
-        <div className="flex gap-4">
+        <div className="flex">
           <div className="text-lg font-bold pt-4">Daily Leaderboard</div>
         </div>
         <table className="min-w-full divide-y divide-gray-200">

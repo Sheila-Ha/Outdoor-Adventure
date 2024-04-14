@@ -45,10 +45,8 @@ export const resolvers = {
     },
 
     async funFact(parent, args) {
-      const randomFunFact = funFact[Math.floor(Math.random() * funFact.length)];
-      return {
-        fact: randomFunFact,
-      };
+      // const randomFunFact = funFact[Math.floor(Math.random() * funFact.length)];
+      return funFact;
     },
 
     async getAllExploreLevels() {

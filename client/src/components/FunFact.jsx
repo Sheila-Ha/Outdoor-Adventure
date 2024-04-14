@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 import { FUN_FACT } from "../graphql/query/index.js";
 import { Alert, AlertDescription, AlertTitle } from "./Alert.jsx";
 import { BookOpenCheck } from "lucide-react";
@@ -16,7 +17,16 @@ import { BookOpenCheck } from "lucide-react";
 // }
 export default function FunFact() {
   const { loading, error, data } = useQuery(FUN_FACT);
-
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+    // console.log("timer");
+      if (data) {
+        setIndex(Math.floor(Math.random() * data.funFact.length));
+      }
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [loading, error, data]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   return (
@@ -25,7 +35,7 @@ export default function FunFact() {
         <BookOpenCheck className="h-4 w-4" />
         <AlertTitle>Did you know?</AlertTitle>
         <AlertDescription className="text-sm">
-          {data.funFact.fact}
+          {data.funFact[index]}
         </AlertDescription>
       </Alert>
     </div>

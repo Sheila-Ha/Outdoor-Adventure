@@ -1,8 +1,6 @@
-import { gql} from '@apollo/client';
+import { gql } from "@apollo/client";
 export const FUN_FACT = gql`
-    query FunFact {
-        funFact {
-            fact
-        }
-    }
-`
+  query FunFact {
+    funFact
+  }
+`;
