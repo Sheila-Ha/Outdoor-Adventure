@@ -159,8 +159,8 @@ const Home = () => {
     },
   ]);
 
-  //   TODO: Update with a trivia API or something
-  const trivia = [
+  //   TODO: Update with a funFact API or something
+  const funFact = [
     "A group of flamingos is called a flamboyance.",
     "The Amazon rainforest produces 20% of the world's oxygen.",
     "The world's tallest tree is a coast redwood measuring 115.55 meters (379.1 feet).",
@@ -185,18 +185,17 @@ const Home = () => {
     "Dragonflies are important predators that help regulate mosquito populations.",
   ];
 
-  const randomTrivia = trivia[Math.floor(Math.random() * trivia.length)];
+  const randomFunFact = funFact[Math.floor(Math.random() * funFact.length)];
 
   return (
     <div className="flex flex-col h-screen px-4 overflow-hidden">
-      {/* <div className="p-2 text-center bg-green-300">
-        <p className="text-sm">{randomTrivia}</p>
-      </div> */}
+      <div className="p-2 text-center bg-green-300">
+        <p className="text-sm">{randomFunFact}</p>
+      </div>
 
       <div className="overflow-y-auto" style={{ height: "30vh" }}>
         <div className="flex gap-4">
           <div className="text-lg font-bold pt-4">Daily Leaderboard</div>
-          <div>{FunFact()}</div>
         </div>
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
