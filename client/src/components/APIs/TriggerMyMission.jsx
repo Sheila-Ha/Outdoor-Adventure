@@ -18,12 +18,18 @@ function TriggerMyMission() {
     // Call the mutation
     triggerMyMission({ variables: { userId: loggedInUser.id, missionType: 'Scavenger Hunt' } })
       .then(response => {
+        if (response === undefined || response.data === undefined) {
+          console.log('An error has occurred while calling the triggering the mission.');
+          return;
+        }
         // Log the response
-        console.log('triggerMyMission response', response); // Log the response
+        console.log('triggerMyMission response:', response.data.triggerMyMission); // Log the response
+        // Save the response to the database
+        
       })
       .catch(err => {
         // Log any errors that occur
-        console.log('An error has occurred while calling the triggerMyMission mutation.');
+        console.log('An error has occurred while triggering the mission.');
         console.error('triggerMyMission error', err); // Log any errors
       });
   };
