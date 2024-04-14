@@ -77,7 +77,6 @@ type Query {
     getCurrentMission(userId: Int): Current_Mission
     funFact: [String]
     getAllExploreLevels: [Explore_Level]
-    getCurrentMission(userId: Int): Current_Mission
     getAllCurrentMissions: [Current_Mission]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
