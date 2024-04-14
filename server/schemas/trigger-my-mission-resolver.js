@@ -12,15 +12,17 @@ export const TriggerMyMissionMutation = {
     console.log(missionType);
     // TODO (Sheila): finish creating the message from the user data
     // Call the OpenAI API (ChatGPT) to generate a response
-    const completion = await ai.chat.completions.create({
-      // Define a message to send to ChatGPT
-      messages: [{ role: "system", content: "You are a helpful assistant." }],
-      model: "gpt-3.5-turbo",
-    });
-    // TODO (Sheila): finish returning proper response once a valid API key is available
-    console.log(completion);
-    console.log(completion.choices[0]);
-    // Return the response from ChatGPT
-    return completion.choices[0];
+
+    // const completion = await ai.chat.completions.create({
+    //   // Define a message to send to ChatGPT
+    //   messages: [{ role: "system", content: "You are a helpful assistant." }],
+    //   model: "gpt-3.5-turbo",
+    // });
+    // // TODO (Sheila): finish returning proper response once a valid API key is available
+    // console.log(completion);
+    // console.log(completion.choices[0]);
+    // // Return the response from ChatGPT
+    // return completion.choices[0];
+    return "This will be the response form CHAT GPT"
   }
 };
