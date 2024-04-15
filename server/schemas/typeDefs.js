@@ -46,7 +46,7 @@ type Explore_Level {
 type Mission_Activities {
     _id: ID
     complete: Boolean
-    pointValue: Int
+    point_value: Int
     missionId: Int
     activityId: Int
 }
@@ -56,7 +56,7 @@ type Mission_Types {
     name: String
     description: String
     image: String
-    pointValue: String
+    point_value: String
 }
 
 type FunFact {

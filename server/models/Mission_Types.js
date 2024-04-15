@@ -21,7 +21,7 @@ Mission_Types.init(
     image: {
       type: DataTypes.STRING,
     },
-    pointValue: {
+    point_value: {
       type: DataTypes.INTEGER,
     },
   },

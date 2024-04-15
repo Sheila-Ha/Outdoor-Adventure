@@ -47,7 +47,7 @@ export const QUERY_MISSION_TYPES = gql`
       name
       description
       image
-      pointValue
+      point_value
     }
   }
 `;
