@@ -76,7 +76,7 @@ export default function LeaderBoard() {
         },
       ]);
     return <>
-    <div className="overflow-y-auto" style={{ height: "30vh" }}>
+    <div className="overflow-y-auto h-[30vh]">
         <div className="flex">
           <div className="text-lg font-bold pt-4">Daily Leaderboard</div>
         </div>
