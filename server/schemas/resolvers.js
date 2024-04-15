@@ -1,6 +1,7 @@
 import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
 import { FunFactQuery } from "./fun-fact-resolver.js";
+import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import {
   User,
   Activities,
@@ -13,6 +14,7 @@ import {
 export const resolvers = {
   Query: {
     ...FunFactQuery,
+    ...LeaderBoardQuery,
     async findUsers() {
       return User.findAll();
     },
@@ -20,7 +22,7 @@ export const resolvers = {
     async loginUser(parent, args, req) {
       return req.user;
     },
-    
+
     async getAllExploreLevels() {
       return Explore_Level.findAll();
     },
