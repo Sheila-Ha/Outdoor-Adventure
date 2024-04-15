@@ -7,7 +7,7 @@ export default function LeaderBoard() {
         {
           id: 1,
           name: "JanePHD92",
-          score: "1,250",
+          score: 1250,
           image: "https://randomuser.me/api/portraits/women/1.jpg",
           subtitle: "Elk",
         },
