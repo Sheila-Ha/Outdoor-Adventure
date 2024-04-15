@@ -98,10 +98,10 @@ If you have any questions, or additional feedback, please feel free to email me 
 [Project 3](https://github.com/Sheila-Ha/project-3.git)  
 
 * Email -  
-aleahwhite55@gmail.com
-DanTCathey@gmail.com
-slhanson11@live.com 
-vicki.dunlop@gmail.com
+aleahwhite55@gmail.com  
+DanTCathey@gmail.com  
+slhanson11@live.com  
+vicki.dunlop@gmail.com  
 salidamaharjan@outlook.com  
 
 ## License 
