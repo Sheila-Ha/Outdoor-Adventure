@@ -16,16 +16,11 @@ function TriggerMyMission() {
   const handleTrigger = () => {
     console.log('handleTrigger');
     // Call the mutation
-    triggerMyMission({ variables: { userId: loggedInUser.id, missionType: 'Scavenger Hunt' } })
+    // TODO (Sheila): pass in the missionType from the user data
+    triggerMyMission({ variables: { userId: loggedInUser.id, missionName: "Scavenger Hunt", missionId: 1 } })
       .then(response => {
-        if (response === undefined || response.data === undefined) {
-          console.log('An error has occurred while calling the triggering the mission.');
-          return;
-        }
         // Log the response
         console.log('triggerMyMission response:', response.data.triggerMyMission); // Log the response
-        // Save the response to the database
-        
       })
       .catch(err => {
         // Log any errors that occur

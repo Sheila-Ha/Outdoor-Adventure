@@ -88,6 +88,6 @@ type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
-    triggerMyMission(userId: ID!, missionType: String!): String
+    triggerMyMission(userId: ID!, missionName: String!, missionId: Int!): String
 }
 `;
