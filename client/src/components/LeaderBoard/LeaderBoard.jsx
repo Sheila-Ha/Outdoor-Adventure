@@ -1,4 +1,3 @@
-import { useState } from "react";
 import LeaderBoardRow from "./LeaderBoardRow";
 
 export default function LeaderBoard() {
