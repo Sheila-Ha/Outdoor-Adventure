@@ -60,8 +60,7 @@ type Mission_Types {
 }
 
 type FunFact {
-    title: String!
-    description: String!
+    fact: [String!]
 }
 
 type Activities {
@@ -75,9 +74,9 @@ type Activities {
 type Query {
     findUsers: [User]
     loginUser: LoginUser
-    funFact: FunFact
-    getAllExploreLevels: [Explore_Level]
     getCurrentMission(userId: Int): Current_Mission
+    funFact: [String]
+    getAllExploreLevels: [Explore_Level]
     getAllCurrentMissions: [Current_Mission]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
