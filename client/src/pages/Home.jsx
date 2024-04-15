@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
+import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
 
 const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
   const rowColor =
@@ -165,7 +166,7 @@ const Home = () => {
   return (
     <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
       <FunFact/>
-
+      <LeaderBoard />
       <div className="overflow-y-auto" style={{ height: "30vh" }}>
         <div className="flex">
           <div className="text-lg font-bold pt-4">Daily Leaderboard</div>
