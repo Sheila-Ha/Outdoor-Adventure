@@ -17,6 +17,7 @@ Mission_Activities.init(
     },
     missionId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "current_mission",
         key: "id",
@@ -25,6 +26,7 @@ Mission_Activities.init(
     },
     activityId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "activities",
         key: "id",
