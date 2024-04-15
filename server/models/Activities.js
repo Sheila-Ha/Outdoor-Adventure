@@ -17,6 +17,10 @@ Activities.init(
     description: {
       type: DataTypes.STRING,
     },
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
     image: {
       type: DataTypes.STRING,
     },

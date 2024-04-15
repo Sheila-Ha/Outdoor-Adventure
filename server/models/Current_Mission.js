@@ -17,10 +17,6 @@ Current_Mission.init(
     type: {
       type: DataTypes.INTEGER,
     },
-    points: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
     isComplete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

@@ -72,4 +72,5 @@ import {
   console.log(cmData);
   const mTypes = await Mission_Types.findAll();
   console.log(mTypes);
+  sequelize.close();
 })();
