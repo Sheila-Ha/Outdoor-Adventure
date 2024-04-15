@@ -46,17 +46,17 @@ type Explore_Level {
 type Mission_Activities {
     _id: ID
     complete: Boolean
-    pointValue: Int
+    point_value: Int
     missionId: Int
     activityId: Int
 }
 
 type Mission_Types {
-    _id: ID
+    id: ID
     name: String
     description: String
     image: String
-    pointValue: String
+    point_value: String
 }
 
 type FunFact {
@@ -94,6 +94,6 @@ type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
-    triggerMyMission(userId: ID!, missionType: String!): String
+    triggerMyMission(userId: ID!, missionName: String!, missionId: Int!): String
 }
 `;
