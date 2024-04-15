@@ -17,15 +17,12 @@ Activities.init(
     description: {
       type: DataTypes.STRING,
     },
-    points: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
     image: {
       type: DataTypes.STRING,
     },
     missionTypeId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "mission_types",
         key: "id",

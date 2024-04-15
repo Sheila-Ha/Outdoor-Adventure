@@ -18,30 +18,6 @@ import {
 (async function syncSequelize() {
   await sequelize.sync({ force: true });
 
-  const missionType1 = await Mission_Types.create({
-    name: "Scavenger Hunt",
-    description: "Find items or do activities for points.",
-  });
-
-  const missionType2 = await Mission_Types.create({
-    name: "Star Gazing",
-    description: "Description 2.",
-  });
-
-  // await Activities.create({
-  //   id: 1,
-  //   name: "Find a leaf.",
-  //   description: "Leaves can be found on the ground under trees and bushes",
-  //   missionTypeId: 1
-  // });
-
-  // await Mission_Activities.create({
-  //   id: 1,
-  //   complete: false,
-  //   missionId: 1,
-  //   activityId: 1,
-  // });
-
   await Explore_Level.create({
     id: 1,
     name: "Tortoise",
@@ -75,35 +51,105 @@ import {
     lastName: "2",
   });
 
+  const missionType1 = await Mission_Types.create({
+    name: "Scavenger Hunt",
+    description: "Find items or do activities for points.",
+  });
+
+  const missionType2 = await Mission_Types.create({
+    name: "Star Gazing",
+    description: "Description 2.",
+  });
+
+  const activity1 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType1.id,
+  });
+
+  const activity2 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType1.id,
+  });
+
+  const activity3 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType2.id,
+  });
+
+  const activity4 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType2.id,
+  });
+
   const currentMission1 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
     userId: salidam.id,
+    points: 2000,
     missionTypeId: missionType1.id,
+  });
+
+  const missionActivity1 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission1.id,
+    activityId: activity1.id,
   });
 
   const currentMission2 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
     userId: salidam.id,
+    points: 1000,
     missionTypeId: missionType2.id,
+  });
+
+  const missionActivity2 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission2.id,
+    activityId: activity3.id,
   });
 
   const currentMission3 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
+    points: 500,
     userId: user1.id,
     missionTypeId: missionType1.id,
+  });
+
+  const missionActivity3 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission3.id,
+    activityId: activity4.id,
   });
 
   const currentMission4 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
+    points: 200,
     userId: user1.id,
     missionTypeId: missionType2.id,
   });
 
+  const missionActivity4 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission4.id,
+    activityId: activity4.id,
+  });
+
   const currentMission5 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
+    points: 100,
     userId: user2.id,
     missionTypeId: missionType1.id,
   });
+
+  const missionActivity5 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission5.id,
+    activityId: activity2.id,
+  });
+
   //await
   console.log("user data seeded");
   const userData = await User.findAll();
