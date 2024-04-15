@@ -27,6 +27,7 @@ Current_Mission.init(
     // This column will store a reference of the `id` of the `User` that has this ExploreLevel
     userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         // This references the `user` model, which we set in `User.js` as its `modelName` property
         model: "user",
@@ -35,6 +36,7 @@ Current_Mission.init(
     },
     missionTypeId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         // This references the 'mission_types' model, which we set in 'Mission_Types.js' as its modelname property
         model: "mission_types",
