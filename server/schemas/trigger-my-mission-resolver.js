@@ -1,9 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
+import { ai } from "../config/openAI.config.js";
 
 // Import the files needed to communicate with ChatGPT (OpenAI package)
-import OpenAI from "openai";
-const ai = new OpenAI({ apiKey: process.env.OPENAI_KEY }); // Use the key from the .env file
+// import OpenAI from "openai";
+// const ai = new OpenAI({ apiKey: process.env.OPENAI_KEY }); // Use the key from the .env file
 
 export const TriggerMyMissionMutation = {
   // TODO (Sheila): finish passing in variables needed to build the AI question
@@ -18,7 +19,8 @@ export const TriggerMyMissionMutation = {
       model: "gpt-3.5-turbo",
     });
     // TODO (Sheila): finish returning proper response once a valid API key is available
-    // console.log(completion);
+    console.log(completion);
+    console.log('------------------------');
     // console.log(completion.choices[0]);
     // // Save the response from ChatGPT to the database
     // console.log(completion.choices[0].message.content);

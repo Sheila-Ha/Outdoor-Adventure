@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   openai:
-    specifier: ^4.33.0
-    version: 4.33.0
+    specifier: ^4.33.1
+    version: 4.33.1
 
 devDependencies:
   concurrently:
@@ -237,8 +237,8 @@ packages:
       whatwg-url: 5.0.0
     dev: false
 
-  /openai@4.33.0:
-    resolution: {integrity: sha512-Sh4KvplkvkAREuhb8yZpohqsOo08cBBu6LNWLD8YyMxe8yCxbE+ouJYUs1X2oDPrzQGANj0rFNQYiwW9gWLBOg==}
+  /openai@4.33.1:
+    resolution: {integrity: sha512-0DH572aSxGTT1JPOXgJQ9mjiuSPg/7scPot8hLc5I1mfQxPxLXTZWJpWerKaIWOuPkR2nrB0SamGDEehH8RuWA==}
     hasBin: true
     dependencies:
       '@types/node': 18.19.31
