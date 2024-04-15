@@ -62,12 +62,18 @@ by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![G
   
 ## Features  
 - Tailwind  
-- Apollo Graphql  
+- Apollo  
+- Graphql  
 - React  
 - Vite  
+- PostgreSQL
+- Deployed to Render
+- Chat GPT API
 - 
 ## Challenges  
-- 
+- Understanding how to use Chat GPT API and having it work how we invisioned it to.  
+- File structure  
+  - typeDefs and resolvers
 
 
 ## Contributing
