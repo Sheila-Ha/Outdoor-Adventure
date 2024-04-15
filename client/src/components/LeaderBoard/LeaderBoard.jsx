@@ -33,6 +33,8 @@ const LeaderboardRow = ({ rank, name, score, image, subtitle }) => {
     );
   };
 export default function LeaderBoard() {
+  //   TODO: Update with real data
+
     const [leaderboardData] = useState([
         {
           id: 1,
