@@ -52,7 +52,7 @@ type Mission_Activities {
 }
 
 type Mission_Types {
-    _id: ID
+    id: ID
     name: String
     description: String
     image: String

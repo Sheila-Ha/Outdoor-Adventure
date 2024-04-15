@@ -10,7 +10,7 @@ export const TriggerMyMissionMutation = {
   // TODO (Sheila): finish passing in variables needed to build the AI question
   // Define the triggerMyMission resolver
   async triggerMyMission (parent, { missionName, missionId }, req) {
-    console.log(missionName);
+    console.log(missionName + " " + missionId);
     // Call the OpenAI API (ChatGPT) to generate a response
     const completion = await ai.chat.completions.create({
     // Define a message to send to ChatGPT

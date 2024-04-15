@@ -43,7 +43,7 @@ export const QUERY_All_Explore_Levels = gql`
 export const QUERY_MISSION_TYPES = gql`
   query getAllMissionTypes() {
     getAllMissionTypes() {
-      _id
+      id
       name
       description
       image
