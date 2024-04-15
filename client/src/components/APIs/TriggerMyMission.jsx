@@ -32,7 +32,10 @@ function TriggerMyMission() {
   // Display a button to trigger the mutation
   return (
     <div>
-      <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit" onClick={handleTrigger}>Trigger Mission</button>
+      <select className="text-sm text-gray-900 font-bold border border-gray-300 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="test">Test</option>
+      </select>
+      <button className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit" onClick={handleTrigger}>Trigger Mission</button>
       {/* Display the result of the mutation */}
       {data && <p>Mission triggered: {JSON.stringify(data)}</p>}
     </div>
