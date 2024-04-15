@@ -1,4 +1,4 @@
-export default function LeaderboardRow({ rank, name, score, image, subtitle }) {
+export default function LeaderBoardRow({ rank, name, score, image, subtitle }) {
   const rowColor =
     rank === 1
       ? "bg-yellow-400"

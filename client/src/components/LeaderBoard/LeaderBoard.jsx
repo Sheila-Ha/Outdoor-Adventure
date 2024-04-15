@@ -1,9 +1,8 @@
 import { useState } from "react";
-import LeaderboardRow from "./LeaderBoardRow";
+import LeaderBoardRow from "./LeaderBoardRow";
 
 export default function LeaderBoard() {
   //   TODO: Update with real data
-
     const [leaderboardData] = useState([
         {
           id: 1,
@@ -84,7 +83,7 @@ export default function LeaderBoard() {
         <table className="min-w-full divide-y divide-gray-200">
           <tbody>
             {leaderboardData.map((user, index) => (
-              <LeaderboardRow
+              <LeaderBoardRow
                 key={user.id}
                 rank={index + 1}
                 name={user.name}
