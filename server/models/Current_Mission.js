@@ -41,11 +41,11 @@ Current_Mission.init(
     },
     missionTypeId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         // This references the 'mission_types' model, which we set in 'Mission_Types.js' as its modelname property
         model: "mission_types",
-        key: "id",
+        //key: "id",
       },
     },
   },

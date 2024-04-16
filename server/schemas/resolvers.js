@@ -30,7 +30,7 @@ export const resolvers = {
     async getAllCurrentMissions() {
       return Current_Mission.findAll();
     },
-    async getUserMissionActivities(user) {
+    async getUserMissionActivities(parent, args) {
       return Mission_Activities.findAll();
     },
 
