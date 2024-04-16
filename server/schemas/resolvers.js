@@ -30,6 +30,9 @@ export const resolvers = {
     async getAllCurrentMissions() {
       return Current_Mission.findAll();
     },
+    async getUserMissionActivities(user) {
+      return Mission_Activities.findAll();
+    },
 
     async getAllMissionTypes() {
       return Mission_Types.findAll();
@@ -43,6 +46,7 @@ export const resolvers = {
       return Mission_Activities.findAll();
     },
   },
+
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,

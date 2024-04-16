@@ -1,11 +1,6 @@
 import sequelize from "../config/connection.js";
-/*import User from "../models/User.js";
-import Explore_Level from "../models/Explore_Level.js";
-import Current_Mission from "../models/Current_Mission.js";
-import Activities from "../models/Activities.js";
-import Mission_Activities from "../models/Mission_Activities.js";
-import Mission_Types from "../models/Mission_Types.js";
-*/
+//import { missionTypesSeeds } from "./missionTypesSeeds.json";
+
 import {
   User,
   Explore_Level,
