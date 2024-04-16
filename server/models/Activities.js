@@ -22,10 +22,10 @@ Activities.init(
     },
     missionTypeId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+     allowNull: true,
       references: {
         model: "mission_types",
-        key: "id",
+        //key: "id",
       },
     },
   },
