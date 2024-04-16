@@ -36,13 +36,14 @@ export const TriggerMyMissionMutation = {
     // console.log(completion.choices[0]);
     // // Save the response from ChatGPT to the database
     // console.log(completion.choices[0].message.content);
-    console.log(completion.choices[0].message.content);
+    //console.log(completion.choices[0].message.content);
     const triggeredMission = completion.choices[0].message.content;
     // Save the triggered mission name to the database
+    //console.log(req.body.variables.userId);
     const currentMissionSaved = await Current_Mission.create({
       name: "My " + missionName,
       points: 100,
-      userId: req.userInfo.userId,
+      userId: req.body.variables.userId,
       missionTypeId: missionId,
     });
     // console.log('currentMissionSaved');
