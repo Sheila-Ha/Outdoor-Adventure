@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "install": "concurrently \"cd client && pnpm install\" \"cd server && pnpm install\" ",
-    "build": "concurrently \"cd client && pnpm build\"",
+    "preinstall": "concurrently \"cd client && pnpm build\"",
     "dev": "pnpm kill && concurrently \"cd client && pnpm dev\" \"cd server && pnpm dev\"",
     "kill": "concurrently \"kill-port 3000\" \"kill-port 5173\"",
     "seed": "cd server && pnpm seed"
