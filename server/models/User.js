@@ -56,6 +56,7 @@ User.init(
     },
     exploreLevelId: {
       type: DataTypes.INTEGER,
+      defaultValue: 1,
       references: {
         model: "explore_level",
         key: "id",
