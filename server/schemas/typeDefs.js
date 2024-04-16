@@ -88,6 +88,8 @@ type Query {
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
+    getUserMissionActivities(userId: Int): [User]
+
 }
 
 type Mutation {
