@@ -3,7 +3,7 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { resolvers, typeDefs } from "./schemas/index.js";
 import { authMiddleware } from "../server/utils/auth.js";
-import { path } from 'path';
+import * as path from 'path';
 import  sequelize  from "./config/connection.js";
 
 const app = express();
