@@ -8,6 +8,7 @@ import { LOGIN } from "../graphql/mutation/index.js";
 import { useLoggedInUser } from "../context/UserContext.jsx";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { testOpenAI } from '../utils/API';
 
 export default function LoginPage() {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -39,6 +40,10 @@ export default function LoginPage() {
       console.log(error);
     }
     setUser({ email: "", password: "" });
+  }
+  async function testChatGPT(){
+    const response = await testOpenAI();
+    console.log(response);
   }
 
   return (
@@ -101,6 +106,7 @@ export default function LoginPage() {
             <Link className="underline" to={"/sign-up"}>
               Sign up
             </Link>
+            <div className="mt-10"><Button onClick={testChatGPT}>Test ChatGPT</Button></div>
           </div>
         </div>
       </div>

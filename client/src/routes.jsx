@@ -4,7 +4,6 @@ import Profile from "./pages/Profile.jsx";
 import App from "./App.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
-// import FunFact from "./pages/FunFact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUpPage />
-      },
-      // {
-      //   path: "/funFact",
-      //   element: <FunFact />
-      // }
+      }
     ],
   },
 ]);
