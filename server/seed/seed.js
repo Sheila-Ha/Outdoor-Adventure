@@ -161,20 +161,21 @@ import {
   const maData = await Mission_Activities.findAll();
   console.log(maData);
   const cmData = await Current_Mission.findAll({
-    attributes: [
-      [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-        required: true,
-      },
-    ],
-    group: ["username", "user.id"],
-    order: [["total_points", "DESC"]],
+  //   attributes: [
+  //     [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
+  //   ],
+  //   include: [
+  //     {
+  //       model: User,
+  //       attributes: ["username"],
+  //       required: true,
+  //     },
+  //   ],
+  //   group: ["username", "user.id"],
+  //   order: [["total_points", "DESC"]],
   });
-  console.log(cmData.map((data) => data.toJSON()));
+  // console.log(cmData.map((data) => data.toJSON()));
+  console.log(cmData);
   const mTypes = await Mission_Types.findAll();
   console.log(mTypes);
   sequelize.close();
