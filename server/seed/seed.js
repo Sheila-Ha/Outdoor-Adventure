@@ -267,6 +267,7 @@ import {
   const maData = await Mission_Activities.findAll();
   console.log(maData);
   const cmData = await Current_Mission.findAll();
+  // console.log(cmData.map((data) => data.toJSON()));
   console.log(cmData);
   const mTypes = await Mission_Types.findAll();
   console.log(mTypes);

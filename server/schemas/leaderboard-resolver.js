@@ -1,78 +1,6 @@
-import {GraphQLError} from "graphql";
-
-//   TODO: Update with real data
-const leaderboardData = [
-    {
-      id: 1,
-      name: "JanePHD92",
-      score: 1250,
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
-      subtitle: "Elk",
-    },
-    {
-      id: 2,
-      name: "BobbyB0y11",
-      score: 950,
-      image: "https://randomuser.me/api/portraits/men/1.jpg",
-      subtitle: "Squirrel",
-    },
-    {
-      id: 3,
-      name: "Mary1968",
-      score: 800,
-      image: "https://randomuser.me/api/portraits/women/12.jpg",
-      subtitle: "Lion",
-    },
-    {
-      id: 4,
-      name: "HollyB518",
-      score: 750,
-      image: "https://randomuser.me/api/portraits/women/3.jpg",
-      subtitle: "Squirrel",
-    },
-    {
-      id: 5,
-      name: "MarkM93",
-      score: 700,
-      image: "https://randomuser.me/api/portraits/men/3.jpg",
-      subtitle: "Zebra",
-    },
-    {
-      id: 6,
-      name: "NatureFr3Ak63",
-      score: 650,
-      image: "https://randomuser.me/api/portraits/women/49.jpg",
-      subtitle: "Red Fox",
-    },
-    {
-      id: 7,
-      name: "Woodstock87",
-      score: 600,
-      image: "https://randomuser.me/api/portraits/men/4.jpg",
-      subtitle: "Mouse",
-    },
-    {
-      id: 8,
-      name: "VenusG22",
-      score: 550,
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-      subtitle: "Pig",
-    },
-    {
-      id: 9,
-      name: "IFoundRocks66",
-      score: 500,
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-      subtitle: "Mouse",
-    },
-    {
-      id: 10,
-      name: "ShadowWar04",
-      score: 450,
-      image: "https://randomuser.me/api/portraits/women/5.jpg",
-      subtitle: "Tortoise",
-    },
-  ];
+import { GraphQLError } from "graphql";
+import { Current_Mission, User } from "../models/index.js";
+import sequelize from "../config/connection.js";
 
 export const LeaderBoardQuery = {
   async leaderBoard(parent, args, req) {
@@ -83,10 +11,34 @@ export const LeaderBoardQuery = {
         },
       });
     }
-    try{
-        return leaderboardData;
-    }catch(error){
-        throw new GraphQLError(error);
+    try {
+      const currentMission = await Current_Mission.findAll({
+        attributes: [
+          [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
+        ],
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+            required: true,
+          },
+        ],
+        group: ["username", "user.id"],
+        order: [["total_points", "DESC"]],
+      });
+      const highestPoint = currentMission.map((point) => point.toJSON());
+      // console.log(highestPoint);
+      return highestPoint.map((item, index) => {
+        return {
+          id: index,
+          score: item.total_points,
+          name: item.user.username,
+          image: "https://randomuser.me/api/portraits/women/3.jpg",
+          subtitle: "Elk",
+        };
+      });
+    } catch (error) {
+      throw new GraphQLError(error);
     }
   },
 };
