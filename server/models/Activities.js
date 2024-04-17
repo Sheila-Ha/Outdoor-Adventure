@@ -25,7 +25,7 @@ Activities.init(
      allowNull: true,
       references: {
         model: "mission_types",
-        //key: "id",
+        key: "id",
       },
     },
   },
