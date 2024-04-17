@@ -21,7 +21,7 @@ function TriggerMyMission() {
     const selectedIndex = event.target.options.selectedIndex;
     setSelectedText(event.target.options[selectedIndex].text);
     setSelectedValue(event.target.value);
-    console.log("TEST " + selectedText + " " + selectedValue);
+    // console.log("TEST " + selectedText + " " + selectedValue);
   };
 
   // Call the useMutation hook, passing in the TRIGGER_MY_MISSION mutation
@@ -32,14 +32,15 @@ function TriggerMyMission() {
 
   // Define a function that calls the mutation
   const handleTrigger = () => {
-    console.log('handleTrigger');
+    // console.log('handleTrigger');
     if (selectedValue == ""){
       alert("Please select a mission type.");
       return;
     }
+    // console.log(loggedInUser);
     // Call the mutation
-    // TODO (Sheila): pass in the missionType from the user data
-    triggerMyMission({ variables: { userId: loggedInUser.id, missionName: selectedText, missionId: parseInt(selectedValue) } })
+    // Pass in the missionType from the user data
+    triggerMyMission({ variables: { userId: loggedInUser.id, city: loggedInUser.city, state: loggedInUser.state, missionName: selectedText, missionId: parseInt(selectedValue) } })
       .then(response => {
         // Log the response
         console.log('triggerMyMission response:', response.data.triggerMyMission); // Log the response

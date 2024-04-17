@@ -11,6 +11,8 @@ function generateToken(user) {
   // Define the user information
   const userInfo = {
     id: user.id,
+    city: user.city,
+    state: user.state,
     email: user.email,
     lastLogin: user.lastLogin,
     memberSince: user.memberSince,
