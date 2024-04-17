@@ -1,5 +1,7 @@
 # Outdoor Adventure<!-- omit from toc -->
-by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![Github license](https://img.shields.io/badge/license-MIT-blue.svg)  
+![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)   
+by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  
+
 
 ## Description <!-- omit from toc -->
  
@@ -11,6 +13,7 @@ by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![G
   - [Acceptance Criteria](#acceptance-criteria)
 - [Usage](#usage)
 - [Features](#features)
+- [Technologies Used](#technologies-used)
 - [Challenges](#challenges)
 - [Contributing](#contributing)
 - [Questions](#questions)
@@ -58,9 +61,30 @@ by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  ![G
     
       
 ## Usage  
-  -    
-  
+1.  Clone the project  
+2.  Install the dependencies in both client and server folder by using  
+      - pnpm install  
+3.  Complete the .env file in the server folder  
+4.  How to run the app locally  
+      - pnpm run seed  
+      - pnpm run postinstall  
+      - pnpm run dev  
+
 ## Features  
+- Login  
+- Signup  
+- Homepage  
+  - Fun Fact displayed on user homepage  
+  - Daily Leaderboard displaying on user homepage  
+  - Weekly Mission displaying on user homepage  
+  - Daily Mission displaying on user homepage  
+  - My Triggered Missions displaying on user homepage  
+  - User can choose a mission type from a drop down
+  - User can trigger a mission based on the drop down they selected  
+- Profile Page  
+- Logout  
+  
+## Technologies Used    
 - Tailwind  
 - Apollo  
 - Graphql  
@@ -112,7 +136,7 @@ salidamaharjan@outlook.com
 
 ## License 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)  
 
 
 
