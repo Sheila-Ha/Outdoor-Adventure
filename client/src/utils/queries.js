@@ -18,7 +18,7 @@ export const QUERY_USERS = gql`
 export const QUERY_All_EXPLORE_LEVELS = gql`
   query getAllExploreLevels() {
     getAllExploreLevels() {
-      _id
+      id
       name
       pointsRequired
       badge
@@ -51,7 +51,7 @@ export const QUERY_ACTIVITIES = gql`
 export const QUERY_ALL_MISSION_ACTIVITIES = gql`
   query getAllMissionActivities() {
     getAllMissionActivities() {
-      _id
+      id
       complete
       missionId
       activityId

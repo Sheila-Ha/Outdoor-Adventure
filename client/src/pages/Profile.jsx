@@ -1,4 +1,4 @@
-/*import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { FIND_USERS } from "../graphql/query";
 
 export default function Profile() {
@@ -17,35 +17,5 @@ export default function Profile() {
         );
       })}
     </ul>
-  );
-}*/
-import { useQuery } from "@apollo/client";
-
-import { GET_CURRENT_MISSION } from "../graphql/query";
-
-export default function Profile() {
-  const { loading, data } = useQuery(GET_CURRENT_MISSION);
-  const currentMissionList = data?.getCurrentMission || [];
-
-  console.log("im here");
-  console.log(data);
-  console.log(currentMissionList);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div>
-      <ul>
-        {currentMissionList.map((x) => {
-          return (
-            <li className="p-4" key={x._id}>
-              {x._id}. {x.name}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
   );
 }
