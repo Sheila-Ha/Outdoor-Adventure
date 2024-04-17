@@ -2,19 +2,21 @@ import { LogInSignUpMutation } from "./logIn-signUp-resolver.js";
 import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
 import { FunFactQuery } from "./fun-fact-resolver.js";
 import { LeaderBoardQuery } from "./leaderboard-resolver.js";
+import { CurrentMissionQuery } from "./current-mission-resolver.js";
 import {
   User,
   Activities,
-  Current_Mission,
   Explore_Level,
   Mission_Activities,
   Mission_Types,
+  Current_Mission,
 } from "../models/index.js";
 
 export const resolvers = {
   Query: {
     ...FunFactQuery,
     ...LeaderBoardQuery,
+    ...CurrentMissionQuery,
     async findUsers() {
       return User.findAll();
     },
@@ -27,13 +29,10 @@ export const resolvers = {
       return Explore_Level.findAll();
     },
 
-    async getAllCurrentMissions(parent, { userId }) {
-      return Current_Mission.findAll({
-        where: {
-          "userId": "userId",
-        },
-      });
+    async getUserMissionActivities(parent, args) {
+      return Mission_Activities.findAll();
     },
+      
     async getAllMissionTypes() {
       return Mission_Types.findAll();
     },

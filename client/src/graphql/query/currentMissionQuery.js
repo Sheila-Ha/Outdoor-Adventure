@@ -7,6 +7,9 @@ export const GET_CURRENT_MISSION = gql`
       timer
       userId
       name
+      type
+      points
+      isComplete
     }
   }
 `;

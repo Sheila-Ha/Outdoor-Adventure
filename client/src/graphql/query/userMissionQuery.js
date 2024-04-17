@@ -7,6 +7,8 @@ export const GET_USER_MISSION = gql`
       name
       type
       userId
+      points
+      isComplete
     }
   }
 `;
