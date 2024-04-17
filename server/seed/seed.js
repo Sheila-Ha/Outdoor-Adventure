@@ -72,7 +72,6 @@ import {
       pointsRequired: 45,
     },
   ]);
-  console.log(exploreLevels);
 
   const salidam = await User.create({
     username: "salidam",
@@ -106,18 +105,7 @@ import {
     city: "Orlando",
     state: "FL",
   });
-
-  const missionType1 = await Mission_Types.create({
-    name: "Scavenger Hunt",
-    description: "Find items or do activities for points.",
-  });
-
-  const missionType2 = await Mission_Types.create({
-    name: "Star Gazing",
-    description: "Description 2.",
-  });
-
-  const missionTypes = await Mission_Types.bulkCreate(
+  const missionTypes = await Mission_Types.bulkCreate([
     {
       name: "Exercise",
       description: "Exercise outside - walk, run, ski... for points.",
@@ -139,8 +127,18 @@ import {
       name: "Wildlife Spotting",
       description:
         "Creatures are outside everywhere. Find animals, insects, reptiles and fish for points.",
-    }
-  );
+    },
+  ]);
+  const missionType1 = await Mission_Types.create({
+    name: "Scavenger Hunt",
+    description: "Find items or do activities for points.",
+  });
+
+  const missionType2 = await Mission_Types.create({
+    name: "Star Gazing",
+    description: "Description 2.",
+  });
+
 
   const activities = await Activities.bulkCreate([
     {
@@ -316,20 +314,19 @@ import {
   });
 
   //await
-  /* comment out test code
-  console.log("user data seeded");
+/*  console.log("user data seeded");
   const userData = await User.findAll();
   console.log(userData);
   const exploreData = await Explore_Level.findAll();
   console.log(exploreData);
-  const activitiesData = await Activities.findAll();
+*/  const activitiesData = await Activities.findAll();
   console.log(activitiesData);
-  const maData = await Mission_Activities.findAll();
+  /*const maData = await Mission_Activities.findAll();
   console.log(maData);
   const cmData = await Current_Mission.findAll();
   // console.log(cmData.map((data) => data.toJSON()));
   console.log(cmData);
   const mTypes = await Mission_Types.findAll();
-  console.log(mTypes);
-  sequelize.close();*/
+  console.log(mTypes);*/
+  sequelize.close();
 })();
