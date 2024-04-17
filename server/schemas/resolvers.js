@@ -28,10 +28,17 @@ export const resolvers = {
       return Explore_Level.findAll();
     },
 
+    async getAllCurrentMissions(parent, { userId }) {
+      return Current_Mission.findAll({
+        where: {
+          "userId": "userId",
+        },
+      });
+
     async getUserMissionActivities(parent, args) {
       return Mission_Activities.findAll();
     },
-
+      
     async getAllMissionTypes() {
       return Mission_Types.findAll();
     },
@@ -43,10 +50,24 @@ export const resolvers = {
     async getAllMissionActivities() {
       return Mission_Activities.findAll();
     },
+
+    async getUserMissionActivities(parent, { userId }) {
+      return Mission_Activities.findAll({ userId: userId });
+    },
+
+    async getCurrentMission() {
+      return Current_Mission.findAll();
+    },
   },
 
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
+    addActivity: async (parent, { name, description, missionTypeId }) => {
+      return Activities.create({ name, description, missionTypeId });
+    },
+    deleteCurrentMission: async (parent, { id }) => {
+      return Current_Mission.findOneAndDelete({ id: id });
+    },
   },
 };
