@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_CURRENT_MISSIONS } from "../graphql/query";
+import { GET_USER_MISSION } from "../graphql/query";
 import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
 import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
@@ -56,7 +56,7 @@ const Home = () => {
   };
 
   // Get all current missions for the user
-  const { loading, error, data } = useQuery(GET_ALL_CURRENT_MISSIONS);
+  const { loading, error, data } = useQuery(GET_USER_MISSION);
   const currentMissions = data?.getAllCurrentMissions;
 
   //   TODO: Update with a funFact API or something
