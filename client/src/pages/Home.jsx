@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_CURRENT_MISSIONS } from "../graphql/query";
 import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
 import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
@@ -53,10 +55,14 @@ const Home = () => {
     gold: "bg-yellow-400",
   };
 
+  // Get all current missions for the user
+  const { loading, error, data } = useQuery(GET_ALL_CURRENT_MISSIONS);
+  const currentMissions = data?.getAllCurrentMissions;
+
   //   TODO: Update with a funFact API or something
   return (
     <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
-      <FunFact/>
+      <FunFact />
       <LeaderBoard />
       <div style={{ height: "15vh" }}>
         <MissionCard
@@ -77,6 +83,21 @@ const Home = () => {
               categoryColor={missionCategoryColors[mission.category]}
             />
           ))}
+        </div>
+      </div>
+
+      <div className="overflow-y-auto" style={{ height: "calc(35vh - 4rem)" }}>
+        <h2 className="text-lg font-bold">My Triggered Missions</h2>
+        <div className="space-y-2">
+          {currentMissions &&
+            currentMissions.map((mission) => (
+              <MissionCard
+                key={mission.id}
+                title={mission.name}
+                description={mission.points + " points"}
+                categoryColor={missionCategoryColors["gold"]} // Fix: Wrap the value in curly braces
+              />              
+            ))}
         </div>
       </div>
       <div>

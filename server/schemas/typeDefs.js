@@ -29,7 +29,7 @@ input SignUp {
 }
 
 type Current_Mission {
-    _id: ID
+    id: ID
     name: String
     type: Int
     points: Int
