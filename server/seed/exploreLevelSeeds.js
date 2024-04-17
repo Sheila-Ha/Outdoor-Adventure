@@ -1,3 +1,6 @@
+const { Explore_Level } = require('../models');
+
+const exploreLevelData = 
 [
 {
     "id": 1,
@@ -50,4 +53,8 @@
     "name": "Lion",
     "pointsRequired": 45
 }
-]
+];
+
+const seedExploreLevel = () => Explore_Level.bulkCreate(exploreLevelData);
+
+module.exports = seedExploreLevel;

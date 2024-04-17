@@ -4,6 +4,9 @@ export const MISSION_TYPES = gql`
     getAllMissionTypes {
       id
       name
+      description
+      image
+      point_value
     }
   }
 `;

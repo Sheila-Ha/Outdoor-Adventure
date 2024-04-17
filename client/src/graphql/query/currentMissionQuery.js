@@ -6,6 +6,7 @@ export const GET_CURRENT_MISSION = gql`
       id
       timer
       userId
+      name
     }
   }
 `;

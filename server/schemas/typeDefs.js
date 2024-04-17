@@ -25,7 +25,7 @@ input SignUp {
 }
 
 type Current_Mission {
-    _id: ID
+    id: ID
     name: String
     type: Int
     points: Int
@@ -36,7 +36,7 @@ type Current_Mission {
 }
 
 type Explore_Level {
-    _id: ID
+    id: ID
     name: String
     pointsRequired: Int
     badge: String
@@ -44,7 +44,7 @@ type Explore_Level {
 }
 
 type Mission_Activities {
-    _id: ID
+    id: ID
     complete: Boolean
     point_value: Int
     missionId: Int
@@ -64,7 +64,7 @@ type FunFact {
 }
 
 type Activities {
-    _id: ID
+    id: ID
     name: String
     description: String
     image: String
@@ -80,16 +80,15 @@ type LeaderBoard {
 type Query {
     findUsers: [User]
     loginUser: LoginUser
-    getCurrentMission(userId: Int): Current_Mission
+    getCurrentMission: [Current_Mission]
     funFact: [String]
     leaderBoard: [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
-    getAllCurrentMissions: [Current_Mission]
+    getAllCurrentMissions(userId: Int): [Current_Mission]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
     getUserMissionActivities(userId: Int): [User]
-
 }
 
 type Mutation {
@@ -97,5 +96,6 @@ type Mutation {
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
     triggerMyMission(userId: ID!, missionName: String!, missionId: Int!): String
+    addActivity(name: String, description: String, missionTypeId: Int ): Activities
 }
 `;

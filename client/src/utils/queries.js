@@ -15,24 +15,10 @@ export const QUERY_USERS = gql`
     }
   }
 `;
-export const QUERY_ALL_MISSIONS = gql`
-  query getAllCurrentMissions() {
-    getAllCurrentMissions() {
-      _id
-      name
-      type
-      points
-      isComplete
-      timer
-      userId
-      missionTypeId
-    }
-  }
-`;
-export const QUERY_All_Explore_Levels = gql`
+export const QUERY_All_EXPLORE_LEVELS = gql`
   query getAllExploreLevels() {
     getAllExploreLevels() {
-      _id
+      id
       name
       pointsRequired
       badge
@@ -54,7 +40,7 @@ export const QUERY_MISSION_TYPES = gql`
 export const QUERY_ACTIVITIES = gql`
   query getAllActivities() {
     getAllActivities() {
-      _id
+      id
       name
       description
       image
@@ -65,7 +51,7 @@ export const QUERY_ACTIVITIES = gql`
 export const QUERY_ALL_MISSION_ACTIVITIES = gql`
   query getAllMissionActivities() {
     getAllMissionActivities() {
-      _id
+      id
       complete
       missionId
       activityId
