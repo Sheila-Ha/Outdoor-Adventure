@@ -11,6 +11,8 @@ function generateToken(user) {
   // Define the user information
   const userInfo = {
     id: user.id,
+    city: user.city,
+    state: user.state,
     email: user.email,
     lastLogin: user.lastLogin,
     memberSince: user.memberSince,
@@ -58,6 +60,8 @@ export const LogInSignUpMutation = {
       password: signUpDetails.password,
       firstName: signUpDetails.firstName,
       lastName: signUpDetails.lastName,
+      city: signUpDetails.city,
+      state: signUpDetails.state,
       lastLogin: Date.now(),
       memberSince: Date.now(),
     });

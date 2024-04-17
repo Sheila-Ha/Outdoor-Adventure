@@ -8,6 +8,8 @@ type User {
     currentLeaderBoardLevel: Int
     firstName: String
     lastName: String
+    city: String
+    state: String
     lastLogin: String
     memberSince: String
     exploreLevelId: Int
@@ -20,6 +22,8 @@ type LoginUser{
 input SignUp {
     firstName: String!
     lastName: String!
+    city: String!
+    state: String!
     email: String!
     password: String!
 }
@@ -95,7 +99,7 @@ type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
-    triggerMyMission(userId: ID!, missionName: String!, missionId: Int!): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
+    triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
 }
 `;
