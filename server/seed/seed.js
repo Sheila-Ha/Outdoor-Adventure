@@ -106,41 +106,34 @@ import {
   });
 
   const missionType1 = await Mission_Types.create({
-    id: 1,
     name: "Scavenger Hunt",
     description: "Find items or do activities for points.",
   });
 
   const missionType2 = await Mission_Types.create({
-    id: 2,
     name: "Star Gazing",
     description: "Description 2.",
   });
 
   await Mission_Types.bulkCreate(
     {
-      id: 3,
       name: "Exercise",
       description: "Exercise outside - walk, run, ski... for points.",
     },
     {
-      id: 4,
       name: "Exploration",
       description:
         "Explore the great outdoors, in a park, in your neighborhood, or in the city. Explore for points.",
     },
     {
-      id: 5,
       name: "Survival Skills",
       description: "Learn new skills to be safe outdoors and earn points.",
     },
     {
-      id: 6,
       name: "Night-time",
       description: "Explore the outdoors at night.",
     },
     {
-      id: 7,
       name: "Wildlife Spotting",
       description:
         "Creatures are outside everywhere. Find animals, insects, reptiles and fish for points.",
@@ -149,140 +142,107 @@ import {
 
   await Activities.bulkCreate([
     {
-      id: 1,
       missionTypeId: 1,
       name: "Find a heart-shaped rock",
     },
     {
-      id: 2,
-
       missionTypeId: 1,
       name: "Find a four-leaf clover",
     },
     {
-      id: 3,
-
       missionTypeId: 1,
       name: "Find a robin",
     },
     {
-      id: 4,
-
       missionTypeId: 1,
       name: "Find an animal in the clouds",
     },
     {
-      id: 5,
-
       missionTypeId: 1,
       name: "Skip a rock in the water",
     },
     {
-      id: 6,
-
       missionTypeId: 1,
       name: "Find a walking stick",
     },
     {
-      id: 7,
-
       missionTypeId: 1,
       name: "Pick up a piece of garbage and put it in the trash",
     },
     {
-      id: 8,
-
       missionTypeId: 1,
       name: "Kayak",
     },
     {
-      id: 9,
-
       missionTypeId: 1,
       name: "Build a fire",
     },
     {
-      id: 10,
-
       missionTypeId: 1,
       name: "Find a bird nest",
     },
 
     {
-      id: 15,
       missionTypeId: 2,
       name: "See a falling star",
     },
     {
-      id: 16,
       missionTypeId: 2,
       name: "Find the planet Mars",
     },
     {
-      id: 17,
       missionTypeId: 2,
       name: "Find the planet Jupiter",
     },
     {
-      id: 18,
       missionTypeId: 2,
       name: "Find the planet Saturn",
     },
     {
-      id: 19,
       missionTypeId: 2,
       name: "Find the planet Venus",
     },
     {
-      id: 20,
       missionTypeId: 2,
       name: "Find the Milky Way galaxy",
     },
     {
-      id: 21,
       missionTypeId: 2,
       name: "Find a full moon",
     },
     {
-      id: 22,
       missionTypeId: 2,
       name: "Find a half moon",
     },
     {
-      id: 23,
       missionTypeId: 2,
       name: "Find a crescent moon",
     },
     {
-      id: 24,
       missionTypeId: 2,
       name: "Find the rabbit in the moon",
     },
   ]);
 
   const activity1 = await Activities.create({
-    id: 11,
     name: "Find a leaf.",
     description: "Leaves can be found on the ground under trees and bushes",
     missionTypeId: missionType1.id,
   });
 
   const activity2 = await Activities.create({
-    id: 12,
     name: "Find a leaf.",
     description: "Leaves can be found on the ground under trees and bushes",
     missionTypeId: missionType1.id,
   });
 
   const activity3 = await Activities.create({
-    id: 13,
     name: "Find a leaf.",
     description: "Leaves can be found on the ground under trees and bushes",
     missionTypeId: missionType2.id,
   });
 
   const activity4 = await Activities.create({
-    id: 14,
     name: "Find a leaf.",
     description: "Leaves can be found on the ground under trees and bushes",
     missionTypeId: missionType2.id,

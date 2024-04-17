@@ -37,7 +37,7 @@ export const TriggerMyMissionMutation = {
       messages: [{ role: "system", content: questionForAI }],
       model: "gpt-3.5-turbo",
     });
-    console.log(completion);
+    // console.log(completion);
     // console.log("------------------------");
     // console.log(completion.choices[0]);
     // // Save the response from ChatGPT to the database
@@ -46,11 +46,10 @@ export const TriggerMyMissionMutation = {
     const triggeredMission = completion.choices[0].message.content;
     // Split the triggered mission on the comma to get the list of activities
     const missionActivities = triggeredMission.split(",");
-    console.log(missionActivities);
     // Save the triggered mission name to the database
     //console.log(req.body.variables.userId);
     const currentMissionSaved = await Current_Mission.create({
-      name: "My " + missionName,
+      name: missionName + " in " + city + ", " + state,
       points: 100,
       userId: req.body.variables.userId,
       missionTypeId: missionId,
@@ -68,7 +67,7 @@ export const TriggerMyMissionMutation = {
     missionActivities.forEach(async (activity) => {
       const activitySaved = await Activities.create({
         name: activity,
-        description: triggeredMission,
+        description: missionName,
         missionTypeId: missionId,
       });
       // Make sure nothing went wrong
@@ -83,8 +82,8 @@ export const TriggerMyMissionMutation = {
       // console.log(currentMissionSaved);
       // console.log(currentMissionSaved.dataValues.id);
       // console.log('activitiesSaved');
-      // console.log(activitiesSaved);
-      // console.log(activitiesSaved.dataValues.id);
+      // console.log(activitySaved);
+      // console.log(activitySaved.dataValues.id);
       // Save the data to mission_activities to join the activities to the mission
       const missionActivitiesSaved = await Mission_Activities.create({
         missionId: currentMissionSaved.dataValues.id,

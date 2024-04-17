@@ -68,7 +68,7 @@ type FunFact {
 }
 
 type Activities {
-    _id: ID
+    id: ID
     name: String
     description: String
     image: String
