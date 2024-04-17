@@ -38,6 +38,7 @@ User.init(
     },
     currentLeaderBoardLevel: {
       type: DataTypes.INTEGER,
+      defaultValue: 1,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -53,20 +54,14 @@ User.init(
     memberSince: {
       type: DataTypes.DATE,
     },
-    // currentExploreLevel: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "exploreLevel",
-    //     key: "id",
-    //   },
-    // },
-    // currentMissionId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "currentMission",
-    //     key: "id",
-    //   },
-    // },
+    exploreLevelId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+      references: {
+        model: "explore_level",
+        key: "id",
+      },
+    },
   },
   {
     hooks: {

@@ -1,9 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class CurrentMission extends Model {}
+class Current_Mission extends Model {}
 
-CurrentMission.init(
+Current_Mission.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,14 +11,20 @@ CurrentMission.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    activities: {
-      type: [],
-    },
-    missionName: {
+    name: {
       type: DataTypes.STRING,
     },
-    missionTypeId: {
+    type: {
       type: DataTypes.INTEGER,
+    },
+    points: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     timer: {
       type: DataTypes.INTEGER,
@@ -26,10 +32,20 @@ CurrentMission.init(
     // This column will store a reference of the `id` of the `User` that has this ExploreLevel
     userId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         // This references the `user` model, which we set in `User.js` as its `modelName` property
         model: "user",
         key: "id",
+      },
+    },
+    missionTypeId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        // This references the 'mission_types' model, which we set in 'Mission_Types.js' as its modelname property
+        model: "mission_types",
+        //key: "id",
       },
     },
   },
@@ -38,8 +54,8 @@ CurrentMission.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "currentMission",
+    modelName: "current_mission",
   }
 );
 
-export { CurrentMission };
+export { Current_Mission };

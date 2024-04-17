@@ -1,33 +1,37 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
-class CurrentMissionActivities extends Model {}
+class Mission_Activities extends Model {}
 
-CurrentMissionActivities.init(
+Mission_Activities.init(
   {
-    id: {
+/*    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    missionActivityComplete: {
+    },*/
+    complete: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
-    currentMissionId: {
+    
+    missionId: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
-        model: "currentModel",
+        model: "current_mission",
         key: "id",
-        unique: false,
+        unique : false,
       },
     },
-    activityTypeId: {
+    activityId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
-        model: "activityType",
+        model: "activities",
         key: "id",
-        unique: false,
+        unique: true,
       },
     },
   },
@@ -36,7 +40,7 @@ CurrentMissionActivities.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "currentMissionActivities",
+    modelName: "mission_activities",
   }
 );
-export { CurrentMissionActivities };
+export { Mission_Activities };
