@@ -1,5 +1,5 @@
 import sequelize from "../config/connection.js";
-//import { missionTypesSeeds } from "./missionTypesSeeds.json";
+
 
 import {
   User,
@@ -13,12 +13,13 @@ import {
 (async function syncSequelize() {
   await sequelize.sync({ force: true });
 
+
   /*  await Explore_Level.create({
     id: 1,
     name: "Tortoise",
     pointsRequired: 1,
   });*/
-  await Explore_Level.bulkCreate([
+  const exploreLevels = await Explore_Level.bulkCreate([
     {
       id: 1,
       name: "Tortoise",
@@ -71,6 +72,7 @@ import {
       pointsRequired: 45,
     },
   ]);
+  console.log(exploreLevels);
 
   const salidam = await User.create({
     username: "salidam",
@@ -111,7 +113,7 @@ import {
     description: "Description 2.",
   });
 
-  await Mission_Types.bulkCreate(
+  const missionTypes = await Mission_Types.bulkCreate(
     {
       id: 3,
       name: "Exercise",
@@ -141,7 +143,7 @@ import {
     }
   );
 
-  await Activities.bulkCreate([
+  const activities = await Activities.bulkCreate([
     {
       id: 1,
       missionTypeId: 1,
@@ -149,55 +151,46 @@ import {
     },
     {
       id: 2,
-
       missionTypeId: 1,
       name: "Find a four-leaf clover",
     },
     {
       id: 3,
-
       missionTypeId: 1,
       name: "Find a robin",
     },
     {
       id: 4,
-
       missionTypeId: 1,
       name: "Find an animal in the clouds",
     },
     {
       id: 5,
-
       missionTypeId: 1,
       name: "Skip a rock in the water",
     },
     {
       id: 6,
-
       missionTypeId: 1,
       name: "Find a walking stick",
     },
     {
       id: 7,
-
       missionTypeId: 1,
       name: "Pick up a piece of garbage and put it in the trash",
     },
     {
       id: 8,
-
       missionTypeId: 1,
       name: "Kayak",
     },
     {
       id: 9,
-
       missionTypeId: 1,
       name: "Build a fire",
     },
     {
       id: 10,
-
       missionTypeId: 1,
       name: "Find a bird nest",
     },
@@ -296,7 +289,7 @@ import {
   });
 
   const currentMission2 = await Current_Mission.create({
-    name: "Forest Scavenger Hunt",
+    name: "Forest Scavenger Hunt0",
     userId: salidam.id,
     points: 1000,
     missionTypeId: missionType2.id,
@@ -309,7 +302,7 @@ import {
   });
 
   const currentMission3 = await Current_Mission.create({
-    name: "Forest Scavenger Hunt",
+    name: "Forest Scavenger Hunt1",
     points: 500,
     userId: user1.id,
     missionTypeId: missionType1.id,
@@ -322,7 +315,7 @@ import {
   });
 
   const currentMission4 = await Current_Mission.create({
-    name: "Forest Scavenger Hunt",
+    name: "Forest Scavenger Hunt2",
     points: 200,
     userId: user1.id,
     missionTypeId: missionType2.id,
@@ -335,7 +328,7 @@ import {
   });
 
   const currentMission5 = await Current_Mission.create({
-    name: "Forest Scavenger Hunt",
+    name: "Forest Scavenger Hunt3",
     points: 100,
     userId: user2.id,
     missionTypeId: missionType1.id,
@@ -348,6 +341,7 @@ import {
   });
 
   //await
+  /* comment out test code
   console.log("user data seeded");
   const userData = await User.findAll();
   console.log(userData);
@@ -362,5 +356,5 @@ import {
   console.log(cmData);
   const mTypes = await Mission_Types.findAll();
   console.log(mTypes);
-  sequelize.close();
+  sequelize.close();*/
 })();

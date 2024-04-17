@@ -27,11 +27,8 @@ export const resolvers = {
       return Explore_Level.findAll();
     },
 
-    async getAllCurrentMissions() {
-      return Current_Mission.findAll();
-    },
-    async getUserMissionActivities(parent, args) {
-      return Mission_Activities.findAll();
+    async getAllCurrentMissions(parent, {userId}) {
+      return Current_Mission.findAll({userId: userId});
     },
 
     async getAllMissionTypes() {
@@ -44,6 +41,14 @@ export const resolvers = {
 
     async getAllMissionActivities() {
       return Mission_Activities.findAll();
+    },
+
+    async getUserMissionActivities(parent, {userId}) {
+      return Mission_Activities.findAll({userId: userId});
+    },
+
+    async getCurrentMission() {
+      return Current_Mission.findAll();
     },
   },
 

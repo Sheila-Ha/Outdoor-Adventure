@@ -80,11 +80,11 @@ type LeaderBoard {
 type Query {
     findUsers: [User]
     loginUser: LoginUser
-    getCurrentMission(userId: Int): Current_Mission
+    getCurrentMission: [Current_Mission]
     funFact: [String]
     leaderBoard: [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
-    getAllCurrentMissions: [Current_Mission]
+    getAllCurrentMissions(userId: Int): [Current_Mission]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
