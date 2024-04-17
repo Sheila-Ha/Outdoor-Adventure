@@ -7,11 +7,8 @@ import { TRIGGER_MY_MISSION } from "../../graphql/mutation/triggerMyMissionMutat
 
 // Define your mutation
 function TriggerMyMission() {
-  console.log('TriggerMyMission');
-
   // Get the mission types from the database
   const missionTypes = useQuery(MISSION_TYPES);
-  console.log(missionTypes);
   
   // Set up state variables to store the selected value and text
   const [selectedValue, setSelectedValue] = useState('');
@@ -21,7 +18,6 @@ function TriggerMyMission() {
     const selectedIndex = event.target.options.selectedIndex;
     setSelectedText(event.target.options[selectedIndex].text);
     setSelectedValue(event.target.value);
-    console.log("TEST " + selectedText + " " + selectedValue);
   };
 
   // Call the useMutation hook, passing in the TRIGGER_MY_MISSION mutation
@@ -32,14 +28,13 @@ function TriggerMyMission() {
 
   // Define a function that calls the mutation
   const handleTrigger = () => {
-    console.log('handleTrigger');
+    // console.log('handleTrigger');
     if (selectedValue == ""){
       alert("Please select a mission type.");
       return;
     }
-    // Call the mutation
-    // TODO (Sheila): pass in the missionType from the user data
-    triggerMyMission({ variables: { userId: loggedInUser.id, missionName: selectedText, missionId: parseInt(selectedValue) } })
+    // Call the mutation, passing in the user ID, city, state, and missionType from the user data
+    triggerMyMission({ variables: { userId: loggedInUser.id, city: loggedInUser.city, state: loggedInUser.state, missionType: selectedText, missionId: parseInt(selectedValue) } })
       .then(response => {
         // Log the response
         console.log('triggerMyMission response:', response.data.triggerMyMission); // Log the response
@@ -62,7 +57,7 @@ function TriggerMyMission() {
       </select>
       <button className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit" onClick={handleTrigger}>Trigger Mission</button>
       {/* Display the result of the mutation */}
-      {data && <p>Mission triggered: {JSON.stringify(data)}</p>}
+      {/* {data && <p>Mission triggered: {JSON.stringify(data)}</p>} */}
     </div>
   );
 }
