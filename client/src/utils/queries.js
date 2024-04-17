@@ -9,6 +9,8 @@ export const QUERY_USERS = gql`
       currentLeaderBoardLevel
       firstName
       lastName
+      city
+      state
       lastLogin
       memberSince
       exploreLevelId

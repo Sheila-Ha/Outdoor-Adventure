@@ -79,6 +79,8 @@ import {
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M",
+    city: "New York",
+    state: "NY",
   });
 
   const user1 = await User.create({
@@ -88,6 +90,8 @@ import {
     currentLeaderBoardLevel: 1,
     firstName: "User",
     lastName: "1",
+    city: "Minneapolis",
+    state: "MN",
   });
 
   const user2 = await User.create({
@@ -97,6 +101,8 @@ import {
     currentLeaderBoardLevel: 1,
     firstName: "User",
     lastName: "2",
+    city: "Orlando",
+    state: "FL",
   });
 
   const missionType1 = await Mission_Types.create({

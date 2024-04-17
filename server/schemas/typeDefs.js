@@ -8,6 +8,8 @@ type User {
     currentLeaderBoardLevel: Int
     firstName: String
     lastName: String
+    city: String
+    state: String
     lastLogin: String
     memberSince: String
     exploreLevelId: Int
@@ -20,6 +22,8 @@ type LoginUser{
 input SignUp {
     firstName: String!
     lastName: String!
+    city: String!
+    state: String!
     email: String!
     password: String!
 }

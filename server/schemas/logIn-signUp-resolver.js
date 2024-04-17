@@ -58,6 +58,8 @@ export const LogInSignUpMutation = {
       password: signUpDetails.password,
       firstName: signUpDetails.firstName,
       lastName: signUpDetails.lastName,
+      city: signUpDetails.city,
+      state: signUpDetails.state,
       lastLogin: Date.now(),
       memberSince: Date.now(),
     });

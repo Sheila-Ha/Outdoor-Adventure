@@ -12,6 +12,8 @@ export default function SignUpPage() {
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
+    city: "",
+    state: "",
     email: "",
     password: "",
   });
@@ -88,6 +90,28 @@ export default function SignUpPage() {
                 onChange={handleChange}
               />
             </div>
+            <div className="grid gap-2">
+              <Label htmlFor="city">City</Label>
+              <Input
+                id="city"
+                placeholder="New York"
+                required
+                name="city"
+                value={newUser.city}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="state">State</Label>
+              <Input
+                id="state"
+                placeholder="NY"
+                required
+                name="state"
+                value={newUser.state}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
@@ -120,7 +144,7 @@ export default function SignUpPage() {
           <Button type="submit" className="w-full" onClick={handleClick}>
             Create an account
           </Button>
-          <div className="grid gap-2 mt-4 text-center text-sm">
+          <div className="grid gap-2 mt-4 text-sm text-center">
             Already have an account?{" "}
             <Link to={"/login"} className="underline">
               Sign in
