@@ -7,19 +7,9 @@ export const GET_CURRENT_MISSION = gql`
       timer
       userId
       name
-    }
-  }
-`;
-
-export const GET_ALL_CURRENT_MISSIONS = gql`
-  query GetAllCurrentMissions{
-    getAllCurrentMissions {
-      id
-      name
       type
       points
       isComplete
-      timer
     }
   }
 `;
