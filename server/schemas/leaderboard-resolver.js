@@ -19,7 +19,7 @@ export const LeaderBoardQuery = {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: ["username","image"],
             required: true,
           },
         ],
@@ -33,7 +33,7 @@ export const LeaderBoardQuery = {
           id: index,
           score: item.total_points,
           name: item.user.username,
-          image: "https://randomuser.me/api/portraits/women/3.jpg",
+          image: item.user.image || "https://github.com/shadcn.png",
           subtitle: "Elk",
         };
       });
