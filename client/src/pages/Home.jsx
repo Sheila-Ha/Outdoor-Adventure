@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
+import TriggerMyMission from "../components/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
 import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
 import MissionCard from "../components/MissionCard.jsx";

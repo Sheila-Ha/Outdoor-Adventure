@@ -34,6 +34,8 @@ export const GET_USER_MISSION_ACTIVITIES = gql`
       name
       description
       image
+      isComplete
+      missionTypeId
     }
   }
 `;

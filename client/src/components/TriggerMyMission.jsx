@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import { useLoggedInUser } from "../../context/UserContext.jsx";
-import { MISSION_TYPES, GET_USER_MISSION } from "../../graphql/query";
-import { TRIGGER_MY_MISSION } from "../../graphql/mutation/triggerMyMissionMutation.js";
-import MissionCard from "../MissionCard.jsx";
+import { useLoggedInUser } from "../context/UserContext.jsx";
+import { MISSION_TYPES, GET_USER_MISSION } from "../graphql/query/index.js";
+import { TRIGGER_MY_MISSION } from "../graphql/mutation/triggerMyMissionMutation.js";
+import MissionCard from "./MissionCard.jsx";
 
 // Define your mutation
 function TriggerMyMission() {
