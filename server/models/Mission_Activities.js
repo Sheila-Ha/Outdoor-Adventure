@@ -11,10 +11,10 @@ Mission_Activities.init(
       primaryKey: true,
       autoIncrement: true,
     },*/
-    complete: {
+    /*complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    },
+    },*/
     
     missionId: {
       type: DataTypes.INTEGER,

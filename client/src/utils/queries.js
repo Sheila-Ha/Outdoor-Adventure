@@ -46,6 +46,7 @@ export const QUERY_ACTIVITIES = gql`
       name
       description
       image
+      isComplete
       missionTypeId
     }
   }
@@ -54,7 +55,6 @@ export const QUERY_ALL_MISSION_ACTIVITIES = gql`
   query getAllMissionActivities() {
     getAllMissionActivities() {
       id
-      complete
       missionId
       activityId
     }
