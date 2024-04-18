@@ -42,8 +42,8 @@ function MissionActivitiesPage() {
         {activities.map((activity) => (
           <li key={activity.id}>
             {/* // Display the checkbox and activity name */}
-            <input type="checkbox" name= {activity.id} value= {activity.id}/>
-            <span className= "mx-2">
+            <input type="checkbox" name={activity.id} value={activity.id} />
+            <span className="mx-2">
               {/* // Display the activity name and image */}
               <label htmlFor={activity.id}>
                 {activity.image && (
@@ -55,7 +55,13 @@ function MissionActivitiesPage() {
           </li>
         ))}
       </ul>
-      <button className="px-4 py-2 mx-4 text-white bg-blue-500 rounded front-bolc hover: big-blug-700 w-fit"> Save        
+      <button
+        className="px-4 py-2 mx-4 text-white bg-blue-500 rounded front-bolc hover: big-blug-700 w-fit"
+        onClick={() => {
+          console.log("Button clicked!");
+        }}
+      >
+        Save
       </button>
     </div>
   );
