@@ -38,15 +38,18 @@ function MissionActivitiesPage() {
         {currentMission.name} - {currentMission.points} points
       </h2>
       <p>{currentMission.description}</p>
-      <ul className="mx-4 list-disc">
+      <ul className="mx-4">
         {activities.map((activity) => (
           <li key={activity.id}>
-            <h3>
-              {activity.image && (
-                <img src={activity.image} alt={activity.name} />
-              )}
-              {activity.name}
-            </h3>
+            <input type="checkbox" />
+            <span className= "mx-2">
+              <label>
+                {activity.image && (
+                  <img src={activity.image} alt={activity.name} />
+                )}
+                {activity.name}
+              </label>
+            </span>
           </li>
         ))}
       </ul>
