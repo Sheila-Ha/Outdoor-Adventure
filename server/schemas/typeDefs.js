@@ -49,7 +49,6 @@ type Explore_Level {
 
 type Mission_Activities {
     id: ID
-    complete: Boolean
     point_value: Int
     missionId: Int
     activityId: Int
@@ -72,6 +71,7 @@ type Activities {
     name: String
     description: String
     image: String
+    isComplete: Boolean
     missionTypeId: Int    
 }
 type LeaderBoard {
@@ -81,6 +81,9 @@ type LeaderBoard {
     image: String
     subtitle: String
 }
+type LoginImageProfileUrl {
+    image: String
+}
 type Query {
     findUsers: [User]
     loginUser: LoginUser
@@ -88,7 +91,9 @@ type Query {
     funFact: [String]
     leaderBoard: [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
-    getAllCurrentMissions(userId: Int): [Current_Mission]
+    getAllCurrentMissions: [Current_Mission]
+    getCurrentMissionByMissionId(missionId: Int): Current_Mission
+    getCurrentMissionActivities(missionId: Int): [Activities]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
@@ -100,6 +105,8 @@ type Mutation {
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
+    updateActivity(id: ID, isComplete: Boolean): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
+    updateImageProfileUrl(loginImageProfileUrl: String!): String
 }
 `;

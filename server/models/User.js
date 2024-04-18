@@ -29,6 +29,9 @@ User.init(
         isEmail: true,
       },
     },
+    image: {
+      type: DataTypes.STRING,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

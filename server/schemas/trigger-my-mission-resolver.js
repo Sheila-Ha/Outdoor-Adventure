@@ -13,13 +13,13 @@ export const TriggerMyMissionMutation = {
     { userId, city, state, missionType, missionId },
     req
   ) {
-    if (!req.userInfo) {
-      throw new GraphQLError("You are not authorized to perform this action.", {
-        extensions: {
-          code: "FORBIDDEN",
-        },
-      });
-    }
+    // if (!req.userInfo) {
+    //   throw new GraphQLError("You are not authorized to perform this action.", {
+    //     extensions: {
+    //       code: "FORBIDDEN",
+    //     },
+    //   });
+    // }
 
     // Create the message from the user data
     const questionForAI = `Create a comma-delimited ${missionType} list in ${city}, ${state} without any extra words`;
@@ -54,7 +54,7 @@ export const TriggerMyMissionMutation = {
     // Save the activity data to the database "activities" table
     missionActivities.forEach(async (activity) => {
       const activitySaved = await Activities.create({
-        name: activity,
+        name: activity.trim(),
         description: missionType,
         missionTypeId: missionId,
       });
