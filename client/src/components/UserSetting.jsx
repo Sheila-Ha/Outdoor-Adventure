@@ -9,19 +9,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/DropdownMenu.jsx";
-
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "../components/Alertdialog.jsx";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "../components/Dialog.jsx";
 
-import * as React from "react";
+// import {
+//   AlertDialog,
+//   AlertDialogAction,
+//   AlertDialogCancel,
+//   AlertDialogContent,
+//   AlertDialogDescription,
+//   AlertDialogFooter,
+//   AlertDialogHeader,
+//   AlertDialogTitle,
+// } from "../components/Alertdialog.jsx";
 
 import { Card, CardContent } from "../components/Card.jsx";
 import {
@@ -33,6 +39,7 @@ import {
 } from "../components/Carousel.jsx";
 
 import { useState } from "react";
+import { Button } from "./Button.jsx";
 
 export default function UserSetting() {
   const { loggedInUser } = useLoggedInUser();
@@ -64,24 +71,22 @@ export default function UserSetting() {
       </Avatar>
       {/* </Link> */}
       <span className="sr-only">Toggle user menu</span>
-      <AlertDialog open={openTrueFalse}>
-        <AlertDialogContent className="w-[100dvw]">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Select Avatar</AlertDialogTitle>
-          </AlertDialogHeader>
-          <AlertDialogDescription>
-            <div className="flex">
+      <Dialog open={openTrueFalse}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Select Avatar</DialogTitle>
+          </DialogHeader>
               <Carousel
                 opts={{
                   align: "end",
                 }}
-                className="w-full max-w-sm"
+                className="w-[100%] max-w-sm  ml-9"
               >
                 <CarouselContent>
                   {Array.from({ length: 5 }).map((_, index) => (
                     <CarouselItem
                       key={index}
-                      className="md:basis-1/2 lg:basis-1/2"
+                      className="md:basis-1/3 lg:basis-1/4"
                     >
                       <div className="p-1">
                         <Card>
@@ -98,14 +103,12 @@ export default function UserSetting() {
                 <CarouselPrevious />
                 <CarouselNext />
               </Carousel>
-            </div>
-          </AlertDialogDescription>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleClick}>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+          <DialogFooter>
+            <Button onClick={handleClick}>Cancel</Button>
+            <Button>Continue</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
