@@ -10,17 +10,13 @@ import { UPDATE_ACTIVITY } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
-  
+
   const [updateActivity] = useMutation(UPDATE_ACTIVITY);
   const [activities, setActivities] = useState([]);
   const [saveResult, setSaveResult] = useState(null);
 
   // Get current mission by ID
-  const {
-    loading,
-    error,
-    data,
-  } = useQuery(GET_USER_MISSION_BY_MISSION_ID, {
+  const { loading, error, data } = useQuery(GET_USER_MISSION_BY_MISSION_ID, {
     variables: { missionId: parseInt(missionId) },
   });
   const currentMission = data?.getCurrentMissionByMissionId;
@@ -68,7 +64,7 @@ function MissionActivitiesPage() {
           },
         });
       });
-      setSaveResult("Data saved.")
+      setSaveResult("Data saved.");
     } catch (err) {
       console.log(err);
     }
@@ -76,35 +72,44 @@ function MissionActivitiesPage() {
 
   return (
     <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
-      <h2>
-        {currentMission.name} - {currentMission.points} points
-      </h2>
-      <p>{currentMission.description}</p>
-      <ul className="mx-4">
-        {activities?.map((activity) => (
-          <li key={activity.id}>
-            {/* // Display the checkbox and activity name */}
-            <input type="checkbox" name={activity.id} checked={activity.isComplete || false} onChange={handleCheckboxChange} />
-            <span className="mx-2">
-              {/* // Display the activity name and image */}
-              <label htmlFor={activity.id}>
-                {activity.image && (
-                  <img src={activity.image} alt={activity.name} />
-                )}
-                {activity.name}
-              </label>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <button
-        type="submit"
-        className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
-        onClick={handleSaveClick}
-      >
-        Save
-      </button>
-      <div className="px-4">{saveResult}</div>
+      <div className="px-4">
+        <h2 className="my-4">
+          {currentMission.name} - {currentMission.points} points
+        </h2>
+        <p>{currentMission.description}</p>
+        <ul>
+          {activities?.map((activity) => (
+            <li key={activity.id}>
+              {/* // Display the checkbox and activity name */}
+              <input
+                type="checkbox"
+                name={activity.id}
+                checked={activity.isComplete || false}
+                onChange={handleCheckboxChange}
+              />
+              <span className="mx-2">
+                {/* // Display the activity name and image */}
+                <label htmlFor={activity.id}>
+                  {activity.image && (
+                    <img src={activity.image} alt={activity.name} />
+                  )}
+                  {activity.name}
+                </label>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="submit"
+          className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
+          onClick={handleSaveClick}
+        >
+          Save
+        </button> <span className="pl-4 font-bold">{saveResult}</span>
+        <p>
+          <a href="/">&lt; Back to Home</a>
+        </p>
+      </div>
     </div>
   );
 }
