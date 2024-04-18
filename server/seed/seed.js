@@ -66,6 +66,7 @@ import {
       pointsRequired: 45,
     },
   ]);
+
   const salidam = await User.create({
     username: "salidam",
     email: "email@email.com",
@@ -124,10 +125,13 @@ import {
     name: "Scavenger Hunt",
     description: "Find items or do activities for points.",
   });
+
   const missionType2 = await Mission_Types.create({
     name: "Star Gazing",
     description: "Description 2.",
   });
+
+
   const activities = await Activities.bulkCreate([
     {
       missionTypeId: 1,
@@ -291,9 +295,9 @@ import {
   console.log(userData);
   const exploreData = await Explore_Level.findAll();
   console.log(exploreData);
-  const activitiesData = await Activities.findAll();
+*/  const activitiesData = await Activities.findAll();
   console.log(activitiesData);
-const maData = await Mission_Activities.findAll();
+  /*const maData = await Mission_Activities.findAll();
   console.log(maData);
   const cmData = await Current_Mission.findAll();
   // console.log(cmData.map((data) => data.toJSON()));
