@@ -5,7 +5,7 @@ import { GET_USER_MISSION_BY_MISSION_ID, GET_USER_MISSION_ACTIVITIES } from "../
 function MissionActivitiesPage() {
   const { missionId } = useParams();
 
-// Get all current missions for the user
+// Get current mission by ID
 const { loading: loading1, error: error1, data: data1 } = useQuery(GET_USER_MISSION_BY_MISSION_ID, {
     variables: { missionId: parseInt(missionId) },
 });
@@ -14,7 +14,7 @@ const currentMission = data1?.getCurrentMissionByMissionId;
 const { loading: loading2, error: error2, data: data2 } = useQuery(GET_USER_MISSION_ACTIVITIES, {
     variables: { missionId: parseInt(missionId) },
 });
-console.log(data2);
+
 const activities = data2?.getCurrentMissionActivities;
 
 if (loading1 || loading2) return <p>Loading...</p>;
@@ -23,14 +23,16 @@ if (error2) return <p>Error : {error2.message}</p>;
 
   return (
     <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
-        <h2>{currentMission.name}</h2>
-        <ul>
-        {/* {data.map((activity) => {
-            return (
-            <li className="p-4" key={activity.id}>
-                {activity.id}. {activity.name}
-            </li>
-            ); */}
+        <h2>{currentMission.name} - {currentMission.points} points</h2>
+        <p>{currentMission.description}</p>
+        <ul className='mx-4 list-disc'>
+            {activities.map((activity) => (
+                <li key={activity.id}>
+                    <h3>{activity.name}</h3>
+                    <p>{activity.description}</p>
+                    {activity.image && <img src={activity.image} alt={activity.name} />}
+                </li>
+            ))}
         </ul>
     </div>
   );
