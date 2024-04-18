@@ -44,10 +44,22 @@ by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan
     THEN I get an error message while still on the login page
 
     WHEN I am on the homepage  
-    THEN I am able to view daily/weekly/monthly missions, new missions that I can complete, and my profile  
+    THEN I am able to view daily/weekly/monthly missions, badges, create new missions, view the leaderboard and open my profile  
 
     WHEN I have missions available  
     THEN I get a pop-up that displays the new mission  
+
+    WHEN I open a current mission or create a new mission
+    THEN I see the activities to complete for that mission
+
+    WHEN I am on the mission activities page
+    THEN I can click the checkbox next to each one to indicate it is completed
+
+    WHEN I am on the mission activities page and I see an activity I don't want to do
+    THEN I can click the reset button to see a new activity
+
+    WHEN I click the reset button for an activity
+    THEN I cannot click it again for the same activity
 
     WHEN I do not have new missions
     THEN I do not get a pop-up  

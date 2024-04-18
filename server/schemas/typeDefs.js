@@ -88,7 +88,9 @@ type Query {
     funFact: [String]
     leaderBoard: [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
-    getAllCurrentMissions(userId: Int): [Current_Mission]
+    getAllCurrentMissions: [Current_Mission]
+    getCurrentMissionByMissionId(missionId: Int): Current_Mission
+    getCurrentMissionActivities(missionId: Int): [Activities]
     getAllMissionTypes: [Mission_Types]
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
