@@ -13,13 +13,14 @@ export const LeaderBoardQuery = {
     }
     try {
       const currentMission = await Current_Mission.findAll({
+        limit: 10,
         attributes: [
           [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
         ],
         include: [
           {
             model: User,
-            attributes: ["username","image"],
+            attributes: ["username", "image"],
             required: true,
           },
         ],
