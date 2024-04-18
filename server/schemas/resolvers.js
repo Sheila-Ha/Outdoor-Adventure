@@ -3,6 +3,7 @@ import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
 import { FunFactQuery } from "./fun-fact-resolver.js";
 import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import { CurrentMissionQuery } from "./current-mission-resolver.js";
+import { UpdateImageProfileUrl } from "./update-image-resolver.js";
 import {
   User,
   Activities,
@@ -57,6 +58,7 @@ export const resolvers = {
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
+    ...UpdateImageProfileUrl,
     addActivity: async (parent, { name, description, missionTypeId }) => {
       return Activities.create({ name, description, missionTypeId });
     },
