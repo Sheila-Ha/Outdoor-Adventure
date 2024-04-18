@@ -30,11 +30,12 @@ import { useState } from "react";
 import { Button } from "./Button.jsx";
 
 const avatarImg = [
-  "../../public/images/avatar1.png",
-  "../../public/images/avatar2.png",
-  "../../public/images/avatar3.png",
-  "../../public/images/avatar4.png",
-  "../../public/images/avatar5.png",
+  "/images/avatar1.png",
+  "/images/avatar2.png",
+  "/images/avatar3.png",
+  "/images/avatar4.png",
+  "/images/avatar5.png",
+  "/images/avatar6.png",
 ];
 export default function UserSetting() {
   const { loggedInUser } = useLoggedInUser();
@@ -78,16 +79,16 @@ export default function UserSetting() {
             className="w-[70%] max-w-sm md:ml-[5rem] ml-10"
           >
             <CarouselContent>
-              {Array.from({ length: 6 }).map((img, index) => (
+              {avatarImg.map((url) => (
                 <CarouselItem
-                  key={index}
+                  key={url}
                   className="md:basis-1/3 lg:basis-1/3 sm:basis-1/1 max-w-[150px] aspect-square"
                 >
                   <div className="p-1">
                     <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-2">
+                      <CardContent className="flex aspect-square items-center justify-center p-1">
                         <span className="text-3xl font-semibold">
-                          <img src={img} />
+                          <img src={url} className="aspect-square rounded-md"/>
                         </span>
                       </CardContent>
                     </Card>
