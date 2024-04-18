@@ -12,22 +12,10 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogFooter,
 } from "../components/Dialog.jsx";
-
-// import {
-//   AlertDialog,
-//   AlertDialogAction,
-//   AlertDialogCancel,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogFooter,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-// } from "../components/Alertdialog.jsx";
 
 import { Card, CardContent } from "../components/Card.jsx";
 import {
@@ -41,6 +29,13 @@ import {
 import { useState } from "react";
 import { Button } from "./Button.jsx";
 
+const avatarImg = [
+  "../../public/images/avatar1.png",
+  "../../public/images/avatar2.png",
+  "../../public/images/avatar3.png",
+  "../../public/images/avatar4.png",
+  "../../public/images/avatar5.png",
+];
 export default function UserSetting() {
   const { loggedInUser } = useLoggedInUser();
   const [openTrueFalse, setOpenTrueFalse] = useState(false);
@@ -76,33 +71,33 @@ export default function UserSetting() {
           <DialogHeader>
             <DialogTitle>Select Avatar</DialogTitle>
           </DialogHeader>
-              <Carousel
-                opts={{
-                  align: "end",
-                }}
-                className="w-[100%] max-w-sm  ml-9"
-              >
-                <CarouselContent>
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="md:basis-1/3 lg:basis-1/4"
-                    >
-                      <div className="p-1">
-                        <Card>
-                          <CardContent className="flex aspect-square items-center justify-center p-6">
-                            <span className="text-3xl font-semibold">
-                              {index + 1}
-                            </span>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
+          <Carousel
+            opts={{
+              align: "end",
+            }}
+            className="w-[70%] max-w-sm md:ml-[5rem] ml-10"
+          >
+            <CarouselContent>
+              {Array.from({ length: 6 }).map((img, index) => (
+                <CarouselItem
+                  key={index}
+                  className="md:basis-1/3 lg:basis-1/3 sm:basis-1/1 max-w-[150px] aspect-square"
+                >
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-2">
+                        <span className="text-3xl font-semibold">
+                          <img src={img} />
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
           <DialogFooter>
             <Button onClick={handleClick}>Cancel</Button>
             <Button>Continue</Button>
