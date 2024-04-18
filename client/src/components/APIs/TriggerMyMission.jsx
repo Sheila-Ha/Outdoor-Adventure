@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { useQuery } from "@apollo/client";
 import { useMutation } from '@apollo/client';
 import { useLoggedInUser } from "../../context/UserContext.jsx";
-import { MISSION_TYPES } from "../../graphql/query";
+import { MISSION_TYPES, GET_USER_MISSION } from "../../graphql/query";
 import { TRIGGER_MY_MISSION } from "../../graphql/mutation/triggerMyMissionMutation.js";
+import MissionCard from "../MissionCard.jsx";
 
 // Define your mutation
 function TriggerMyMission() {
+  // Get all current missions for the user
+  const { loading, error, data } = useQuery(GET_USER_MISSION);
+  const currentMissions = data?.getAllCurrentMissions;
+  
   // Get the mission types from the database
   const missionTypes = useQuery(MISSION_TYPES);
   
@@ -21,7 +26,7 @@ function TriggerMyMission() {
   };
 
   // Call the useMutation hook, passing in the TRIGGER_MY_MISSION mutation
-  const [triggerMyMission, { data }] = useMutation(TRIGGER_MY_MISSION);
+  const [triggerMyMission, { data: data2 }] = useMutation(TRIGGER_MY_MISSION);
 
   // Get the logged-in user from the UserContext so we have access to its data
   const { loggedInUser } = useLoggedInUser();
@@ -49,6 +54,21 @@ function TriggerMyMission() {
   // Display a button to trigger the mutation
   return (
     <div>
+      <div className="overflow-y-auto" style={{ height: "calc(35vh - 4rem)" }}>
+        <h2 className="text-lg font-bold">My Triggered Missions</h2>
+        <div className="space-y-2">
+          {currentMissions &&
+            currentMissions.map((mission) => (
+              <MissionCard
+                key={mission.id}
+                title={mission.name}
+                description={mission.points + " points"}
+                categoryColor={"bg-yellow-400"}
+                missionId={mission.id}
+              />              
+            ))}
+        </div>
+      </div>      
       <select onChange={handleChange} className="text-sm text-gray-900 font-bold border border-gray-300 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option>Choose a Mission Type</option>
         {missionTypes.data && missionTypes.data.getAllMissionTypes.map((missionType) => (
