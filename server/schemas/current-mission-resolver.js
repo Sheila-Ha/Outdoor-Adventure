@@ -16,6 +16,10 @@ export const CurrentMissionQuery = {
         where: {
           userId: req.userInfo.id,
         },
+        // Order by id in descending order (newest mission is first)
+        order: [
+          ['id', 'DESC'],
+        ],
       });
       return currentMission.map((mission) => mission.toJSON());
     } catch (error) {
