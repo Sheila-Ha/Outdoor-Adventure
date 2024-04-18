@@ -10,12 +10,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/DropdownMenu.jsx";
-import { cn } from "../lib/utils.js";
+// import { cn } from "../lib/utils.js";
 
 export default function Component() {
   const { loggedInUser, setLoggedInUser } = useLoggedInUser();
   // console.log("loggedInUser", loggedInUser);
   const { pathname } = useLocation();
+  console.log(loggedInUser,"loggedIn user")
+ 
   return (
     <div className="grid gap-4">
       <nav className="flex h-14 items-center px-4 border-b border-gray-200 w-full shrink-0 dark:border-gray-800">
@@ -58,9 +60,15 @@ export default function Component() {
                       <AvatarImage src="https://github.com/shadcn.png" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuLabel>Choose Avatar</DropdownMenuLabel>
+                      <DropdownMenuLabel>{loggedInUser.username}</DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      <div className="flex ">
+                      <DropdownMenuItem>
+                       Settings
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                       Change Avatar
+                      </DropdownMenuItem>
+                      {/* <div className="flex">
                         <DropdownMenuItem>
                         <img
                             src="/public/images/avatar1.png" className={cn(
@@ -97,7 +105,7 @@ export default function Component() {
                               "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
                             )}/>
                         </DropdownMenuItem>
-                      </div>
+                      </div> */}
                     </DropdownMenuContent>
                   </DropdownMenu>
 
