@@ -1,5 +1,6 @@
 import { AvatarImage, Avatar } from "./Avatar.jsx";
 import { useLoggedInUser } from "../context/UserContext.jsx";
+import { useMutation } from "@apollo/client";
 
 import {
   DropdownMenu,
@@ -15,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogClose,
 } from "../components/Dialog.jsx";
 
 import { Card, CardContent } from "../components/Card.jsx";
@@ -28,6 +30,7 @@ import {
 
 import { useState } from "react";
 import { Button } from "./Button.jsx";
+import { UPDATE_IMAGE_PROFILE_URL } from "../graphql/mutation/updateImage.js";
 
 const avatarImg = [
   "/images/avatar1.png",
@@ -37,20 +40,38 @@ const avatarImg = [
   "/images/avatar5.png",
   "/images/avatar6.png",
 ];
+
 export default function UserSetting() {
   const { loggedInUser } = useLoggedInUser();
   const [openTrueFalse, setOpenTrueFalse] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+  const [updateImageProfileUrl] = useMutation(UPDATE_IMAGE_PROFILE_URL);
+
   function handleClick() {
     setOpenTrueFalse(openTrueFalse === true ? false : true);
   }
+  function imgHandleClick(url) {
+    setImgUrl(url);
+    // console.log(url);
+  }
+  async function continueClick() {
+    await updateImageProfileUrl({
+      variables: { loginImageProfileUrl: imgUrl },
+    });
+    setOpenTrueFalse(false);
+  }
   return (
     <div className="ml-4" size="icon">
-      {/* <Link to={"/profile"}> */}
       <Avatar>
-        {/* we can replace with other avatar */}
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage
+              src={
+                imgUrl === ""
+                  ? loggedInUser.image || "https://github.com/shadcn.png"
+                  : imgUrl
+              }
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>{loggedInUser.username}</DropdownMenuLabel>
@@ -61,13 +82,14 @@ export default function UserSetting() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        {/* <AvatarImage src="https://github.com/shadcn.png" />
-      <AvatarFallback>user</AvatarFallback> */}
       </Avatar>
-      {/* </Link> */}
       <span className="sr-only">Toggle user menu</span>
-      <Dialog open={openTrueFalse}>
+      <Dialog
+        open={openTrueFalse}
+        onOpenChange={(v) => {
+          setOpenTrueFalse(v);
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Select Avatar</DialogTitle>
@@ -88,7 +110,13 @@ export default function UserSetting() {
                     <Card>
                       <CardContent className="flex aspect-square items-center justify-center p-1">
                         <span className="text-3xl font-semibold">
-                          <img src={url} className="aspect-square rounded-md"/>
+                          <img
+                            onClick={() => imgHandleClick(url)}
+                            src={url}
+                            className={`aspect-square ${
+                              imgUrl === url ? "border-green-400 border-4" : ""
+                            } rounded-md`}
+                          />
                         </span>
                       </CardContent>
                     </Card>
@@ -100,8 +128,7 @@ export default function UserSetting() {
             <CarouselNext />
           </Carousel>
           <DialogFooter>
-            <Button onClick={handleClick}>Cancel</Button>
-            <Button>Continue</Button>
+            <Button onClick={continueClick}>Continue</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

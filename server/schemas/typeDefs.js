@@ -81,6 +81,9 @@ type LeaderBoard {
     image: String
     subtitle: String
 }
+type LoginImageProfileUrl {
+    image: String
+}
 type Query {
     findUsers: [User]
     loginUser: LoginUser
@@ -103,5 +106,6 @@ type Mutation {
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
+    updateImageProfileUrl(loginImageProfileUrl: String!): String
 }
 `;

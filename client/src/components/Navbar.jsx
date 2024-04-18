@@ -7,7 +7,6 @@ export default function Component() {
   const { loggedInUser, setLoggedInUser } = useLoggedInUser();
   // console.log("loggedInUser", loggedInUser);
   const { pathname } = useLocation();
-  console.log(loggedInUser, "loggedIn user");
 
   return (
     <div className="grid gap-4">

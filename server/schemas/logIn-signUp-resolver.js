@@ -16,6 +16,7 @@ function generateToken(user) {
     lastName: user.lastName,
     city: user.city,
     state: user.state,
+    image: user.image,
     email: user.email,
     lastLogin: user.lastLogin,
     memberSince: user.memberSince,
