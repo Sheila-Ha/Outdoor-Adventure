@@ -41,9 +41,11 @@ function MissionActivitiesPage() {
       <ul className="mx-4">
         {activities.map((activity) => (
           <li key={activity.id}>
-            <input type="checkbox" />
+            {/* // Display the checkbox and activity name */}
+            <input type="checkbox" name= {activity.id} value= {activity.id}/>
             <span className= "mx-2">
-              <label>
+              {/* // Display the activity name and image */}
+              <label htmlFor={activity.id}>
                 {activity.image && (
                   <img src={activity.image} alt={activity.name} />
                 )}
@@ -53,6 +55,8 @@ function MissionActivitiesPage() {
           </li>
         ))}
       </ul>
+      <button className="px-4 py-2 mx-4 text-white bg-blue-500 rounded front-bolc hover: big-blug-700 w-fit"> Save        
+      </button>
     </div>
   );
 }
