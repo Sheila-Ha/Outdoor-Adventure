@@ -54,7 +54,7 @@ export const TriggerMyMissionMutation = {
     // Save the activity data to the database "activities" table
     missionActivities.forEach(async (activity) => {
       const activitySaved = await Activities.create({
-        name: activity,
+        name: activity.trim(),
         description: missionType,
         missionTypeId: missionId,
       });
