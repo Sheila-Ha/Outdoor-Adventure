@@ -6,6 +6,8 @@ import { useMutation } from "@apollo/client";
 import { SIGNUP } from "../graphql/mutation/index.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useLoggedInUser } from "../context/UserContext.jsx";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ export default function SignUpPage() {
     password: "",
   });
   const [signUp] = useMutation(SIGNUP);
+  const { setLoggedInUser } = useLoggedInUser();
 
   async function handleChange(event) {
     const { name, value } = event.target;
@@ -36,6 +39,9 @@ export default function SignUpPage() {
         },
       });
       localStorage.setItem("token", data.signUp);
+      const decode = jwtDecode(data.signUp);
+      // console.log(decode, "decode");
+      setLoggedInUser(decode.userInfo);
       navigate("/");
       setNewUser({
         firstName: "",
