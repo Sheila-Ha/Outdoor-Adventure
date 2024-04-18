@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useApolloClient } from "@apollo/client";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useLoggedInUser } from "../../context/UserContext.jsx";
@@ -9,15 +8,15 @@ import MissionCard from "../MissionCard.jsx";
 
 // Define your mutation
 function TriggerMyMission() {
-  const client = useApolloClient();
-
   // Set up state variables to store the selected value and text
   const [selectedValue, setSelectedValue] = useState("");
   const [selectedText, setSelectedText] = useState("");
+  // Set up state variables to store the current missions which allows the grid to automatically update after a mission is triggered
   const [currentMissions, setCurrentMissions] = useState("");
 
   // Get all current missions for the user
-  const { loading, error, data, refetch } = useQuery(GET_USER_MISSION);
+  // Refetch gets the data again after the mutation (inserts) are completed
+  const { loading, data, refetch } = useQuery(GET_USER_MISSION);
   useEffect(() => {
     if (!loading && data) {
       setCurrentMissions(data.getAllCurrentMissions);
@@ -34,9 +33,9 @@ function TriggerMyMission() {
   };
 
   // Call the useMutation hook, passing in the TRIGGER_MY_MISSION mutation
-  const [triggerMyMission, { data: data2 }] = useMutation(TRIGGER_MY_MISSION, {
+  const [triggerMyMission] = useMutation(TRIGGER_MY_MISSION, {
     onCompleted: () => {
-      refetch(); // refetch the data after the mutation completes
+      refetch(); // Refetch the data after the mutation completes
     },
   });
 
@@ -66,12 +65,6 @@ function TriggerMyMission() {
           "triggerMyMission response:",
           response.data.triggerMyMission
         );
-        // After mission is triggered, set the updated missions
-        const { data } = await client.query({ query: GET_USER_MISSION });
-        console.log(data);
-        setCurrentMissions(data.getAllCurrentMissions);
-        console.log(currentMissions);
-        //return response.data.triggerMyMission;
       })
       .catch((err) => {
         // Log any errors that occur
