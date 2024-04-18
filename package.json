@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "openai": "^4.33.1"
   },
   "devDependencies": {
