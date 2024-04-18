@@ -34,8 +34,8 @@ export const CurrentMissionQuery = {
       const currentMission = await Current_Mission.findOne({
         where: {
           id: missionId,
-          userId: req.userInfo.id
-        }
+          userId: req.userInfo.id,
+        },
       });
       return currentMission.toJSON();
     } catch (error) {
@@ -52,17 +52,21 @@ export const CurrentMissionQuery = {
     }
     try {
       console.log(missionId);
-      const currentMissionActivities = await Activities.findAll({
-        include: [{
-          model: Mission_Activities,
-          required: true,
-          where: {
-            missionId: missionId,
+      const currentMissionActivities = await Current_Mission.findOne({
+        where: {
+         id: missionId,
+        },
+        include: [
+          {
+            model: Activities,
+            through: {
+              model: Mission_Activities,
+            },
           },
-        }]
+        ],
       });
       console.log(currentMissionActivities);
-      return currentMissionActivities.map((activity) => activity.toJSON());
+      return currentMissionActivities.activities;
     } catch (error) {
       throw new GraphQLError(error);
     }
