@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 import { User } from '../models/User.js';
 
 export const ChangePasswordMutation = {
-  async changePassword(_, { email, currentPassword, newPassword }) {
-    const user = await User.findOne({ where: { email } });
+  async changePassword(_, { currentPassword, newPassword }) {
+    const user = await User.findById(userId);
     if (!user) {
       throw new Error('User not found');
     }

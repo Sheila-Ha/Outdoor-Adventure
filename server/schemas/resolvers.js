@@ -4,6 +4,7 @@ import { FunFactQuery } from "./fun-fact-resolver.js";
 import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import { CurrentMissionQuery } from "./current-mission-resolver.js";
 import { ChangePasswordMutation } from "./changePasswordResolver.js";
+import { ChangeEmailMutation } from "./changeEmailResolver.js";
 import {
   User,
   Activities,
@@ -59,5 +60,6 @@ export const resolvers = {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
     ...ChangePasswordMutation,
+    ...ChangeEmailMutation,
   },
 };

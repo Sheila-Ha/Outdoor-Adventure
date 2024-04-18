@@ -18,8 +18,8 @@ mutation changeEmail($currentEmail: String!, $newEmail: String!) {
 `;
 
 export const CHANGE_PASSWORD =gql`
-mutation changePassword($email: String!, $currentPassword: String!, $newPassword: String!) {
-  changePassword(email: $email, currentPassword: $currentPassword, newPassword: $newPassword) {
+mutation changePassword($currentPassword: String!, $newPassword: String!) {
+  changePassword(currentPassword: $currentPassword, newPassword: $newPassword) {
       status
   }
 }

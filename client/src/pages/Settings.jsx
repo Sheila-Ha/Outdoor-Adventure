@@ -11,10 +11,10 @@ import { Label } from "../components/Label.jsx";
 
 export default function Settings() {
     const navigate = useNavigate();
-    const [userDetails, setUserDetails] = useState({
-        email: '',
+    const [userInfo, setuserInfo] = useState({
+        currentEmail: '',
         newEmail: '',
-        password: '',
+        currentPassword: '',
         newPassword: ''
     });
     const [changeEmail] = useMutation(CHANGE_EMAIL);
@@ -22,7 +22,7 @@ export default function Settings() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setUserDetails(prev => ({
+        setuserInfo(prev => ({
             ...prev,
             [name]: value
         }));
@@ -31,7 +31,7 @@ export default function Settings() {
     const handleEmailChange = async () => {
         try {
             await changeEmail({
-                variables: { newEmail: userDetails.email }
+                variables: { newEmail: userInfo.email }
             });
             alert('Email was successfully updated!');
         } catch (error) {
@@ -43,16 +43,15 @@ export default function Settings() {
         try {
             await changePassword({
                 variables: { 
-                    email: userDetails.email,
-                    currentPassword: userDetails.currentPassword,
-                    newPassword: userDetails.password }
+                    currentPassword: userInfo.currentPassword,
+                    newPassword: userInfo.newPassword }
             });
             alert('Password was successfully updated!');
         } catch (error) {
             console.error('Error with updating the password:', error);
         }
     };
-    
+
     return (
         <div className="w-full flex items-center justify-center py-12">
             <div className="mx-auto grid w-[350px] gap-6">
@@ -61,13 +60,13 @@ export default function Settings() {
                 </div>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="email">Current Email</Label>
+                        <Label htmlFor="current-email">Current Email</Label>
                         <Input
-                            id="email"
+                            id="current-email"
                             type="email"
-                            name="email"
+                            name="currentEmail"
                             placeholder="Your current email"
-                            value={userDetails.email}
+                            value={userInfo.email}
                             onChange={handleChange}
                         />
                         <Label htmlFor="new-email">New Email</Label>
@@ -76,7 +75,7 @@ export default function Settings() {
                             type="email"
                             name="newEmail"
                             placeholder="Enter new email"
-                            value={userDetails.newEmail}
+                            value={userInfo.newEmail}
                             onChange={handleChange}
                         />
                         <Button onClick={handleEmailChange}>Update Email</Button>
@@ -88,7 +87,7 @@ export default function Settings() {
                             type="password"
                             name="currentPassword"
                             placeholder="Enter current password"
-                            value={userDetails.currentPassword}
+                            value={userInfo.currentPassword}
                             onChange={handleChange}
                         />
                         <Label htmlFor="new-password">New Password</Label>
@@ -97,7 +96,7 @@ export default function Settings() {
                             type="password"
                             name="newPassword"
                             placeholder="Enter new password"
-                            value={userDetails.newPassword}
+                            value={userInfo.newPassword}
                             onChange={handleChange}
                         />
                         <Button onClick={handlePasswordChange}>Update Password</Button>

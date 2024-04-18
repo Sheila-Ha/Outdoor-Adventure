@@ -101,6 +101,7 @@ type Mutation {
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
-    changePassword(email: String!, currentPassword: String!, newPassword: String!): String
+    changePassword(currentPassword: String!, newPassword: String!): String
+    changeEmail(email: String!, newEmail: String!): String
 }
 `;
