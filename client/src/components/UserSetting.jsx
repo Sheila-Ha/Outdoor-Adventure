@@ -1,5 +1,4 @@
 import { AvatarImage, Avatar } from "./Avatar.jsx";
-import { Button } from "../components/Button.jsx";
 import { useLoggedInUser } from "../context/UserContext.jsx";
 
 import {
@@ -21,6 +20,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "../components/Alertdialog.jsx";
+
+import * as React from "react";
+
+import { Card, CardContent } from "../components/Card.jsx";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../components/Carousel.jsx";
+
 import { useState } from "react";
 
 export default function UserSetting() {
@@ -54,14 +65,41 @@ export default function UserSetting() {
       {/* </Link> */}
       <span className="sr-only">Toggle user menu</span>
       <AlertDialog open={openTrueFalse}>
-        <AlertDialogContent>
+        <AlertDialogContent className="w-[100dvw]">
           <AlertDialogHeader>
             <AlertDialogTitle>Select Avatar</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </AlertDialogDescription>
           </AlertDialogHeader>
+          <AlertDialogDescription>
+            <div className="flex">
+              <Carousel
+                opts={{
+                  align: "end",
+                }}
+                className="w-full max-w-sm"
+              >
+                <CarouselContent>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="md:basis-1/2 lg:basis-1/2"
+                    >
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-square items-center justify-center p-6">
+                            <span className="text-3xl font-semibold">
+                              {index + 1}
+                            </span>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
+          </AlertDialogDescription>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={handleClick}>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>
