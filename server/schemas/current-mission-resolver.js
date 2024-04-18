@@ -54,7 +54,7 @@ export const CurrentMissionQuery = {
       console.log(missionId);
       const currentMissionActivities = await Current_Mission.findOne({
         where: {
-         id: missionId,
+          id: missionId,
         },
         include: [
           {

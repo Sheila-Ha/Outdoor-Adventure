@@ -117,7 +117,7 @@ import {
     description: "Description 2.",
   });
 
-  const missionTypes = await Mission_Types.bulkCreate(
+  const missionTypes = await Mission_Types.bulkCreate([
     {
       name: "Exercise",
       description: "Exercise outside - walk, run, ski... for points.",
@@ -139,8 +139,32 @@ import {
       name: "Wildlife Spotting",
       description:
         "Creatures are outside everywhere. Find animals, insects, reptiles and fish for points.",
-    }
-  );
+    },
+  ]);
+
+  const activity1 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType1.id,
+  });
+
+  const activity2 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType1.id,
+  });
+
+  const activity3 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType2.id,
+  });
+
+  const activity4 = await Activities.create({
+    name: "Find a leaf.",
+    description: "Leaves can be found on the ground under trees and bushes",
+    missionTypeId: missionType2.id,
+  });
 
   const activities = await Activities.bulkCreate([
     {
@@ -183,7 +207,6 @@ import {
       missionTypeId: 1,
       name: "Find a bird nest",
     },
-
     {
       missionTypeId: 2,
       name: "See a falling star",
@@ -226,41 +249,11 @@ import {
     },
   ]);
 
-  const activity1 = await Activities.create({
-    name: "Find a leaf.",
-    description: "Leaves can be found on the ground under trees and bushes",
-    missionTypeId: missionType1.id,
-  });
-
-  const activity2 = await Activities.create({
-    name: "Find a leaf.",
-    description: "Leaves can be found on the ground under trees and bushes",
-    missionTypeId: missionType1.id,
-  });
-
-  const activity3 = await Activities.create({
-    name: "Find a leaf.",
-    description: "Leaves can be found on the ground under trees and bushes",
-    missionTypeId: missionType2.id,
-  });
-
-  const activity4 = await Activities.create({
-    name: "Find a leaf.",
-    description: "Leaves can be found on the ground under trees and bushes",
-    missionTypeId: missionType2.id,
-  });
-
   const currentMission1 = await Current_Mission.create({
     name: "Forest Scavenger Hunt",
     userId: salidam.id,
     points: 2000,
     missionTypeId: missionType1.id,
-  });
-
-  const missionActivity1 = await Mission_Activities.create({
-    complete: false,
-    missionId: currentMission1.id,
-    activityId: activity1.id,
   });
 
   const currentMission2 = await Current_Mission.create({
@@ -270,49 +263,55 @@ import {
     missionTypeId: missionType2.id,
   });
 
-  const missionActivity2 = await Mission_Activities.create({
-    complete: false,
-    missionId: currentMission2.id,
-    activityId: activity3.id,
-  });
-
-  const currentMission3 = await Current_Mission.create({
-    name: "Forest Scavenger Hunt1",
-    points: 500,
-    userId: user1.id,
-    missionTypeId: missionType1.id,
-  });
-
-  const missionActivity3 = await Mission_Activities.create({
-    complete: false,
-    missionId: currentMission3.id,
-    activityId: activity4.id,
-  });
+   const currentMission3 = await Current_Mission.create({
+     name: "Forest Scavenger Hunt1",
+     points: 500,
+     userId: user1.id,
+     missionTypeId: missionType1.id,
+   });
 
   const currentMission4 = await Current_Mission.create({
     name: "Forest Scavenger Hunt2",
     points: 200,
     userId: user1.id,
-    missionTypeId: missionType2.id,
-  });
-
-  const missionActivity4 = await Mission_Activities.create({
-    complete: false,
-    missionId: currentMission4.id,
-    activityId: activity4.id,
+    missionTypeId: missionType2.dataValues.id,
   });
 
   const currentMission5 = await Current_Mission.create({
     name: "Forest Scavenger Hunt3",
     points: 100,
     userId: user2.id,
-    missionTypeId: missionType1.id,
+    missionTypeId: missionType1.dataValues.id,
+  });
+
+  const missionActivity1 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission1.id,
+    activityId: activity1.id,
+  });
+
+  const missionActivity2 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission2.id,
+    activityId: activity3.id,
+  });
+
+  const missionActivity3 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission3.id,
+    activityId: activity4.dataValues.id,
+  });
+
+  const missionActivity4 = await Mission_Activities.create({
+    complete: false,
+    missionId: currentMission4.id,
+    activityId: activity4.dataValues.id,
   });
 
   const missionActivity5 = await Mission_Activities.create({
     complete: false,
     missionId: currentMission5.id,
-    activityId: activity2.id,
+    activityId: activity2.dataValues.id,
   });
 
   //await
