@@ -11,10 +11,26 @@ import {
   DropdownMenuTrigger,
 } from "../components/DropdownMenu.jsx";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "../components/Alertdialog.jsx";
+import { useState } from "react";
+
 export default function UserSetting() {
   const { loggedInUser } = useLoggedInUser();
+  const [openTrueFalse, setOpenTrueFalse] = useState(false);
+  function handleClick() {
+    setOpenTrueFalse(openTrueFalse === true ? false : true);
+  }
   return (
-    <Button className="ml-4" size="icon" variant="outline">
+    <div className="ml-4" size="icon">
       {/* <Link to={"/profile"}> */}
       <Avatar>
         {/* we can replace with other avatar */}
@@ -26,45 +42,9 @@ export default function UserSetting() {
             <DropdownMenuLabel>{loggedInUser.username}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Change Avatar</DropdownMenuItem>
-            {/* <div className="flex">
-            <DropdownMenuItem>
-            <img
-                src="/public/images/avatar1.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}
-              />
+            <DropdownMenuItem onSelect={handleClick}>
+              Change Avatar
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <img
-                src="/public/images/avatar2.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}
-              />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <img src="/public/images/avatar3.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}/>
-            </DropdownMenuItem>
-          </div>
-          <div className="flex ">
-            <DropdownMenuItem>
-            <img src="/public/images/avatar4.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}/>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-            <img src="/public/images/avatar5.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}/>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-            <img src="/public/images/avatar6.png" className={cn(
-                  "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-                )}/>
-            </DropdownMenuItem>
-          </div> */}
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -73,6 +53,21 @@ export default function UserSetting() {
       </Avatar>
       {/* </Link> */}
       <span className="sr-only">Toggle user menu</span>
-    </Button>
+      <AlertDialog open={openTrueFalse}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={handleClick}>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
   );
 }
