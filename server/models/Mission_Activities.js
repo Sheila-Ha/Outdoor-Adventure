@@ -31,7 +31,6 @@ Mission_Activities.init(
       references: {
         model: "activities",
         key: "id",
-        unique: true,
       },
     },
   },
