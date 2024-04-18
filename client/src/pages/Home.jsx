@@ -5,14 +5,15 @@ import TriggerMyMission from "../components/APIs/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
 import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
 
-const MissionCard = ({ title, description, categoryColor }) => {
+// MissionId is optional
+const MissionCard = ({ title, description, categoryColor, missionId=null }) => {
   return (
     <div className="relative p-4 mb-2 border">
       <span
         className={`absolute top-0 left-0 h-1 w-full ${categoryColor}`}
       ></span>{" "}
       {/* Colored bar */}
-      <h3 className="font-semibold text-md">{title}</h3>
+      <h3 className="font-semibold text-md">{missionId ? <a href={`mission-activities/${missionId}`}>{title}</a> : title}</h3>
       <p className="text-sm">{description}</p>
     </div>
   );
@@ -95,7 +96,8 @@ const Home = () => {
                 key={mission.id}
                 title={mission.name}
                 description={mission.points + " points"}
-                categoryColor={missionCategoryColors["gold"]} // Fix: Wrap the value in curly braces
+                categoryColor={missionCategoryColors["gold"]}
+                missionId={mission.id}
               />              
             ))}
         </div>
