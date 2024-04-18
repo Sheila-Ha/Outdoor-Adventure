@@ -49,7 +49,6 @@ type Explore_Level {
 
 type Mission_Activities {
     id: ID
-    complete: Boolean
     point_value: Int
     missionId: Int
     activityId: Int
@@ -72,6 +71,7 @@ type Activities {
     name: String
     description: String
     image: String
+    isComplete: Boolean
     missionTypeId: Int    
 }
 type LeaderBoard {
@@ -102,6 +102,7 @@ type Mutation {
     signUp(signUpDetails: SignUp!): String
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
+    updateActivity(id: ID, isComplete: Boolean): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
 }
 `;
