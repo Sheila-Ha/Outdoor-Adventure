@@ -16,7 +16,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-  DialogClose,
 } from "../components/Dialog.jsx";
 
 import { Card, CardContent } from "../components/Card.jsx";
