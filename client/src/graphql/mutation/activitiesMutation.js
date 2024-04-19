@@ -10,3 +10,12 @@ export const ADD_ACTIVITY = gql`
     }
   }
 `;
+
+export const UPDATE_ACTIVITY = gql`
+  mutation updateActivity($id: ID, $isComplete: Boolean) {
+    updateActivity(id: $id, isComplete: $isComplete) {
+      id
+      isComplete
+    }
+  }
+`;

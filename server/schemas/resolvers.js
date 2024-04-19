@@ -3,6 +3,7 @@ import { TriggerMyMissionMutation } from "./trigger-my-mission-resolver.js";
 import { FunFactQuery } from "./fun-fact-resolver.js";
 import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import { CurrentMissionQuery } from "./current-mission-resolver.js";
+import { UpdateImageProfileUrl } from "./update-image-resolver.js";
 import { ChangePasswordMutation } from "./changePasswordResolver.js";
 import { ChangeEmailMutation } from "./changeEmailResolver.js";
 import {
@@ -61,5 +62,11 @@ export const resolvers = {
     ...TriggerMyMissionMutation,
     ...ChangePasswordMutation,
     ...ChangeEmailMutation,
+    addActivity: async (parent, { name, description, missionTypeId }) => {
+      return Activities.create({ name, description, missionTypeId });
+    },
+    deleteCurrentMission: async (parent, { id }) => {
+      return Current_Mission.findOneAndDelete({ id: id });
+    },
   },
 };

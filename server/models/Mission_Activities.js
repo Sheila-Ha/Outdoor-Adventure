@@ -11,10 +11,10 @@ Mission_Activities.init(
       primaryKey: true,
       autoIncrement: true,
     },*/
-    complete: {
+    /*complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    },
+    },*/
     
     missionId: {
       type: DataTypes.INTEGER,
@@ -31,7 +31,6 @@ Mission_Activities.init(
       references: {
         model: "activities",
         key: "id",
-        unique: true,
       },
     },
   },

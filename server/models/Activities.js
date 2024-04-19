@@ -20,6 +20,10 @@ Activities.init(
     image: {
       type: DataTypes.STRING,
     },
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     missionTypeId: {
       type: DataTypes.INTEGER,
      allowNull: true,

@@ -1,17 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "../components/Button.jsx";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar.jsx";
 import { useLoggedInUser } from "../context/UserContext.jsx";
-// import FunFact from "./FunFact.jsx";
+import UserSetting from "./UserSetting.jsx";
 
 export default function Component() {
   const { loggedInUser, setLoggedInUser } = useLoggedInUser();
   // console.log("loggedInUser", loggedInUser);
   const { pathname } = useLocation();
+
   return (
     <div className="grid gap-4">
       <nav className="flex h-14 items-center px-4 border-b border-gray-200 w-full shrink-0 dark:border-gray-800">
-        <Link className="flex items-center gap-2 font-semibold" to={loggedInUser?.email ? "/" : "/login"}>
+        <Link
+          className="flex items-center gap-2 font-semibold"
+          to={loggedInUser?.email ? "/" : "/login"}
+        >
           <Avatar>
             {/* we can replace with other avatar */}
             <AvatarImage src="/images/logo.jpeg" />
@@ -19,7 +22,6 @@ export default function Component() {
           </Avatar>
           Outdoor Antics
         </Link>
-        {/* <div>{FunFact()}</div> */}
         <div className="flex-1" />
         <div className="flex gap-4 text-center">
           {loggedInUser?.email ? (
@@ -30,12 +32,15 @@ export default function Component() {
               <NavItem to={"/profile"} active={pathname === "/profile"}>
                 Profile
               </NavItem>
+<<<<<<< HEAD
               <NavItem to={"/settings"} active={pathname === "/Settings"} >
                 Settings
               </NavItem>
               {/* <NavItem to={"/funFact"} active={pathname === "/funFact"}>
                 Fun Fact
               </NavItem> */}
+=======
+>>>>>>> origin/Develop
               <NavItem
                 to={"/login"}
                 onClick={() => {
@@ -45,16 +50,7 @@ export default function Component() {
               >
                 Logout
               </NavItem>
-              <Button className="ml-4" size="icon" variant="outline">
-                <Link to={"/profile"}>
-                  <Avatar>
-                    {/* we can replace with other avatar */}
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>user</AvatarFallback>
-                  </Avatar>
-                </Link>
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
+              <UserSetting />
             </>
           ) : (
             <>
