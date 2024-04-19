@@ -33,6 +33,9 @@ export default function Profile() {
 		<div className="flex flex-col items-center justify-center h-screen bg-gray-100 px-4 py-8">
 			<div className="bg-white shadow-xl rounded-lg p-6 w-full max-w-md">
 				<div className="flex flex-col items-center">
+					<button className="bg-gray-400 text-white px-3 py-1 rounded-md mt-0 self-end">
+						Edit Profile
+					</button>
 					<div className="relative">
 						<img
 							className="w-32 h-32 mb-4 rounded-full"
@@ -44,9 +47,9 @@ export default function Profile() {
 					</div>
 
 					{/* Added exp bar */}
-					<div className="w-80 bg-gray-200 rounded-full h-3.5 dark:bg-gray-700">
+					<div className="w-80 bg-gray-200 rounded-full h-4 dark:bg-gray-700">
 						<div
-							className="bg-purple-500 h-3.5 rounded-full text-xs text-white font-bold flex items-center justify-center px-2"
+							className="bg-purple-500 h-4 rounded-full text-xs text-white font-bold flex items-center justify-center px-2"
 							style={{ width: "60%" }}
 						>
 							2250/4,500xp
@@ -78,6 +81,7 @@ export default function Profile() {
 						<h2 className="text-lg font-bold mb-2">Bio</h2>
 						<p>{user.bio}</p>
 					</div>
+
 				</div>
 			</div>
 		</div>
