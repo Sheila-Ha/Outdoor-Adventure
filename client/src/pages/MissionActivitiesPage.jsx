@@ -14,7 +14,6 @@ import {
   UPDATE_CURRENT_MISSION,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
-  UPDATE_CURRENT_MISSION,
 } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
