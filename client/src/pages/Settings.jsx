@@ -12,11 +12,12 @@ import { Label } from "../components/Label.jsx";
 export default function Settings() {
     const navigate = useNavigate();
     const [userInfo, setuserInfo] = useState({
-        currentEmail: '',
+        email: '',
         newEmail: '',
         currentPassword: '',
         newPassword: ''
     });
+
     const [changeEmail] = useMutation(CHANGE_EMAIL);
     const [changePassword] = useMutation(CHANGE_PASSWORD);
 
@@ -41,11 +42,12 @@ export default function Settings() {
 
     const handlePasswordChange = async () => {
         try {
-            await changePassword({
+            const { data } = await changePassword({
                 variables: { 
                     currentPassword: userInfo.currentPassword,
                     newPassword: userInfo.newPassword }
             });
+            console.log(data);
             alert('Password was successfully updated!');
         } catch (error) {
             console.error('Error with updating the password:', error);
@@ -60,11 +62,11 @@ export default function Settings() {
                 </div>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="current-email">Current Email</Label>
+                        <Label htmlFor="email">Current Email</Label>
                         <Input
-                            id="current-email"
+                            id="email"
                             type="email"
-                            name="currentEmail"
+                            name="email"
                             placeholder="Your current email"
                             value={userInfo.email}
                             onChange={handleChange}

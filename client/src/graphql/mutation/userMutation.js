@@ -10,8 +10,8 @@ mutation signUp($signUpDetails: SignUp!) {
   }
 `
 export const CHANGE_EMAIL = gql`
-mutation changeEmail($currentEmail: String!, $newEmail: String!) {
-  changeEmail(currentEmail: $currentEmail, newEmail: $newEmail) {
+mutation changeEmail($email: String!, $newEmail: String!) {
+  changeEmail(email: $email, newEmail: $newEmail) {
       email
   }
 }

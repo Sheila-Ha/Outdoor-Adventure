@@ -32,15 +32,12 @@ export default function Component() {
               <NavItem to={"/profile"} active={pathname === "/profile"}>
                 Profile
               </NavItem>
-<<<<<<< HEAD
               <NavItem to={"/settings"} active={pathname === "/Settings"} >
                 Settings
               </NavItem>
               {/* <NavItem to={"/funFact"} active={pathname === "/funFact"}>
                 Fun Fact
               </NavItem> */}
-=======
->>>>>>> origin/Develop
               <NavItem
                 to={"/login"}
                 onClick={() => {
