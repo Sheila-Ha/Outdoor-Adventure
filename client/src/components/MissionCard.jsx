@@ -6,7 +6,7 @@ const MissionCard = ({
 	missionId = null,
 	isComplete = false,
 	activitiesCount = null,
-	completedActivitiesCount = null
+	completedActivitiesCount = 0
 }) => {
 	return (
 		<div className="relative p-4 mb-2 border">
@@ -31,8 +31,8 @@ const MissionCard = ({
 				<div className="pr-6 text-right basis-1/3">
 					{/* // If isComplete is true, display "Mission Complete" */}
 					{isComplete ? "Mission Complete" : 
-					// Otherwise if activitiesCount and completedActivitiesCount are not null, display the number of completed activities	
-								(activitiesCount && completedActivitiesCount ? (completedActivitiesCount + "/" + activitiesCount + " Complete") : "")}
+					// Otherwise if activitiesCount, display the number of completed activities	
+								(activitiesCount ? (completedActivitiesCount + "/" + activitiesCount + " Complete") : "")}
 				</div>
 			</div>			
 		</div>
