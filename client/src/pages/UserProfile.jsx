@@ -33,9 +33,9 @@ export default function Profile() {
     <div className="flex flex-col items-center justify-center bg-gray-100 px-4 py-8">
       <div className="bg-white shadow-xl rounded-lg p-6 w-full max-w-md">
         <div className="flex flex-col items-center">
-          <button className="bg-gray-400 text-white px-3 py-1 rounded-md mt-0 self-end">
+          {/* <button className="bg-gray-400 text-white px-3 py-1 rounded-md mt-0 self-end">
             Edit Profile
-          </button>
+          </button> */}
           <div className="relative">
             <img
               className="w-32 h-32 mb-4 rounded-full"
