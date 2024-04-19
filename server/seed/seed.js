@@ -70,16 +70,20 @@ import {
   const salidam = await User.create({
     username: "salidam",
     email: "email@email.com",
+    image: "/images/avatar1.png",
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M",
     city: "New York",
     state: "NY",
+    memberSince: new Date(),
   });
   const user1 = await User.create({
     username: "user1",
     email: "user1@email.com",
+    image: "/images/avatar2.png",
+    memberSince: new Date(),
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "User",
@@ -90,6 +94,8 @@ import {
   const user2 = await User.create({
     username: "user2",
     email: "user2@email.com",
+    image: "/images/avatar3.png",
+    memberSince: new Date(),
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "User",
@@ -130,7 +136,6 @@ import {
     name: "Constellations and Space",
     description: "Description 2.",
   });
-
 
   const activities = await Activities.bulkCreate([
     {
@@ -291,4 +296,3 @@ import {
   });
   sequelize.close();
 })();
-
