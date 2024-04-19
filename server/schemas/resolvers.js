@@ -65,6 +65,9 @@ export const resolvers = {
     updateActivity: async (parent, { id, isComplete }) => {
       await Activities.update({ isComplete: isComplete }, { where: { id: id } });
     },
+    updateCurrentMission: async (parent, { id, isComplete }) => {
+      await Current_Mission.update({ isComplete: isComplete }, { where: { id: id } });
+    },
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.findOneAndDelete({ id: id });
     },
