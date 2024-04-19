@@ -14,7 +14,7 @@ Outdoor Antics is an app that turns every trip outside into a fun game. Earn bad
     - [✅ Acceptance Criteria](#-acceptance-criteria)
   - [🎮 Usage](#-usage)
   - [🌟 Features](#-features)
-  - [Deployed site](#deployed-site)
+  - [Deployed Site \& Repo](#deployed-site--repo)
   - [📸 Preview Images](#-preview-images)
   - [🤝 The Team](#-the-team)
   - [🤔 Questions](#-questions)
@@ -85,8 +85,9 @@ After installation:
 - Deployed on Render for universal access
 - Chat GPT API integration for dynamic content
 
-## Deployed site  
-[Outdoor Antics](https://outdoor-adventure.onrender.com)
+## Deployed Site & Repo  
+[Outdoor Antics](https://outdoor-adventure.onrender.com)  
+[Github](https://github.com/Sheila-Ha/Outdoor-Antics)
 
 ## 📸 Preview Images
 
