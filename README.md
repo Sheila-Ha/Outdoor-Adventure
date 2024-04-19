@@ -1,21 +1,30 @@
-# Outdoor Adventure 🌲🏞️
+# Outdoor Antics 🌲🏞️
 
 ## 📜 Description
 
-Outdoor Adventure is an app that turns every trip outside into a fun game. Earn badges, compete on leaderboards, and embark on missions to explore the great outdoors!
+Outdoor Antics is an app that turns every trip outside into a fun game. Earn badges, compete on leaderboards, and embark on missions to explore the great outdoors!  
 
 ## 📚 Table of Contents
   
-- [🔧 Installation](#installation)
-- [📖 User Story](#user-story)
-- [✅ Acceptance Criteria](#acceptance-criteria)
-- [🎮 Usage](#usage)
-- [🌟 Features](#features)
-- [🤝 Contributing](#contributing)
-- [🤔 Questions](#questions)
-- [📄 License](#license)
-- [🛠️ Badges of Technologies Used](#badges-of-technologies-used)
-- [📸 Preview Images](#preview-images)
+- [Outdoor Antics 🌲🏞️](#outdoor-antics-️)
+  - [📜 Description](#-description)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🔧 Installation](#-installation)
+    - [📖 User Story](#-user-story)
+    - [✅ Acceptance Criteria](#-acceptance-criteria)
+  - [🎮 Usage](#-usage)
+  - [🌟 Features](#-features)
+  - [Deployed Site \& Repo](#deployed-site--repo)
+  - [📸 Preview Images](#-preview-images)
+  - [🤝 The Team](#-the-team)
+  - [🤔 Questions](#-questions)
+  - [📄 License](#-license)
+  - [🛠️ Badges](#️-badges)
+    - [Languages](#languages)
+    - [Frameworks](#frameworks)
+    - [Tools](#tools)
+    - [Services](#services)
+    - [Other](#other)
 
 ## 🔧 Installation
 
@@ -75,6 +84,10 @@ After installation:
 - PostgreSQL for robust data storage
 - Deployed on Render for universal access
 - Chat GPT API integration for dynamic content
+
+## Deployed Site & Repo  
+[Outdoor Antics](https://outdoor-adventure.onrender.com)  
+[Github](https://github.com/Sheila-Ha/Outdoor-Antics)
 
 ## 📸 Preview Images
 
