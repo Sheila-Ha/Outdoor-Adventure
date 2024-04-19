@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-//VMD
-
 import { useLoggedInUser } from "../context/UserContext.jsx";
-//VMD
 import {
   GET_USER_MISSION_BY_MISSION_ID,
   GET_USER_MISSION_ACTIVITIES,
@@ -26,12 +23,10 @@ function MissionActivitiesPage() {
   const [saveResult, setSaveResult] = useState(null);
 
   const [updateUserLevel] = useMutation(UPDATE_USER_LEVEL);
-  const [updateUserPoint] = useMutation(UPDATE_USER_POINTS);
+  const [updateUserPoints] = useMutation(UPDATE_USER_POINTS);
 
   // Get the logged-in user from the UserContext so we have access to its data
-  //VMD
   const { loggedInUser } = useLoggedInUser();
-  //VMD
 
   // Get current mission by ID
   const { loading, error, data } = useQuery(GET_USER_MISSION_BY_MISSION_ID, {
@@ -98,40 +93,34 @@ function MissionActivitiesPage() {
       setSaveResult("Data saved.");
 
 //NEW CODE HERE
-
-
-      // After activities are saved, check to see if they are all checked off
-      // All activities checked off means the mission is complete.
-      var checkComplete = true;
-      activities.forEach(async (activity) => {
-        if (!activity.isComplete) {
-          checkComplete = false;
-          return;
-        }
-      });
-
       // When the mission is complete, update the user's experience points and check
       // to see if they get to go up one ExploreLevel.
-      if (checkComplete) {
+      if (isMissionComplete) {
         setSaveResult("Mission Complete! Congratulations!");
         const {exploreLevelId, currentNumExpPoints, id} = loggedInUser;
         const {points} = currentMission;
         var newExpPoints = currentNumExpPoints + points;
 console.log(newExpPoints);
-        /* 1. get user's current explore level
-x2. get user's current max point total
-x3. add this current score to their current max point total
-4. check to see if this score pushes them to a new level
-5. if yes, save new level
-5. save new exp points into User
-6. if no, do nothing          
-          mutation updateUserLevel($id: ID, $exploreLevelId: String) {
-            updateUserLevel(id: $id, exploreLevelId: $exploreLevelId) {
-              id
-              exploreLevelId
-            }
-          }
-*/
+      // update user's exp points
+      await updateUserPoints({
+        variables: {
+          id: id,
+          currentNumExpPoints: newExpPoints,
+        },
+      });
+
+        // Check to see if they get to go up one ExploreLevel.
+// 1. get user's current explore level
+
+// 2. get point value for next explore level
+
+        // if user's newExpPoints > the next explore level point, then set user explore level to current level + 1
+        await updateUserLevel({
+          variables: {
+            id: id,
+            exploreLevelId: exploreLevelId+1,
+          },
+        });
         /////////////
       } else {
         setSaveResult("Data saved.");
