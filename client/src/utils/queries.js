@@ -14,6 +14,7 @@ export const QUERY_USERS = gql`
       lastLogin
       memberSince
       exploreLevelId
+      currentNumExpPoints
     }
   }
 `;
