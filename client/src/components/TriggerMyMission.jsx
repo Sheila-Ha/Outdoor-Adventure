@@ -87,6 +87,7 @@ function TriggerMyMission() {
                 description={mission.points + " points"}
                 categoryColor={"bg-yellow-400"}
                 missionId={mission.id}
+                isComplete={mission.isComplete}
               />
             ))}
         </div>
