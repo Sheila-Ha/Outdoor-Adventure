@@ -1,10 +1,10 @@
 # Outdoor Antics<!-- omit from toc -->
-![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)   
+![License: ISC](https://img.shields.io/badge/License-ISC-green.svg)   
 by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  
 
 
 ## Description <!-- omit from toc -->
- 
+ This is an app designed for those who love the outdoors and seek a structured, thrilling and slightly competitive way to explore. Set up your profile and input where you live or the area you want to explore. You will then receive missions that challenge you to engage with the nature around you. Earn badges & compete on leaderboards by getting points from completing all of the missions you get assigned. This app focuses on giving people a reason to go outside and explore.  
 
 ## Table of Contents <!-- omit from toc -->
   
@@ -148,7 +148,7 @@ salidamaharjan@outlook.com
 
 ## License 
 
-![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)  
+![License: ISC](https://img.shields.io/badge/License-ISC-green.svg)  
 
 
 
