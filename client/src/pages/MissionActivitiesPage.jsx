@@ -15,6 +15,7 @@ import {
   UPDATE_ACTIVITY,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
+  UPDATE_CURRENT_MISSION,
 } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
@@ -81,6 +82,9 @@ function MissionActivitiesPage() {
           },
         });
       });
+
+//NEW CODE HERE
+
 
       // After activities are saved, check to see if they are all checked off
       // All activities checked off means the mission is complete.
@@ -158,7 +162,7 @@ x3. add this current score to their current max point total
           onClick={handleSaveClick}
         >
           Save
-        </button>{" "}
+        </button>
         <span className="pl-4 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
