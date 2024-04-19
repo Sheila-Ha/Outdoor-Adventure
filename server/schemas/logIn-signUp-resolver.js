@@ -28,6 +28,7 @@ function generateToken(user) {
   const token = jwt.sign({ userInfo: userInfo }, process.env.SECRET_KEY, {
     // Set the token to expire in 2 hours
     expiresIn: 60 * 60 * 2,
+    // expiresIn: 5,
   });
   return token;
 }
