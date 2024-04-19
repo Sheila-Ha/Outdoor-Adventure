@@ -103,6 +103,7 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
+    updateCurrentMission(id: ID, isComplete: Boolean): Current_Mission
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
     updateActivity(id: ID, isComplete: Boolean): Activities
