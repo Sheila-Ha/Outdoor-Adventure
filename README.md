@@ -2,7 +2,9 @@
 
 ## 📜 Description
 
-Outdoor Adventure is an app that turns every trip outside into a fun game. Earn badges, compete on leaderboards, and embark on missions to explore the great outdoors!
+Outdoor Antics is an app that turns every trip outside into a fun game. Earn badges, compete on leaderboards, and embark on missions to explore the great outdoors!  
+
+https://outdoor-adventure.onrender.com
 
 ## 📚 Table of Contents
   
