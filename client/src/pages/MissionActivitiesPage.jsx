@@ -79,6 +79,18 @@ function MissionActivitiesPage() {
       });
       setMissionStatus(isMissionComplete);
       setSaveResult("Data saved.");
+
+      // After activities are saved, check to see if they are all checked off.
+      var checkComplete = true;
+      activities.forEach(async (activity) => {
+        if(!(activity.isComplete)){
+          checkComplete = false;
+          return;
+        }; 
+      });
+
+      if (checkComplete)
+        setSaveResult("Mission Complete! Congratulations!");
     } catch (err) {
       console.log(err);
     }
@@ -129,5 +141,4 @@ function MissionActivitiesPage() {
     </div>
   );
 }
-
 export default MissionActivitiesPage;

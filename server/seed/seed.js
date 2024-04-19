@@ -17,53 +17,53 @@ import {
   const exploreLevels = await Explore_Level.bulkCreate([
     {
       id: 1,
-      name: "Tortoise",
-      pointsRequired: 1,
+      name: "Mouse",
+      pointsRequired: 500,
     },
     {
       id: 2,
-      name: "Mouse",
-      pointsRequired: 5,
+      name: "Chipmunk",
+      pointsRequired: 1500,
     },
     {
       id: 3,
-      name: "Pig",
-      pointsRequired: 10,
+      name: "Rabbit",
+      pointsRequired: 3000,
     },
     {
       id: 4,
-      name: "Squirrel",
-      pointsRequired: 15,
+      name: "Otter",
+      pointsRequired: 5000,
     },
     {
       id: 5,
-      name: "Black Mamba Snake",
-      pointsRequired: 20,
+      name: "Coyote",
+      pointsRequired: 7500,
     },
     {
       id: 6,
-      name: "Elephant",
-      pointsRequired: 25,
+      name: "Cougar",
+      pointsRequired: 10500,
     },
     {
       id: 7,
-      name: "Kangaroo",
-      pointsRequired: 30,
+      name: "Bear",
+      pointsRequired: 14000,
     },
     {
       id: 8,
-      name: "Grizzly Bear",
-      pointsRequired: 35,
+      name: "Moose",
+      pointsRequired: 18000,
     },
     {
       id: 9,
       name: "Cat",
-      pointsRequired: 40,
+      pointsRequired: 22500,
     },
     {
       id: 10,
       name: "Lion",
-      pointsRequired: 45,
+      pointsRequired: 27500,
     },
   ]);
 
@@ -253,7 +253,7 @@ import {
   });
   const missionActivity2 = await Mission_Activities.create({
     complete: false,
-    missionId: currentMission2.id,
+    missionId: 1,
     activityId: activity3.id,
   });
   const currentMission3 = await Current_Mission.create({
@@ -264,7 +264,7 @@ import {
   });
   const missionActivity3 = await Mission_Activities.create({
     complete: false,
-    missionId: currentMission3.id,
+    missionId: 1,
     activityId: activity4.id,
   });
   const currentMission4 = await Current_Mission.create({
@@ -306,3 +306,4 @@ import {
   console.log(mTypes);*/
   sequelize.close();
 })();
+

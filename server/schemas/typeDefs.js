@@ -109,5 +109,6 @@ type Mutation {
     updateActivity(id: ID, isComplete: Boolean): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
     updateImageProfileUrl(loginImageProfileUrl: String!): String
+    updateUserLevel(id: ID, exploreLevelId:String): User
 }
 `;
