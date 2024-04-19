@@ -1,6 +1,7 @@
 import { GraphQLError } from "graphql";
 import { Current_Mission, User } from "../models/index.js";
 import sequelize from "../config/connection.js";
+import dayjs from "dayjs";
 
 export const UserProfileInfoQuery = {
   async getUserProfileInfo(parent, args, req) {
@@ -37,10 +38,11 @@ export const UserProfileInfoQuery = {
           totalPoints: item.total_points,
           numberOfMissionCompleted: item.total_mission,
           username: item.user.username,
-          image: item.user.image || "https://github.com/shadcn.png",
+          memberSince: dayjs(item.user.memberSince).format("MM/DD/YYYY"),
+          imageUrl: item.user.image || "https://github.com/shadcn.png",
         };
       })[0];
-    //   console.log(highest, "hightest");
+      //   console.log(highest, "hightest");
     } catch (error) {
       throw new GraphQLError(error);
     }

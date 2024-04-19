@@ -70,12 +70,14 @@ import {
   const salidam = await User.create({
     username: "salidam",
     email: "email@email.com",
+    image: "/images/avatar1.png",
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M",
     city: "New York",
     state: "NY",
+    memberSince: new Date(),
   });
   const user1 = await User.create({
     username: "user1",
@@ -130,7 +132,6 @@ import {
     name: "Constellations and Space",
     description: "Description 2.",
   });
-
 
   const activities = await Activities.bulkCreate([
     {
@@ -291,4 +292,3 @@ import {
   });
   sequelize.close();
 })();
-
