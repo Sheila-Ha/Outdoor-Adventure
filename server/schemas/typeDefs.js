@@ -85,6 +85,14 @@ type LeaderBoard {
 type LoginImageProfileUrl {
     image: String
 }
+type UserProfileInfo {
+    id: Int
+    imageUrl: String
+    username: String
+    memberSince: String
+    numberOfMissionCompleted: Int
+    totalPoints: Int
+}
 type Query {
     findUsers: [User]
     loginUser: LoginUser
@@ -100,6 +108,7 @@ type Query {
     getAllMissionActivities: [Mission_Activities]
     getUserMissionActivities(userId: Int): [User]
     getUserExploreLevel(id: ID): User
+    getUserProfileInfo: UserProfileInfo
 }
 
 type Mutation {

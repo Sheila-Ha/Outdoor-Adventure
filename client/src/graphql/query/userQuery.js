@@ -17,3 +17,16 @@ export const FIND_USERS = gql`
     }
   }
 `;
+
+export const GET_USER_PROFILE_INFO = gql`
+  query GetUserProfileInfo {
+    getUserProfileInfo {
+      id
+      imageUrl
+      username
+      memberSince
+      numberOfMissionCompleted
+      totalPoints
+    }
+  }
+`;
