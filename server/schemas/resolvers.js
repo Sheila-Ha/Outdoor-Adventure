@@ -50,6 +50,11 @@ export const resolvers = {
       return Mission_Activities.findAll({ userId: userId });
     },
 
+    async getUserExploreLevel(parent, {id}) {
+      return User.findOne({id: id});
+    },
+
+
     async getCurrentMission() {
       return Current_Mission.findAll();
     },
@@ -70,6 +75,9 @@ export const resolvers = {
     },
     updateUserLevel: async (parent, {id, exploreLevelId}) => {
       await User.update({exploreLevelId:exploreLevelId}, {where: {id: id}});
+    },
+    updateUserPoints: async (parent, {id, currentNumExpPoints}) => {
+      await User.update({currentNumExpPoints:currentNumExpPoints}, {where: {id: id}});
     },
   },
 };

@@ -2,11 +2,20 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
+//VMD
+
+import { useLoggedInUser } from "../context/UserContext.jsx";
+//VMD
 import {
   GET_USER_MISSION_BY_MISSION_ID,
   GET_USER_MISSION_ACTIVITIES,
 } from "../graphql/query";
-import { UPDATE_ACTIVITY } from "../graphql/mutation/index.js";
+
+import {
+  UPDATE_ACTIVITY,
+  UPDATE_USER_LEVEL,
+  UPDATE_USER_POINTS,
+} from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
@@ -14,6 +23,14 @@ function MissionActivitiesPage() {
   const [updateActivity] = useMutation(UPDATE_ACTIVITY);
   const [activities, setActivities] = useState([]);
   const [saveResult, setSaveResult] = useState(null);
+
+  const [updateUserLevel] = useMutation(UPDATE_USER_LEVEL);
+  const [updateUserPoint] = useMutation(UPDATE_USER_POINTS);
+
+  // Get the logged-in user from the UserContext so we have access to its data
+  //VMD
+  const { loggedInUser } = useLoggedInUser();
+  //VMD
 
   // Get current mission by ID
   const { loading, error, data } = useQuery(GET_USER_MISSION_BY_MISSION_ID, {
@@ -64,19 +81,43 @@ function MissionActivitiesPage() {
           },
         });
       });
-      setSaveResult("Data saved.");
 
-      // After activities are saved, check to see if they are all checked off.
+      // After activities are saved, check to see if they are all checked off
+      // All activities checked off means the mission is complete.
       var checkComplete = true;
       activities.forEach(async (activity) => {
-        if(!(activity.isComplete)){
+        if (!activity.isComplete) {
           checkComplete = false;
           return;
-        }; 
+        }
       });
 
-      if (checkComplete)
+      // When the mission is complete, update the user's experience points and check
+      // to see if they get to go up one ExploreLevel.
+      if (checkComplete) {
         setSaveResult("Mission Complete! Congratulations!");
+        const {exploreLevelId, currentNumExpPoints, id} = loggedInUser;
+        const {points} = currentMission;
+        var newExpPoints = currentNumExpPoints + points;
+console.log(newExpPoints);
+        /* 1. get user's current explore level
+x2. get user's current max point total
+x3. add this current score to their current max point total
+4. check to see if this score pushes them to a new level
+5. if yes, save new level
+5. save new exp points into User
+6. if no, do nothing          
+          mutation updateUserLevel($id: ID, $exploreLevelId: String) {
+            updateUserLevel(id: $id, exploreLevelId: $exploreLevelId) {
+              id
+              exploreLevelId
+            }
+          }
+*/
+        /////////////
+      } else {
+        setSaveResult("Data saved.");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -117,7 +158,8 @@ function MissionActivitiesPage() {
           onClick={handleSaveClick}
         >
           Save
-        </button> <span className="pl-4 font-bold">{saveResult}</span>
+        </button>{" "}
+        <span className="pl-4 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
         </p>

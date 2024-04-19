@@ -13,6 +13,7 @@ export const FIND_USERS = gql`
       exploreLevelId
       name
       interest
+      currentNumExpPoints
     }
   }
 `;
