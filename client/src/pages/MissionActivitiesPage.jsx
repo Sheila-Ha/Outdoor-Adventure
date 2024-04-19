@@ -175,7 +175,7 @@ x3. add this current score to their current max point total
           onClick={handleSaveClick}
         >
           Save
-        </button>{" "}
+        </button>
         <span className="pl-4 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
