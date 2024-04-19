@@ -5,13 +5,14 @@ import {
   GET_USER_MISSION_BY_MISSION_ID,
   GET_USER_MISSION_ACTIVITIES,
 } from "../graphql/query";
-import { UPDATE_ACTIVITY, UPDATE_CURRENT_MISSION } from "../graphql/mutation/index.js";
+import { UPDATE_ACTIVITY, UPDATE_CURRENT_MISSION, DELETE_CURRENT_MISSION } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
 
   const [updateActivity] = useMutation(UPDATE_ACTIVITY);
   const [updateMission] = useMutation(UPDATE_CURRENT_MISSION);
+  const [deleteMission] = useMutation(DELETE_CURRENT_MISSION);
   const [activities, setActivities] = useState([]);
   const [missionStatus, setMissionStatus] = useState(false);
   const [saveResult, setSaveResult] = useState(null);
@@ -86,13 +87,29 @@ function MissionActivitiesPage() {
         if(!(activity.isComplete)){
           checkComplete = false;
           return;
-        }; 
+        } 
       });
 
       if (checkComplete)
         setSaveResult("Mission Complete! Congratulations!");
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async function handleDeleteClick() {
+    if (window.confirm("Are you sure you want to delete this mission?")) {
+      try {
+        await deleteMission({
+          variables: {
+            id: parseInt(currentMission.id),
+          },
+        });
+        // Go back to homepage
+        window.location.href = "/";
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
@@ -133,6 +150,13 @@ function MissionActivitiesPage() {
           onClick={handleSaveClick}
         >
           Save
+        </button>
+        <button
+          type="submit"
+          className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
+          onClick={handleDeleteClick}
+        >
+          Delete Mission
         </button> <span className="pl-4 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
