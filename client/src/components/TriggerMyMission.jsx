@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import { useLoggedInUser } from "../../context/UserContext.jsx";
-import { MISSION_TYPES, GET_USER_MISSION } from "../../graphql/query";
-import { TRIGGER_MY_MISSION } from "../../graphql/mutation/triggerMyMissionMutation.js";
-import MissionCard from "../MissionCard.jsx";
+import { useLoggedInUser } from "../context/UserContext.jsx";
+import { MISSION_TYPES, GET_USER_MISSION } from "../graphql/query/index.js";
+import { TRIGGER_MY_MISSION } from "../graphql/mutation/triggerMyMissionMutation.js";
+import MissionCard from "./MissionCard.jsx";
 
 // Define your mutation
 function TriggerMyMission() {
@@ -76,7 +76,7 @@ function TriggerMyMission() {
   // Display the current triggered missions, a mission type dropdown, and a button to trigger the mutation
   return (
     <div>
-      <div className="overflow-y-auto" style={{ height: "calc(35vh - 4rem)" }}>
+      <div className="overflow-y-auto" style={{ height: "calc(15vh - 4rem)" }}>
         <h2 className="text-lg font-bold">My Triggered Missions</h2>
         <div className="space-y-2">
           {currentMissions &&

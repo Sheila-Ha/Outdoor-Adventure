@@ -22,7 +22,7 @@ export const TriggerMyMissionMutation = {
     // }
 
     // Create the message from the user data
-    const questionForAI = `Create a comma-delimited ${missionType} list in ${city}, ${state} without any extra words`;
+    const questionForAI = `Create a unique, comma-delimited, non-numbered, ${missionType} list in ${city}, ${state} without any extra words`;
 
     // Call the OpenAI API (ChatGPT) to generate a response
     const completion = await ai.chat.completions.create({
@@ -54,7 +54,7 @@ export const TriggerMyMissionMutation = {
     // Save the activity data to the database "activities" table
     missionActivities.forEach(async (activity) => {
       const activitySaved = await Activities.create({
-        name: activity,
+        name: activity.trim(),
         description: missionType,
         missionTypeId: missionId,
       });
