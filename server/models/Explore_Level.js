@@ -13,16 +13,12 @@ Explore_Level.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     pointsRequired: {
       type: DataTypes.INTEGER,
     },
     badge: {
       type: DataTypes.STRING,
-    },
-    sort: {
-      type: DataTypes.INTEGER,
     },
   },
   {

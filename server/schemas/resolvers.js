@@ -68,5 +68,8 @@ export const resolvers = {
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.findOneAndDelete({ id: id });
     },
+    updateUserLevel: async (parent, {id, exploreLevelId}) => {
+      await User.update({exploreLevelId:exploreLevelId}, {where: {id: id}});
+    },
   },
 };
