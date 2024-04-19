@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 //VMD
 
 import { useLoggedInUser } from "../context/UserContext.jsx";
@@ -10,9 +9,9 @@ import {
   GET_USER_MISSION_BY_MISSION_ID,
   GET_USER_MISSION_ACTIVITIES,
 } from "../graphql/query";
-
 import {
   UPDATE_ACTIVITY,
+  UPDATE_CURRENT_MISSION,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
   UPDATE_CURRENT_MISSION,
@@ -22,7 +21,9 @@ function MissionActivitiesPage() {
   const { missionId } = useParams();
 
   const [updateActivity] = useMutation(UPDATE_ACTIVITY);
+  const [updateMission] = useMutation(UPDATE_CURRENT_MISSION);
   const [activities, setActivities] = useState([]);
+  const [missionStatus, setMissionStatus] = useState(false);
   const [saveResult, setSaveResult] = useState(null);
 
   const [updateUserLevel] = useMutation(UPDATE_USER_LEVEL);
@@ -48,22 +49,26 @@ function MissionActivitiesPage() {
   });
 
   useEffect(() => {
+    if (!loading && currentMission) {
+      setMissionStatus(currentMission.isComplete);
+    }
     if (!loading2 && data2) {
       setActivities(data2.getCurrentMissionActivities);
     }
-  }, [loading2, data2]);
+  }, [loading, currentMission, loading2, data2]);
 
   if (loading || loading2) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   if (error2) return <p>Error : {error2.message}</p>;
 
   function handleCheckboxChange(event) {
-    const { name, checked } = event.target;
+    const activityId = event.target.name;
+    const isChecked = event.target.checked;
     // Find the activity by ID and update the complete field
     setActivities((prevActivities) => {
       return prevActivities.map((activity) => {
-        if (activity.id === name) {
-          return { ...activity, isComplete: checked };
+        if (activity.id === activityId) {
+          return { ...activity, isComplete: isChecked };
         } else {
           return activity;
         }
@@ -82,6 +87,16 @@ function MissionActivitiesPage() {
           },
         });
       });
+      // Update the mission isComplete field
+      const isMissionComplete = activities.every((activity) => activity.isComplete);
+      await updateMission({
+        variables: {
+          id: parseInt(currentMission.id),
+          isComplete: isMissionComplete,
+        },
+      });
+      setMissionStatus(isMissionComplete);
+      setSaveResult("Data saved.");
 
 //NEW CODE HERE
 
@@ -134,6 +149,7 @@ x3. add this current score to their current max point total
           {currentMission.name} - {currentMission.points} points
         </h2>
         <p>{currentMission.description}</p>
+        {missionStatus ? <p className="my-4 font-bold">MISSION COMPLETE!</p> : null}
         <ul>
           {activities?.map((activity) => (
             <li key={activity.id}>
@@ -141,6 +157,7 @@ x3. add this current score to their current max point total
               <input
                 type="checkbox"
                 name={activity.id}
+                id={activity.id}
                 checked={activity.isComplete || false}
                 onChange={handleCheckboxChange}
               />
