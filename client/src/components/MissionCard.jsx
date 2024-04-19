@@ -5,6 +5,8 @@ const MissionCard = ({
 	categoryColor,
 	missionId = null,
 	isComplete = false,
+	activitiesCount = null,
+	completedActivitiesCount = null
 }) => {
 	return (
 		<div className="relative p-4 mb-2 border">
@@ -26,8 +28,11 @@ const MissionCard = ({
 					</h3>
 					<p className="text-sm">{description}</p>					
 				</div>
-        <div className="pr-6 text-right basis-1/3">
-          {isComplete ? "Complete" : ""}
+				<div className="pr-6 text-right basis-1/3">
+					{/* // If isComplete is true, display "Mission Complete" */}
+					{isComplete ? "Mission Complete" : 
+					// Otherwise if activitiesCount and completedActivitiesCount are not null, display the number of completed activities	
+								(activitiesCount && completedActivitiesCount ? (completedActivitiesCount + "/" + activitiesCount + " Complete") : "")}
 				</div>
 			</div>			
 		</div>
