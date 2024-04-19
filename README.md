@@ -4,8 +4,6 @@
 
 Outdoor Antics is an app that turns every trip outside into a fun game. Earn badges, compete on leaderboards, and embark on missions to explore the great outdoors!  
 
-https://outdoor-adventure.onrender.com
-
 ## 📚 Table of Contents
   
 - [Outdoor Antics 🌲🏞️](#outdoor-antics-️)
@@ -16,6 +14,7 @@ https://outdoor-adventure.onrender.com
     - [✅ Acceptance Criteria](#-acceptance-criteria)
   - [🎮 Usage](#-usage)
   - [🌟 Features](#-features)
+  - [Deployed site](#deployed-site)
   - [📸 Preview Images](#-preview-images)
   - [🤝 The Team](#-the-team)
   - [🤔 Questions](#-questions)
@@ -85,6 +84,9 @@ After installation:
 - PostgreSQL for robust data storage
 - Deployed on Render for universal access
 - Chat GPT API integration for dynamic content
+
+## Deployed site  
+[Outdoor Antics](https://outdoor-adventure.onrender.com)
 
 ## 📸 Preview Images
 
