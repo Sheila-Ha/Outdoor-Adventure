@@ -10,17 +10,13 @@ mutation signUp($signUpDetails: SignUp!) {
   }
 `
 export const CHANGE_EMAIL = gql`
-mutation changeEmail($email: String!, $newEmail: String!) {
-  changeEmail(email: $email, newEmail: $newEmail) {
-      email
-  }
+mutation ChangeEmail($newEmail: String!, $changeEmailId: ID) {
+  changeEmail(newEmail: $newEmail, id: $changeEmailId)
 }
 `;
 
 export const CHANGE_PASSWORD =gql`
-mutation changePassword($currentPassword: String!, $newPassword: String!) {
-  changePassword(currentPassword: $currentPassword, newPassword: $newPassword) {
-      status
-  }
+mutation ChangePassword($currentPassword: String!, $newPassword: String!, $changePasswordId: ID) {
+  changePassword(currentPassword: $currentPassword, newPassword: $newPassword, id: $changePasswordId)
 }
 `;

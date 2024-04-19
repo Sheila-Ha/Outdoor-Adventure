@@ -1,9 +1,12 @@
 import bcrypt from 'bcrypt';
 import { User } from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 export const ChangePasswordMutation = {
-  async changePassword(_, { currentPassword, newPassword }) {
-    const user = await User.findById(userId);
+  async changePassword(_, { currentPassword, newPassword }, req) {
+    console.log(req.userInfo.id, 'userid');
+    const user = await User.findOne({id: req.userInfo.id});
+
     if (!user) {
       throw new Error('User not found');
     }
