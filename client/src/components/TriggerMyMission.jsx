@@ -76,7 +76,7 @@ function TriggerMyMission() {
   // Display the current triggered missions, a mission type dropdown, and a button to trigger the mutation
   return (
     <div>
-      <div className="overflow-y-auto" style={{ height: "calc(35vh - 4rem)" }}>
+      <div className="overflow-y-auto" style={{ height: "calc(15vh - 4rem)" }}>
         <h2 className="text-lg font-bold">My Triggered Missions</h2>
         <div className="space-y-2">
           {currentMissions &&
