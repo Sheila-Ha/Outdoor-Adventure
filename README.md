@@ -1,5 +1,5 @@
-# Outdoor Adventure<!-- omit from toc -->
-![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)   
+# Outdoor Antics<!-- omit from toc -->
+![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)   
 by Aleah White, Daniel Cathey, Sheila Hanson, Vicki Dunlop, Salida Maharhan  
 
 
