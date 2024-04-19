@@ -4,6 +4,7 @@ import { FunFactQuery } from "./fun-fact-resolver.js";
 import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import { CurrentMissionQuery } from "./current-mission-resolver.js";
 import { UpdateImageProfileUrl } from "./update-image-resolver.js";
+import { UserProfileInfoQuery } from "./user-profile-resolver.js";
 import {
   User,
   Activities,
@@ -18,6 +19,7 @@ export const resolvers = {
     ...FunFactQuery,
     ...LeaderBoardQuery,
     ...CurrentMissionQuery,
+    ...UserProfileInfoQuery,
     async findUsers() {
       return User.findAll();
     },
@@ -33,7 +35,7 @@ export const resolvers = {
     async getUserMissionActivities(parent, args) {
       return Mission_Activities.findAll();
     },
-      
+
     async getAllMissionTypes() {
       return Mission_Types.findAll();
     },
@@ -50,10 +52,9 @@ export const resolvers = {
       return Mission_Activities.findAll({ userId: userId });
     },
 
-    async getUserExploreLevel(parent, {id}) {
-      return User.findOne({id: id});
+    async getUserExploreLevel(parent, { id }) {
+      return User.findOne({ id: id });
     },
-
 
     async getCurrentMission() {
       return Current_Mission.findAll();
@@ -68,19 +69,31 @@ export const resolvers = {
       return Activities.create({ name, description, missionTypeId });
     },
     updateActivity: async (parent, { id, isComplete }) => {
-      await Activities.update({ isComplete: isComplete }, { where: { id: id } });
+      await Activities.update(
+        { isComplete: isComplete },
+        { where: { id: id } }
+      );
     },
     updateCurrentMission: async (parent, { id, isComplete }) => {
-      await Current_Mission.update({ isComplete: isComplete }, { where: { id: id } });
+      await Current_Mission.update(
+        { isComplete: isComplete },
+        { where: { id: id } }
+      );
     },
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.findOneAndDelete({ id: id });
     },
-    updateUserLevel: async (parent, {id, exploreLevelId}) => {
-      await User.update({exploreLevelId:exploreLevelId}, {where: {id: id}});
+    updateUserLevel: async (parent, { id, exploreLevelId }) => {
+      await User.update(
+        { exploreLevelId: exploreLevelId },
+        { where: { id: id } }
+      );
     },
-    updateUserPoints: async (parent, {id, currentNumExpPoints}) => {
-      await User.update({currentNumExpPoints:currentNumExpPoints}, {where: {id: id}});
+    updateUserPoints: async (parent, { id, currentNumExpPoints }) => {
+      await User.update(
+        { currentNumExpPoints: currentNumExpPoints },
+        { where: { id: id } }
+      );
     },
   },
 };
