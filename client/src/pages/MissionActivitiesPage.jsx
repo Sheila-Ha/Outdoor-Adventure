@@ -14,6 +14,7 @@ import {
   UPDATE_CURRENT_MISSION,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
+  DELETE_CURRENT_MISSION
 } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
@@ -21,6 +22,7 @@ function MissionActivitiesPage() {
 
   const [updateActivity] = useMutation(UPDATE_ACTIVITY);
   const [updateMission] = useMutation(UPDATE_CURRENT_MISSION);
+  const [deleteMission] = useMutation(DELETE_CURRENT_MISSION);
   const [activities, setActivities] = useState([]);
   const [missionStatus, setMissionStatus] = useState(false);
   const [saveResult, setSaveResult] = useState(null);
@@ -141,6 +143,22 @@ x3. add this current score to their current max point total
     }
   }
 
+  async function handleDeleteClick() {
+    if (window.confirm("Are you sure you want to delete this mission?")) {
+      try {
+        await deleteMission({
+          variables: {
+            id: parseInt(currentMission.id),
+          },
+        });
+        // Go back to homepage
+        window.location.href = "/";
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+
   return (
     <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
       <div className="px-4">
@@ -179,7 +197,13 @@ x3. add this current score to their current max point total
         >
           Save
         </button>
-        <span className="pl-4 font-bold">{saveResult}</span>
+        <button
+          type="submit"
+          className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
+          onClick={handleDeleteClick}
+        >
+          Delete Mission
+        </button> <span className="pl-4 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
         </p>
