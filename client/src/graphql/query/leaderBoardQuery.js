@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 export const LEADER_BOARD = gql`
-  query LeaderBoard {
-    leaderBoard {
+  query LeaderBoard($isWeekly: Boolean) {
+    leaderBoard(isWeekly: $isWeekly) {
       id
       name
       score

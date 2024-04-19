@@ -270,7 +270,7 @@ import {
     points: 500,
     userId: user1.id,
     isComplete: true,
-    completeDate: new Date(new Date() - 6 * 24 * 60 * 60 * 1000),
+    completeDate: new Date(new Date() - 10 * 24 * 60 * 60 * 1000),
     missionTypeId: missionType1.id,
   });
   const missionActivity3 = await Mission_Activities.create({

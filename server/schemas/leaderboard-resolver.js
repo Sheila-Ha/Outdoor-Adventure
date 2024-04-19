@@ -14,11 +14,14 @@ export const LeaderBoardQuery = {
         },
       });
     }
+    let weeksToGoBack = args.isWeekly ? 7 : 52;
     try {
       const currentMission = await Current_Mission.findAll({
         where: {
           completeDate: {
-            [Op.gte]: new Date(new Date() - 7 * 24 * 60 * 60 * 1000),
+            [Op.gte]: new Date(
+              new Date() - weeksToGoBack * 24 * 60 * 60 * 1000
+            ),
           },
         },
         limit: 10,
