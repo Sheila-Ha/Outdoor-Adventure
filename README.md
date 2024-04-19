@@ -1,4 +1,4 @@
-# Outdoor Adventure 🌲🏞️
+# Outdoor Antics 🌲🏞️
 
 ## 📜 Description
 
@@ -6,16 +6,24 @@ Outdoor Adventure is an app that turns every trip outside into a fun game. Earn 
 
 ## 📚 Table of Contents
   
-- [🔧 Installation](#installation)
-- [📖 User Story](#user-story)
-- [✅ Acceptance Criteria](#acceptance-criteria)
-- [🎮 Usage](#usage)
-- [🌟 Features](#features)
-- [🤝 Contributing](#contributing)
-- [🤔 Questions](#questions)
-- [📄 License](#license)
-- [🛠️ Badges of Technologies Used](#badges-of-technologies-used)
-- [📸 Preview Images](#preview-images)
+- [Outdoor Antics 🌲🏞️](#outdoor-antics-️)
+  - [📜 Description](#-description)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🔧 Installation](#-installation)
+    - [📖 User Story](#-user-story)
+    - [✅ Acceptance Criteria](#-acceptance-criteria)
+  - [🎮 Usage](#-usage)
+  - [🌟 Features](#-features)
+  - [📸 Preview Images](#-preview-images)
+  - [🤝 The Team](#-the-team)
+  - [🤔 Questions](#-questions)
+  - [📄 License](#-license)
+  - [🛠️ Badges](#️-badges)
+    - [Languages](#languages)
+    - [Frameworks](#frameworks)
+    - [Tools](#tools)
+    - [Services](#services)
+    - [Other](#other)
 
 ## 🔧 Installation
 
