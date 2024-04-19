@@ -75,7 +75,7 @@ export default function UserSetting() {
           <DropdownMenuContent>
             <DropdownMenuLabel>{loggedInUser.username}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            {/* <DropdownMenuItem>Settings</DropdownMenuItem> */}
             <DropdownMenuItem onSelect={handleClick}>
               Change Avatar
             </DropdownMenuItem>
