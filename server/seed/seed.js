@@ -99,11 +99,11 @@ import {
   });
   const missionTypes = await Mission_Types.bulkCreate([
     {
-      name: "Exercise",
+      name: "Outdoor Exercise",
       description: "Exercise outside - walk, run, ski... for points.",
     },
     {
-      name: "Exploration",
+      name: "Outdoor Exploration",
       description:
         "Explore the great outdoors, in a park, in your neighborhood, or in the city. Explore for points.",
     },
@@ -112,7 +112,7 @@ import {
       description: "Learn new skills to be safe outdoors and earn points.",
     },
     {
-      name: "Night-time",
+      name: "Nighttime Outdoor Exploration",
       description: "Explore the outdoors at night.",
     },
     {
@@ -122,12 +122,12 @@ import {
     },
   ]);
   const missionType1 = await Mission_Types.create({
-    name: "Scavenger Hunt",
+    name: "Outdoor Scavenger Hunt",
     description: "Find items or do activities for points.",
   });
 
   const missionType2 = await Mission_Types.create({
-    name: "Star Gazing",
+    name: "Constellations and Space",
     description: "Description 2.",
   });
 
