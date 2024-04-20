@@ -25,7 +25,7 @@ export default function Profile() {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 py-8">
-      <div className="bg-white shadow-xl rounded-lg p-6 bg-white  w-full max-w-md">
+      <div className="bg-white shadow-xl rounded-lg p-6  w-full max-w-md">
         <div className="flex flex-col items-center">
           {/* <button className="self-end px-3 py-1 mt-0 text-white bg-gray-400 rounded-md">
             Edit Profile
