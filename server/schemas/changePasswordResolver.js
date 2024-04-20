@@ -16,7 +16,8 @@ export const ChangePasswordMutation = {
       throw new Error('Incorrect current password');
     }
 
-    const result = await user.update({ password: newPassword }, { where: { id: req.userInfo.id } });
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await user.update({ password: hashedPassword }, { where: { id: req.userInfo.id } });
     return 'Password changed successfully';
   }
 };
