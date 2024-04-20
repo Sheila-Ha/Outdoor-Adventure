@@ -29,6 +29,9 @@ Current_Mission.init(
     timer: {
       type: DataTypes.INTEGER,
     },
+    completeDate: {
+      type :DataTypes.DATE,
+    },
     // This column will store a reference of the `id` of the `User` that has this ExploreLevel
     userId: {
       type: DataTypes.INTEGER,
