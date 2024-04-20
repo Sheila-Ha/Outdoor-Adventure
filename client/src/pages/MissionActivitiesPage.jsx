@@ -14,7 +14,7 @@ import {
   UPDATE_CURRENT_MISSION,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
-  DELETE_CURRENT_MISSION
+  DELETE_CURRENT_MISSION,
 } from "../graphql/mutation/index.js";
 
 function MissionActivitiesPage() {
@@ -89,7 +89,9 @@ function MissionActivitiesPage() {
         });
       });
       // Update the mission isComplete field
-      const isMissionComplete = activities.every((activity) => activity.isComplete);
+      const isMissionComplete = activities.every(
+        (activity) => activity.isComplete
+      );
       await updateMission({
         variables: {
           id: parseInt(currentMission.id),
@@ -97,10 +99,9 @@ function MissionActivitiesPage() {
         },
       });
       setMissionStatus(isMissionComplete);
-      setSaveResult("Data saved.");
+      setSaveResult("Your Mission Saved. Come Back Soon! 😊");
 
-//NEW CODE HERE
-
+      //NEW CODE HERE
 
       // After activities are saved, check to see if they are all checked off
       // All activities checked off means the mission is complete.
@@ -115,11 +116,11 @@ function MissionActivitiesPage() {
       // When the mission is complete, update the user's experience points and check
       // to see if they get to go up one ExploreLevel.
       if (checkComplete) {
-        setSaveResult("Mission Complete! Congratulations!");
-        const {exploreLevelId, currentNumExpPoints, id} = loggedInUser;
-        const {points} = currentMission;
+        setSaveResult("Mission Complete! ✅ Congratulations! 🎊");
+        const { exploreLevelId, currentNumExpPoints, id } = loggedInUser;
+        const { points } = currentMission;
         var newExpPoints = currentNumExpPoints + points;
-console.log(newExpPoints);
+        console.log(newExpPoints);
         /* 1. get user's current explore level
 x2. get user's current max point total
 x3. add this current score to their current max point total
@@ -136,7 +137,7 @@ x3. add this current score to their current max point total
 */
         /////////////
       } else {
-        setSaveResult("Data saved.");
+        setSaveResult("Your Mission Saved. Come Back Soon! 😊");
       }
     } catch (err) {
       console.log(err);
@@ -166,7 +167,9 @@ x3. add this current score to their current max point total
           {currentMission.name} - {currentMission.points} points
         </h2>
         <p>{currentMission.description}</p>
-        {missionStatus ? <p className="my-4 font-bold">MISSION COMPLETE!</p> : null}
+        {missionStatus ? (
+          <p className="my-4 text-green-600 font-bold">MISSION COMPLETE! ✅</p>
+        ) : null}
         <ul>
           {activities?.map((activity) => (
             <li key={activity.id}>
@@ -203,7 +206,8 @@ x3. add this current score to their current max point total
           onClick={handleDeleteClick}
         >
           Delete Mission
-        </button> <span className="pl-4 font-bold">{saveResult}</span>
+        </button>{" "}
+        <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
         <p>
           <a href="/">&lt; Back to Home</a>
         </p>
