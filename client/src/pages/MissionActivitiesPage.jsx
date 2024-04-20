@@ -92,7 +92,6 @@ function MissionActivitiesPage() {
       setMissionStatus(isMissionComplete);
       setSaveResult("Data saved.");
 
-//NEW CODE HERE
       // When the mission is complete, update the user's experience points and check
       // to see if they get to go up one ExploreLevel.
       if (isMissionComplete) {
@@ -100,8 +99,8 @@ function MissionActivitiesPage() {
         const {exploreLevelId, currentNumExpPoints, id} = loggedInUser;
         const {points} = currentMission;
         var newExpPoints = currentNumExpPoints + points;
-console.log(newExpPoints);
-      // update user's exp points
+
+        // update user's exp points
       await updateUserPoints({
         variables: {
           id: id,
@@ -110,18 +109,19 @@ console.log(newExpPoints);
       });
 
         // Check to see if they get to go up one ExploreLevel.
-// 1. get user's current explore level
+//TODO-VMD get point value for next explore level
 
-// 2. get point value for next explore level
-
-        // if user's newExpPoints > the next explore level point, then set user explore level to current level + 1
-        await updateUserLevel({
-          variables: {
-            id: id,
-            exploreLevelId: exploreLevelId+1,
-          },
-        });
-        /////////////
+      // update user's explore level if their points are >= to the next levels points
+//TODO-VMD if next level points >= current points then      
+      console.log("explvl");
+      console.log(exploreLevelId);
+      await updateUserLevel({
+        variables: {
+          id: id,
+          exploreLevelId: exploreLevelId+1,
+        },
+      });
+//TODO-VMD end if, else do nothing      
       } else {
         setSaveResult("Data saved.");
       }

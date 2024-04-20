@@ -9,3 +9,11 @@ export const GET_EXPLORE_LEVELS = gql`
     }
   }
 `;
+
+export const GET_EXPLORE_LEVEL_POINTS = gql`
+query getUserExploreLevel($id: ID) {
+  getUserExploreLevel(id: $id) {
+    id
+    point_value
+  }
+}`

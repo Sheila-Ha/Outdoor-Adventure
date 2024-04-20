@@ -49,12 +49,11 @@ export const resolvers = {
     async getUserMissionActivities(parent, { userId }) {
       return Mission_Activities.findAll({ userId: userId });
     },
-
+/*
     async getUserExploreLevel(parent, {id}) {
-      return User.findOne({id: id});
+      return Explore_Level.findOne({id: id});
     },
-
-
+*/
     async getCurrentMission() {
       return Current_Mission.findAll();
     },

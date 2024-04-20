@@ -99,7 +99,8 @@ type Query {
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
     getUserMissionActivities(userId: Int): [User]
-    getUserExploreLevel(id: ID): User
+    getUserExploreLevel(exploreLevelId: ID): Explore_Level
+
 }
 
 type Mutation {
@@ -111,7 +112,7 @@ type Mutation {
     updateActivity(id: ID, isComplete: Boolean): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
     updateImageProfileUrl(loginImageProfileUrl: String!): String
-    updateUserLevel(id: ID, exploreLevelId:String): User
+    updateUserLevel(id: ID, exploreLevelId:Int): User
     updateUserPoints(id: ID, currentNumExpPoints:Int): User
 }
 `;
