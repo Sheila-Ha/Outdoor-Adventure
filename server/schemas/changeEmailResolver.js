@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 export const ChangeEmailMutation = {
     async changeEmail(_, { newEmail }, req) {
-        const user = await User.findOne({id: req.userInfo.id});
+        const user = await User.findOne( { where: { id: req.userInfo.id } });
         
         if (!user) {
             throw new Error('User not found');
