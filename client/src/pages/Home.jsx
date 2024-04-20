@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import TriggerMyMission from "../components/TriggerMyMission.jsx";
+import TriggerMyMission from "../components/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
 import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx";
 import MissionCard from "../components/MissionCard.jsx";
@@ -141,9 +141,9 @@ const Home = () => {
 				</div>
 			</div>
 
-			{/* <div>
+			<div>
         <TriggerMyMission />
-      </div> */}
+      </div>
 		</div>
 	);
 };
