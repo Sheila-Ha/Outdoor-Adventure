@@ -22,6 +22,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/Card.jsx";
+import { Button } from "../components/Button.jsx";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
@@ -221,10 +222,12 @@ x3. add this current score to their current max point total
           <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
         </CardContent>
       </Card>
-      <p>
+      <Button>
+      <a href="/">&lt; Back to Home</a>
+      </Button>
+      {/* <p>
         <a href="/">&lt; Back to Home</a>
-      </p>
-      
+      </p> */}
     </div>
   );
 }
