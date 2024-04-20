@@ -122,5 +122,9 @@ type Mutation {
     updateImageProfileUrl(loginImageProfileUrl: String!): String
     updateUserLevel(id: ID, exploreLevelId:String): User
     updateUserPoints(id: ID, currentNumExpPoints:Int): User
+    changePassword(id: ID, currentPassword: String!, newPassword: String!): String
+    changeEmail(newEmail: String!): String
 }
 `;
+
+// changeLocation(newLocation: String!): String

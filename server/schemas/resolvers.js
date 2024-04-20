@@ -5,6 +5,9 @@ import { LeaderBoardQuery } from "./leaderboard-resolver.js";
 import { CurrentMissionQuery } from "./current-mission-resolver.js";
 import { UpdateImageProfileUrl } from "./update-image-resolver.js";
 import { UserProfileInfoQuery } from "./user-profile-resolver.js";
+import { ChangePasswordMutation } from "./changePasswordResolver.js";
+import { ChangeEmailMutation } from "./changeEmailResolver.js";
+// import { ChangeLocationMutation } from "./changeLocationResolver.js";
 import {
   User,
   Activities,
@@ -64,21 +67,14 @@ export const resolvers = {
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
-    ...UpdateImageProfileUrl,
+    ...ChangePasswordMutation,
+    ...ChangeEmailMutation,
+    //...ChangeLocationMutation,
     addActivity: async (parent, { name, description, missionTypeId }) => {
       return Activities.create({ name, description, missionTypeId });
     },
     updateActivity: async (parent, { id, isComplete }) => {
-      await Activities.update(
-        { isComplete: isComplete },
-        { where: { id: id } }
-      );
-    },
-    updateCurrentMission: async (parent, { id, isComplete }) => {
-      await Current_Mission.update(
-        { isComplete: isComplete },
-        { where: { id: id } }
-      );
+      await Activities.update({ isComplete: isComplete }, { where: { id: id } });
     },
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.destroy({ where: { id: id } });

@@ -30,6 +30,7 @@ import {
 import { useState } from "react";
 import { Button } from "./Button.jsx";
 import { UPDATE_IMAGE_PROFILE_URL } from "../graphql/mutation/updateImage.js";
+import { Link } from "react-router-dom";
 
 const avatarImg = [
   "/images/avatar1.png",
@@ -75,7 +76,11 @@ export default function UserSetting() {
           <DropdownMenuContent>
             <DropdownMenuLabel>{loggedInUser.username}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link to={"/settings"} className="dropdown-link" >
+              Settings
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem onSelect={handleClick}>
               Change Avatar
             </DropdownMenuItem>
