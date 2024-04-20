@@ -47,24 +47,31 @@ Outdoor Antics is an app that turns every trip outside into a fun game. Earn bad
     - THEN I am presented with options to sign up or log in.
   - WHEN I sign up,  
     - THEN I am prompted to set my preferences.
-  - WHEN I log in with valid credentials,  
-    - THEN I am redirected to the homepage.
+  - WHEN I log in with valid credentials,
+    - THEN I am redirected to the homepage.  
   - WHEN I provide incorrect username or password,  
-    - THEN I am presented with an error message and remain on the login page.
+    - THEN I am presented with an error message and remain on the login page.  
   - WHEN I am on the homepage,  
-    - THEN I can view daily/weekly/monthly missions, badges, create new missions, view the leaderboard, and access my profile.
-  - WHEN I receive new missions,  
-    - THEN a pop-up displays the new mission details.
-  - WHEN I complete a mission activity,  
-    - THEN I can mark it as completed on the activity page.
-  - WHEN I wish to reset an activity,  
-    - THEN I can use the reset button to get a new activity.
-  - WHEN I have no new missions,  
-    - THEN no pop-up is displayed.
-  - WHEN I view my profile,  
-    - THEN I can edit my profile and update my preferences.
-  - WHEN I log out,  
-    - THEN I am redirected to the login page.
+    - THEN I am able to see a fun fact, leaderboard and 3 different missions and access my profile.
+  - WHEN I click on Choose Mission Type,  
+    - THEN I get a list to choose from.
+  - WHEN I click the Triggered Missions button,  
+    - THEN my mission will show up in the My Triggered Mission section on homepage.
+  - WHEN I click on my mission I selected,  
+    - THEN I will be brought to a new page with an AI generated list of activities to complete.
+  - WHEN I have completed a activity,
+    - THEN  I can check them off, save or delete mission.
+  - WHEN I click go back to home,
+    - THEN I my progress with show up to the right of the mission.
+  - WHEN I have completed all the activities,
+    - THEN it will display Mission Completed.
+  - WHEN click on Profile in nav bar,
+    - THEN I will see my profile and additional outdoor links.
+  - WHEN I click on my avatar in the top right corner,
+    - THEN I can change me avatar if I want.
+  - WHEN click Logout,
+    - THEN I am taken back to the Login page.
+
 
 ## 🎮 Usage
 
