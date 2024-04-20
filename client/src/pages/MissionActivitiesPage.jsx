@@ -16,6 +16,12 @@ import {
   UPDATE_USER_POINTS,
   DELETE_CURRENT_MISSION,
 } from "../graphql/mutation/index.js";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/Card.jsx";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
@@ -161,57 +167,64 @@ x3. add this current score to their current max point total
   }
 
   return (
-    <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
-      <div className="px-4">
-        <h2 className="my-4">
-          {currentMission.name} - {currentMission.points} points
-        </h2>
-        <p>{currentMission.description}</p>
-        {missionStatus ? (
-          <p className="my-4 text-green-600 font-bold">MISSION COMPLETE! ✅</p>
-        ) : null}
-        <ul>
-          {activities?.map((activity) => (
-            <li key={activity.id}>
-              {/* // Display the checkbox and activity name */}
-              <input
-                type="checkbox"
-                name={activity.id}
-                id={activity.id}
-                checked={activity.isComplete || false}
-                onChange={handleCheckboxChange}
-              />
-              <span className="mx-2">
-                {/* // Display the activity name and image */}
-                <label htmlFor={activity.id}>
-                  {activity.image && (
-                    <img src={activity.image} alt={activity.name} />
-                  )}
-                  {activity.name}
-                </label>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <button
-          type="submit"
-          className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
-          onClick={handleSaveClick}
-        >
-          Save
-        </button>
-        <button
-          type="submit"
-          className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
-          onClick={handleDeleteClick}
-        >
-          Delete Mission
-        </button>{" "}
-        <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
-        <p>
-          <a href="/">&lt; Back to Home</a>
-        </p>
-      </div>
+    <div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-green-600">
+            {currentMission.name} - {currentMission.points} points
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>{currentMission.description}</p>
+          {missionStatus ? (
+            <p className="my-4 text-green-600 font-bold">
+              MISSION COMPLETE! ✅
+            </p>
+          ) : null}
+          <ul>
+            {activities?.map((activity) => (
+              <li key={activity.id}>
+                {/* // Display the checkbox and activity name */}
+                <input
+                  type="checkbox"
+                  name={activity.id}
+                  id={activity.id}
+                  checked={activity.isComplete || false}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="mx-2">
+                  {/* // Display the activity name and image */}
+                  <label htmlFor={activity.id}>
+                    {activity.image && (
+                      <img src={activity.image} alt={activity.name} />
+                    )}
+                    {activity.name}
+                  </label>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="submit"
+            className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
+            onClick={handleSaveClick}
+          >
+            Save
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
+            onClick={handleDeleteClick}
+          >
+            Delete Mission
+          </button>{" "}
+          <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
+        </CardContent>
+      </Card>
+      <p>
+        <a href="/">&lt; Back to Home</a>
+      </p>
+      
     </div>
   );
 }
