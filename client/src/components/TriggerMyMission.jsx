@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { useApolloClient } from '@apollo/client';
+import { useApolloClient } from "@apollo/client";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useLoggedInUser } from "../context/UserContext.jsx";
-import { MISSION_TYPES, GET_USER_MISSION, GET_USER_MISSION_ACTIVITIES } from "../graphql/query/index.js";
+import {
+  MISSION_TYPES,
+  GET_USER_MISSION,
+  GET_USER_MISSION_ACTIVITIES,
+} from "../graphql/query/index.js";
 import { TRIGGER_MY_MISSION } from "../graphql/mutation/triggerMyMissionMutation.js";
 import MissionCard from "./MissionCard.jsx";
 
@@ -29,30 +33,31 @@ function TriggerMyMission() {
   useEffect(() => {
     if (currentMissions.length > 0) {
       Promise.all(
-        currentMissions.map(mission =>
+        currentMissions.map((mission) =>
           client.query({
             query: GET_USER_MISSION_ACTIVITIES,
-            variables: { missionId: parseInt(mission.id)  },
+            variables: { missionId: parseInt(mission.id) },
           })
         )
       )
-      .then(results => {
-        // Create a copy of currentMissions
-        const missionsWithActivities = currentMissions.map((mission, i) => {
-          // Create a copy of the mission object
-          const updatedMission = { ...mission };
-          // Add the activities to the updatedMission object
-          updatedMission.activities = results[i].data.getCurrentMissionActivities;
-          // Return the updatedMission object
-          return updatedMission;
-        });
-        // Update the state with the updated missions
-        setCurrentMissions(missionsWithActivities);
-      })
-      .catch(error => console.error(error));
+        .then((results) => {
+          // Create a copy of currentMissions
+          const missionsWithActivities = currentMissions.map((mission, i) => {
+            // Create a copy of the mission object
+            const updatedMission = { ...mission };
+            // Add the activities to the updatedMission object
+            updatedMission.activities =
+              results[i].data.getCurrentMissionActivities;
+            // Return the updatedMission object
+            return updatedMission;
+          });
+          // Update the state with the updated missions
+          setCurrentMissions(missionsWithActivities);
+        })
+        .catch((error) => console.error(error));
     }
   }, [currentMissions, client]); // Include 'client' in the dependency array
-  
+
   // Get the mission types from the database
   const missionTypes = useQuery(MISSION_TYPES);
 
@@ -106,7 +111,7 @@ function TriggerMyMission() {
   // Display the current triggered missions, a mission type dropdown, and a button to trigger the mutation
   return (
     <div>
-      <div className="overflow-y-auto" style={{ height: "calc(15vh - 4rem)" }}>
+      <div >
         <h2 className="text-lg font-bold">My Triggered Missions</h2>
         <div className="space-y-2">
           {currentMissions &&
@@ -119,7 +124,10 @@ function TriggerMyMission() {
                 missionId={mission.id}
                 isComplete={mission.isComplete}
                 activitiesCount={mission.activities?.length}
-                completedActivitiesCount={mission.activities?.filter(activity => activity.isComplete)?.length}
+                completedActivitiesCount={
+                  mission.activities?.filter((activity) => activity.isComplete)
+                    ?.length
+                }
               />
             ))}
         </div>
