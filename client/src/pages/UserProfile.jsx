@@ -19,18 +19,12 @@ export default function Profile() {
 
   // Temporary hard-coded data. TODO: Replace with actual user data
   const user = {
-    // 	id: 1,
-    // 	name: "OliveLoaf23",
-    // 	level: 8,
-    // 	avatar: "https://picsum.photos/200",
     badges: ["Newcomer 👋", "Adventurer 🌄", "Explorer 🔭"],
     bio: "Lover of nature and all things outdoors.",
-    // 	joinDate: "2021-04-22",
-    // 	missionsCompleted: 236,
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 px-4 py-8">
+    <div className="flex flex-col items-center justify-center px-4 py-8">
       <div className="bg-white shadow-xl rounded-lg p-6 w-full max-w-md">
         <div className="flex flex-col items-center">
           {/* <button className="bg-gray-400 text-white px-3 py-1 rounded-md mt-0 self-end">
