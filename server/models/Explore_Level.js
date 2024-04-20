@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
 class Explore_Level extends Model {}
-
+// create fields/columns for Explore_Level model
 Explore_Level.init(
   {
     id: {

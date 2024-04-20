@@ -5,6 +5,7 @@ import { Op } from "sequelize";
 import dayjs from "dayjs";
 
 export const LeaderBoardQuery = {
+  // Get all current missions for the logged in user (overall className is CurrentMissionQuery)
   async leaderBoard(parent, args, req) {
     console.log(args, "args");
     if (!req.userInfo) {
@@ -14,6 +15,7 @@ export const LeaderBoardQuery = {
         },
       });
     }
+    // GET all current missions for the logged in user (actual call to the database)
     let weeksToGoBack = args.isWeekly ? 7 : 52;
     try {
       const currentMission = await Current_Mission.findAll({
@@ -29,6 +31,7 @@ export const LeaderBoardQuery = {
           [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
         ],
         include: [
+          // 
           {
             model: User,
             attributes: ["username", "image"],

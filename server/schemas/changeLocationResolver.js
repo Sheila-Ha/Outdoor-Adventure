@@ -1,3 +1,5 @@
+// FUTURE DEVELOPMENT TO UPDATE USERS LOCATION
+
 // import { User } from '../models/User.js';
 
 // export const ChangeLocationMutation = {

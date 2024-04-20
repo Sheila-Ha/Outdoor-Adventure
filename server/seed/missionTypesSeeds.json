@@ -1,52 +1,51 @@
- [
-    {
-      "id": 1,
-      "name": "Scavenger Hunt",
-      "description": "Find the items in your list outside and earn points towards your Mission",
-      "image": "",
-      "pointValue": 1
-    },
-    {
-        "id": 2,
-        "name": "Exercise",
-        "description": "Bring your exercise routines to the outdoors and earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      },
-      {
-        "id": 3,
-        "name": "Exploration",
-        "description": "Explore the outdoors in your community to earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      },
-      {
-        "id": 4,
-        "name": "Survival Skills",
-        "description": "Learn skills to camp and play outside to earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      },
-      {
-        "id": 5,
-        "name": "Nighttime",
-        "description": "Explore the outdoors at night. Find items and accomplish tasks to earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      },
-      {
-        "id": 6,
-        "name": "Astronomy",
-        "description": "Find items in the night sky to earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      },
-      {
-        "id": 7,
-        "name": "Wildlife Spotting",
-        "description": "Find creatures in the wild, birds, reptiles and more outside to earn points towards your Mission",
-        "image": "",
-        "pointValue": 1
-      }
-  ]
-  
+[
+  {
+    "id": 1,
+    "name": "Scavenger Hunt",
+    "description": "Find the items in your list outside and earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 2,
+    "name": "Exercise",
+    "description": "Bring your exercise routines to the outdoors and earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 3,
+    "name": "Exploration",
+    "description": "Explore the outdoors in your community to earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 4,
+    "name": "Survival Skills",
+    "description": "Learn skills to camp and play outside to earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 5,
+    "name": "Nighttime",
+    "description": "Explore the outdoors at night. Find items and accomplish tasks to earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 6,
+    "name": "Astronomy",
+    "description": "Find items in the night sky to earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  },
+  {
+    "id": 7,
+    "name": "Wildlife Spotting",
+    "description": "Find creatures in the wild, birds, reptiles and more outside to earn points towards your Mission",
+    "image": "",
+    "pointValue": 1
+  }
+]
