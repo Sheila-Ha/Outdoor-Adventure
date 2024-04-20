@@ -1,19 +1,24 @@
 import { User } from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 export const ChangeEmailMutation = {
-  async changeEmail(_, { email, newEmail }) {
-    const user = await User.find(userId);
-    if (!user) {
-      throw new Error('User not found');
+    async changeEmail(_, { newEmail }, req) {
+        const user = await User.findOne({id: req.userInfo.id});
+        
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        if (!isValidEmail(newEmail)) {
+            throw new Error("Invalid email format.");
+        }
+
+        await user.update({ email: newEmail });
+
+        return 'Email updated successfully';
     }
+};
 
-    const valid = await compare(email, user.email);
-    if (!valid) {
-      throw new Error('Incorrect current Email');
-    }
-
-    await user.update({ password: newEmail });
-
-    return 'Email changed successfully';
-  }
+function isValidEmail(email) {
+    return email.includes('@');
 };

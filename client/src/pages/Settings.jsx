@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { useState } from 'react';
-// import { FIND_USER_BY_ID } from "../graphql/query"; 
 import { CHANGE_EMAIL, CHANGE_PASSWORD } from "../graphql/mutation";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "../components/Button.jsx";
@@ -8,11 +7,10 @@ import { Input } from "../components/Input.jsx";
 import { Label } from "../components/Label.jsx";
 
 
-
 export default function Settings() {
     const navigate = useNavigate();
     const [userInfo, setuserInfo] = useState({
-        email: '',
+        //userId: '',
         newEmail: '',
         currentPassword: '',
         newPassword: ''
@@ -32,7 +30,9 @@ export default function Settings() {
     const handleEmailChange = async () => {
         try {
             await changeEmail({
-                variables: { newEmail: userInfo.email }
+                variables: {
+                    newEmail: userInfo.newEmail
+                }
             });
             alert('Email was successfully updated!');
         } catch (error) {
@@ -62,15 +62,6 @@ export default function Settings() {
                 </div>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="email">Current Email</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            name="email"
-                            placeholder="Your current email"
-                            value={userInfo.email}
-                            onChange={handleChange}
-                        />
                         <Label htmlFor="new-email">New Email</Label>
                         <Input
                             id="new-email"

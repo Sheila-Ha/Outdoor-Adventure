@@ -9,6 +9,7 @@ mutation signUp($signUpDetails: SignUp!) {
     signUp(signUpDetails: $signUpDetails)
   }
 `
+
 export const CHANGE_EMAIL = gql`
 mutation ChangeEmail($newEmail: String!, $changeEmailId: ID) {
   changeEmail(newEmail: $newEmail, id: $changeEmailId)
