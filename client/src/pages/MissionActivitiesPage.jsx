@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 //VMD
 
@@ -14,8 +14,15 @@ import {
   UPDATE_CURRENT_MISSION,
   UPDATE_USER_LEVEL,
   UPDATE_USER_POINTS,
-  DELETE_CURRENT_MISSION
+  DELETE_CURRENT_MISSION,
 } from "../graphql/mutation/index.js";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/Card.jsx";
+import { Button } from "../components/Button.jsx";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
@@ -89,7 +96,9 @@ function MissionActivitiesPage() {
         });
       });
       // Update the mission isComplete field
-      const isMissionComplete = activities.every((activity) => activity.isComplete);
+      const isMissionComplete = activities.every(
+        (activity) => activity.isComplete
+      );
       await updateMission({
         variables: {
           id: parseInt(currentMission.id),
@@ -99,8 +108,7 @@ function MissionActivitiesPage() {
       setMissionStatus(isMissionComplete);
       setSaveResult("Data saved.");
 
-//NEW CODE HERE
-
+      //NEW CODE HERE
 
       // After activities are saved, check to see if they are all checked off
       // All activities checked off means the mission is complete.
@@ -116,10 +124,10 @@ function MissionActivitiesPage() {
       // to see if they get to go up one ExploreLevel.
       if (checkComplete) {
         setSaveResult("Mission Complete! Congratulations!");
-        const {exploreLevelId, currentNumExpPoints, id} = loggedInUser;
-        const {points} = currentMission;
+        const { exploreLevelId, currentNumExpPoints, id } = loggedInUser;
+        const { points } = currentMission;
         var newExpPoints = currentNumExpPoints + points;
-console.log(newExpPoints);
+        console.log(newExpPoints);
         /* 1. get user's current explore level
 x2. get user's current max point total
 x3. add this current score to their current max point total
@@ -160,54 +168,64 @@ x3. add this current score to their current max point total
   }
 
   return (
-    <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
-      <div className="px-4">
-        <h2 className="my-4">
-          {currentMission.name} - {currentMission.points} points
-        </h2>
-        <p>{currentMission.description}</p>
-        {missionStatus ? <p className="my-4 font-bold">MISSION COMPLETE!</p> : null}
-        <ul>
-          {activities?.map((activity) => (
-            <li key={activity.id}>
-              {/* // Display the checkbox and activity name */}
-              <input
-                type="checkbox"
-                name={activity.id}
-                id={activity.id}
-                checked={activity.isComplete || false}
-                onChange={handleCheckboxChange}
-              />
-              <span className="mx-2">
-                {/* // Display the activity name and image */}
-                <label htmlFor={activity.id}>
-                  {activity.image && (
-                    <img src={activity.image} alt={activity.name} />
-                  )}
-                  {activity.name}
-                </label>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <button
-          type="submit"
-          className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
-          onClick={handleSaveClick}
-        >
-          Save
-        </button>
-        <button
-          type="submit"
-          className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
-          onClick={handleDeleteClick}
-        >
-          Delete Mission
-        </button> <span className="pl-4 font-bold">{saveResult}</span>
-        <p>
-          <a href="/">&lt; Back to Home</a>
-        </p>
-      </div>
+    <div className="px-10 py-4 flex flex-col gap-3">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-green-600">
+            {currentMission.name} - {currentMission.points} points
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            {" "}
+            <p>{currentMission.description}</p>
+            {missionStatus ? (
+              <p className="my-4 font-bold">MISSION COMPLETE!</p>
+            ) : null}
+            <ul>
+              {activities?.map((activity) => (
+                <li key={activity.id}>
+                  {/* // Display the checkbox and activity name */}
+                  <input
+                    type="checkbox"
+                    name={activity.id}
+                    id={activity.id}
+                    checked={activity.isComplete || false}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="mx-2">
+                    {/* // Display the activity name and image */}
+                    <label htmlFor={activity.id}>
+                      {activity.image && (
+                        <img src={activity.image} alt={activity.name} />
+                      )}
+                      {activity.name}
+                    </label>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <button
+              type="submit"
+              className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
+              onClick={handleSaveClick}
+            >
+              Save
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
+              onClick={handleDeleteClick}
+            >
+              Delete Mission
+            </button>{" "}
+            <span className="pl-4 font-bold">{saveResult}</span>
+          </p>
+        </CardContent>
+      </Card>
+      <Button variant="default" className="flex-none w-32">
+        <Link to="/">&lt; Back to Home</Link>
+      </Button>
     </div>
   );
 }
