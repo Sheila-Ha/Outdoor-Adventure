@@ -2,6 +2,7 @@ import { GraphQLError } from "graphql";
 import { Current_Mission, User } from "../models/index.js";
 import sequelize from "../config/connection.js";
 import dayjs from "dayjs";
+import { where } from "sequelize";
 
 export const UserProfileInfoQuery = {
   async getUserProfileInfo(parent, args, req) {
@@ -31,7 +32,18 @@ export const UserProfileInfoQuery = {
         order: [["total_points", "DESC"]],
       });
       const highestPoint = currentMission.map((point) => point.toJSON());
-      // console.log(highestPoint);
+      console.log(highestPoint);
+      if(highestPoint.length === 0) {
+        const newUser = await User.findOne({where: {id: req.userInfo.id}});
+        return {
+          id: newUser.id,
+          totalPoints: 0,
+          numberOfMissionCompleted: 0,
+          username: newUser.username,
+          memberSince: dayjs(newUser.memberSince).format("MM/DD/YYYY"),
+          imageUrl: newUser.image || "https://github.com/shadcn.png",
+        }
+      }
       return highestPoint.map((item, index) => {
         return {
           id: item.user.id,
