@@ -10,7 +10,6 @@ import { Label } from "../components/Label.jsx";
 export default function Settings() {
     const navigate = useNavigate();
     const [userInfo, setuserInfo] = useState({
-        //userId: '',
         newEmail: '',
         currentPassword: '',
         newPassword: ''

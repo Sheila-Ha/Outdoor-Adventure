@@ -14,7 +14,7 @@ export function authMiddleware({ req }) {
     const  data = jwt.verify(token, process.env.SECRET_KEY, {
       maxAge: 60 * 60 * 2,
     });
-    console.log(data);
+    // console.log(data);
    req.userInfo = data.userInfo; 
   } catch {
     console.log("Invalid token");

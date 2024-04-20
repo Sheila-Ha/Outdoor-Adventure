@@ -1,12 +1,10 @@
 import { GraphQLError } from "graphql";
 import { Current_Mission, User } from "../models/index.js";
 import sequelize from "../config/connection.js";
-import { Op } from "sequelize";
 import dayjs from "dayjs";
 
-export const LeaderBoardQuery = {
-  async leaderBoard(parent, args, req) {
-    console.log(args, "args");
+export const UserProfileInfoQuery = {
+  async getUserProfileInfo(parent, args, req) {
     if (!req.userInfo) {
       throw new GraphQLError("You are not authorized to perform this action.", {
         extensions: {
@@ -14,24 +12,18 @@ export const LeaderBoardQuery = {
         },
       });
     }
-    let weeksToGoBack = args.isWeekly ? 7 : 52;
     try {
       const currentMission = await Current_Mission.findAll({
-        where: {
-          completeDate: {
-            [Op.gte]: new Date(
-              new Date() - weeksToGoBack * 24 * 60 * 60 * 1000
-            ),
-          },
-        },
+        where: { userId: req.userInfo.id },
         limit: 10,
         attributes: [
           [sequelize.fn("SUM", sequelize.col("points")), "total_points"],
+          [sequelize.fn("COUNT", sequelize.col("*")), "total_mission"],
         ],
         include: [
           {
             model: User,
-            attributes: ["username", "image"],
+            attributes: ["username", "image", "memberSince", "id"],
             required: true,
           },
         ],
@@ -42,13 +34,15 @@ export const LeaderBoardQuery = {
       // console.log(highestPoint);
       return highestPoint.map((item, index) => {
         return {
-          id: index,
-          score: item.total_points,
-          name: item.user.username,
-          image: item.user.image || "https://github.com/shadcn.png",
-          subtitle: "Elk",
+          id: item.user.id,
+          totalPoints: item.total_points,
+          numberOfMissionCompleted: item.total_mission,
+          username: item.user.username,
+          memberSince: dayjs(item.user.memberSince).format("MM/DD/YYYY"),
+          imageUrl: item.user.image || "https://github.com/shadcn.png",
         };
-      });
+      })[0];
+      //   console.log(highest, "hightest");
     } catch (error) {
       throw new GraphQLError(error);
     }

@@ -13,6 +13,7 @@ type User {
     lastLogin: String
     memberSince: String
     exploreLevelId: Int
+    currentNumExpPoints: Int
 }
 type LoginUser{
     email: String
@@ -84,12 +85,20 @@ type LeaderBoard {
 type LoginImageProfileUrl {
     image: String
 }
+type UserProfileInfo {
+    id: Int
+    imageUrl: String
+    username: String
+    memberSince: String
+    numberOfMissionCompleted: Int
+    totalPoints: Int
+}
 type Query {
     findUsers: [User]
     loginUser: LoginUser
     getCurrentMission: [Current_Mission]
     funFact: [String]
-    leaderBoard: [LeaderBoard]
+    leaderBoard(isWeekly: Boolean): [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
     getAllCurrentMissions: [Current_Mission]
     getCurrentMissionByMissionId(missionId: Int): Current_Mission
@@ -98,17 +107,24 @@ type Query {
     getAllActivities: [Activities]
     getAllMissionActivities: [Mission_Activities]
     getUserMissionActivities(userId: Int): [User]
+    getUserExploreLevel(id: ID): User
+    getUserProfileInfo: UserProfileInfo
 }
 
 type Mutation {
     login(email: String!, password: String!): String
     signUp(signUpDetails: SignUp!): String
+    updateCurrentMission(id: ID, isComplete: Boolean): Current_Mission
     deleteCurrentMission(id: ID): String
     addActivity(name: String, description: String, missionTypeId: Int ): Activities
     updateActivity(id: ID, isComplete: Boolean): Activities
     triggerMyMission(userId: ID!, city: String!, state: String!, missionType: String!, missionId: Int!): String
     updateImageProfileUrl(loginImageProfileUrl: String!): String
+    updateUserLevel(id: ID, exploreLevelId:String): User
+    updateUserPoints(id: ID, currentNumExpPoints:Int): User
     changePassword(id: ID, currentPassword: String!, newPassword: String!): String
-    changeEmail(id: ID, newEmail: String!): String
+    changeEmail(newEmail: String!): String
 }
 `;
+
+// changeEmail(id: ID, newEmail: String!): String

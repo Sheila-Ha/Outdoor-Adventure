@@ -49,28 +49,6 @@ Activities.belongsTo(Mission_Types, {
   foreignKey: "activityId",
 });
 
-// CurrentMission connection with Activities
-// CurrentMission has many Activities AND Activities has many CurrentMissions
-/*Current_Mission.hasMany(Activities, {
-  through: {
-    model: Mission_Activities,
-//    unique: false
-  },
-    // Define an alias for when data is retrieved
-  as: 'missionId'
-});
-
-Activities.hasMany(Current_Mission, {
- through: {
-  model: Mission_Activities,
-//  unique: false
- },
-   // Define an alias for when data is retrieved
- as: 'activityId'
-});
-*/
-//Current_Mission.belongsToMany(Activities, { through: Mission_Activities });
-//Activities.belongsToMany(Current_Mission, { through: Mission_Activities });
 Current_Mission.belongsToMany(Activities, { through: Mission_Activities, foreignKey: 'missionId' });
 Activities.belongsToMany(Current_Mission, { through: Mission_Activities, foreignKey: 'activityId' });
 //

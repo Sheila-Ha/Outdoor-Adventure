@@ -20,11 +20,15 @@ function generateToken(user) {
     email: user.email,
     lastLogin: user.lastLogin,
     memberSince: user.memberSince,
+    currentLeaderBoardLevel: user.currentLeaderBoardLevel,
+    currentNumExpPoints: user.currentNumExpPoints,
+    exploreLevelId: user.exploreLevelId,
   };
   // Generate a token
   const token = jwt.sign({ userInfo: userInfo }, process.env.SECRET_KEY, {
     // Set the token to expire in 2 hours
     expiresIn: 60 * 60 * 2,
+    // expiresIn: 5,
   });
   return token;
 }
@@ -68,6 +72,8 @@ export const LogInSignUpMutation = {
       state: signUpDetails.state,
       lastLogin: Date.now(),
       memberSince: Date.now(),
+      exploreLevelId: 0,
+      currentNumExpPoints: 0,
     });
     //  Generate a token
     const token = generateToken(newUser);

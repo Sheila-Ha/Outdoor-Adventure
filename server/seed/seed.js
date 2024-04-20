@@ -17,69 +17,73 @@ import {
   const exploreLevels = await Explore_Level.bulkCreate([
     {
       id: 1,
-      name: "Tortoise",
-      pointsRequired: 1,
+      name: "Mouse",
+      pointsRequired: 500,
     },
     {
       id: 2,
-      name: "Mouse",
-      pointsRequired: 5,
+      name: "Chipmunk",
+      pointsRequired: 1500,
     },
     {
       id: 3,
-      name: "Pig",
-      pointsRequired: 10,
+      name: "Rabbit",
+      pointsRequired: 3000,
     },
     {
       id: 4,
-      name: "Squirrel",
-      pointsRequired: 15,
+      name: "Otter",
+      pointsRequired: 5000,
     },
     {
       id: 5,
-      name: "Black Mamba Snake",
-      pointsRequired: 20,
+      name: "Coyote",
+      pointsRequired: 7500,
     },
     {
       id: 6,
-      name: "Elephant",
-      pointsRequired: 25,
+      name: "Cougar",
+      pointsRequired: 10500,
     },
     {
       id: 7,
-      name: "Kangaroo",
-      pointsRequired: 30,
+      name: "Bear",
+      pointsRequired: 14000,
     },
     {
       id: 8,
-      name: "Grizzly Bear",
-      pointsRequired: 35,
+      name: "Moose",
+      pointsRequired: 18000,
     },
     {
       id: 9,
       name: "Cat",
-      pointsRequired: 40,
+      pointsRequired: 22500,
     },
     {
       id: 10,
       name: "Lion",
-      pointsRequired: 45,
+      pointsRequired: 27500,
     },
   ]);
 
   const salidam = await User.create({
     username: "salidam",
     email: "email@email.com",
+    image: "/images/avatar1.png",
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "Salida",
     lastName: "M",
     city: "New York",
     state: "NY",
+    memberSince: new Date(),
   });
   const user1 = await User.create({
     username: "user1",
     email: "user1@email.com",
+    image: "/images/avatar2.png",
+    memberSince: new Date(),
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "User",
@@ -90,6 +94,8 @@ import {
   const user2 = await User.create({
     username: "user2",
     email: "user2@email.com",
+    image: "/images/avatar3.png",
+    memberSince: new Date(),
     password: "password",
     currentLeaderBoardLevel: 1,
     firstName: "User",
@@ -99,11 +105,11 @@ import {
   });
   const missionTypes = await Mission_Types.bulkCreate([
     {
-      name: "Exercise",
+      name: "Outdoor Exercise",
       description: "Exercise outside - walk, run, ski... for points.",
     },
     {
-      name: "Exploration",
+      name: "Outdoor Exploration",
       description:
         "Explore the great outdoors, in a park, in your neighborhood, or in the city. Explore for points.",
     },
@@ -112,7 +118,7 @@ import {
       description: "Learn new skills to be safe outdoors and earn points.",
     },
     {
-      name: "Night-time",
+      name: "Nighttime Outdoor Exploration",
       description: "Explore the outdoors at night.",
     },
     {
@@ -122,15 +128,14 @@ import {
     },
   ]);
   const missionType1 = await Mission_Types.create({
-    name: "Scavenger Hunt",
+    name: "Outdoor Scavenger Hunt",
     description: "Find items or do activities for points.",
   });
 
   const missionType2 = await Mission_Types.create({
-    name: "Star Gazing",
+    name: "Constellations and Space",
     description: "Description 2.",
   });
-
 
   const activities = await Activities.bulkCreate([
     {
@@ -238,6 +243,8 @@ import {
     name: "Forest Scavenger Hunt",
     userId: salidam.id,
     points: 2000,
+    isComplete: true,
+    completeDate: new Date(new Date() - 24 * 60 * 60 * 1000),
     missionTypeId: missionType1.id,
   });
   const missionActivity1 = await Mission_Activities.create({
@@ -249,22 +256,26 @@ import {
     name: "Forest Scavenger Hunt0",
     userId: salidam.id,
     points: 1000,
+    isComplete: true,
+    completeDate: new Date(new Date() - 2 * 24 * 60 * 60 * 1000),
     missionTypeId: missionType2.id,
   });
   const missionActivity2 = await Mission_Activities.create({
     complete: false,
-    missionId: currentMission2.id,
+    missionId: 1,
     activityId: activity3.id,
   });
   const currentMission3 = await Current_Mission.create({
     name: "Forest Scavenger Hunt1",
     points: 500,
     userId: user1.id,
+    isComplete: true,
+    completeDate: new Date(new Date() - 10 * 24 * 60 * 60 * 1000),
     missionTypeId: missionType1.id,
   });
   const missionActivity3 = await Mission_Activities.create({
     complete: false,
-    missionId: currentMission3.id,
+    missionId: 1,
     activityId: activity4.id,
   });
   const currentMission4 = await Current_Mission.create({
@@ -289,20 +300,5 @@ import {
     missionId: currentMission5.id,
     activityId: activity2.id,
   });
-  //await
-/*  console.log("user data seeded");
-  const userData = await User.findAll();
-  console.log(userData);
-  const exploreData = await Explore_Level.findAll();
-  console.log(exploreData);
-*/  const activitiesData = await Activities.findAll();
-  console.log(activitiesData);
-  /*const maData = await Mission_Activities.findAll();
-  console.log(maData);
-  const cmData = await Current_Mission.findAll();
-  // console.log(cmData.map((data) => data.toJSON()));
-  console.log(cmData);
-  const mTypes = await Mission_Types.findAll();
-  console.log(mTypes);*/
   sequelize.close();
 })();

@@ -73,6 +73,10 @@ User.init(
         key: "id",
       },
     },
+    currentNumExpPoints: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   },
   {
     hooks: {
