@@ -80,6 +80,12 @@ export const resolvers = {
         { where: { id: id } }
       );
     },
+    updateCurrentMission: async (parent, { id, isComplete }) => {
+      await Current_Mission.update(
+        { isComplete: isComplete },
+        { where: { id: id } }
+      );
+    },
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.destroy({ where: { id: id } });
     },
