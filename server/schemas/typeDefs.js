@@ -98,7 +98,7 @@ type Query {
     loginUser: LoginUser
     getCurrentMission: [Current_Mission]
     funFact: [String]
-    leaderBoard: [LeaderBoard]
+    leaderBoard(isWeekly: Boolean): [LeaderBoard]
     getAllExploreLevels: [Explore_Level]
     getAllCurrentMissions: [Current_Mission]
     getCurrentMissionByMissionId(missionId: Int): Current_Mission

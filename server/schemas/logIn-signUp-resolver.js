@@ -72,7 +72,7 @@ export const LogInSignUpMutation = {
       state: signUpDetails.state,
       lastLogin: Date.now(),
       memberSince: Date.now(),
-      exploreLevelId: 0,
+      exploreLevelId: 1,
       currentNumExpPoints: 0,
     });
     //  Generate a token
