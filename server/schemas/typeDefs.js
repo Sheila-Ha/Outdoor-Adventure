@@ -127,4 +127,4 @@ type Mutation {
 }
 `;
 
-// changeEmail(id: ID, newEmail: String!): String
+// changeLocation(newLocation: String!): String

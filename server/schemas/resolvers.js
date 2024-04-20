@@ -7,6 +7,7 @@ import { UpdateImageProfileUrl } from "./update-image-resolver.js";
 import { UserProfileInfoQuery } from "./user-profile-resolver.js";
 import { ChangePasswordMutation } from "./changePasswordResolver.js";
 import { ChangeEmailMutation } from "./changeEmailResolver.js";
+// import { ChangeLocationMutation } from "./changeLocationResolver.js";
 import {
   User,
   Activities,
@@ -68,6 +69,7 @@ export const resolvers = {
     ...TriggerMyMissionMutation,
     ...ChangePasswordMutation,
     ...ChangeEmailMutation,
+    //...ChangeLocationMutation,
     addActivity: async (parent, { name, description, missionTypeId }) => {
       return Activities.create({ name, description, missionTypeId });
     },

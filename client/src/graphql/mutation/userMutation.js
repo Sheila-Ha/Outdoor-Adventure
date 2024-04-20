@@ -21,3 +21,9 @@ mutation ChangePassword($currentPassword: String!, $newPassword: String!, $chang
   changePassword(currentPassword: $currentPassword, newPassword: $newPassword, id: $changePasswordId)
 }
 `;
+
+// export const CHANGE_LOCATION =gql`
+// mutation ChangeLocation($newLocation: String!) {
+//   changeLocation(newLocation: $newLocation)
+// }
+// ;`
