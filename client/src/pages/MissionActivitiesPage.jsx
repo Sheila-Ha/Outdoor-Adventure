@@ -168,7 +168,7 @@ x3. add this current score to their current max point total
   }
 
   return (
-    <div>
+    <div className="px-10 py-6 flex flex-col gap-2">
       <Card>
         <CardHeader>
           <CardTitle className="text-green-600">
@@ -222,7 +222,7 @@ x3. add this current score to their current max point total
           <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
         </CardContent>
       </Card>
-      <Button>
+      <Button className="flex-none w-32">
       <a href="/">&lt; Back to Home</a>
       </Button>
       {/* <p>
