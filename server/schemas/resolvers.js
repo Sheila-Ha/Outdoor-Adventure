@@ -69,12 +69,16 @@ export const resolvers = {
     ...TriggerMyMissionMutation,
     ...ChangePasswordMutation,
     ...ChangeEmailMutation,
+    ...UpdateImageProfileUrl,
     //...ChangeLocationMutation,
     addActivity: async (parent, { name, description, missionTypeId }) => {
       return Activities.create({ name, description, missionTypeId });
     },
     updateActivity: async (parent, { id, isComplete }) => {
-      await Activities.update({ isComplete: isComplete }, { where: { id: id } });
+      await Activities.update(
+        { isComplete: isComplete },
+        { where: { id: id } }
+      );
     },
     deleteCurrentMission: async (parent, { id }) => {
       return Current_Mission.destroy({ where: { id: id } });
