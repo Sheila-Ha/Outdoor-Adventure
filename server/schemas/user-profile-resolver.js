@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { where } from "sequelize";
 
 export const UserProfileInfoQuery = {
+  // Get all current missions for the logged in user (overall className is CurrentMissionQuery)
   async getUserProfileInfo(parent, args, req) {
     if (!req.userInfo) {
       throw new GraphQLError("You are not authorized to perform this action.", {
@@ -14,6 +15,7 @@ export const UserProfileInfoQuery = {
       });
     }
     try {
+      // GET all current missions for the logged in user (actual call to the database)
       const currentMission = await Current_Mission.findAll({
         where: { userId: req.userInfo.id },
         limit: 10,

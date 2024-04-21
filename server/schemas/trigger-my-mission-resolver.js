@@ -26,7 +26,6 @@ export const TriggerMyMissionMutation = {
 
     // Call the OpenAI API (ChatGPT) to generate a response
     const completion = await ai.chat.completions.create({
-
       // Define a message to send to ChatGPT
       messages: [{ role: "system", content: questionForAI }],
       model: "gpt-3.5-turbo",
