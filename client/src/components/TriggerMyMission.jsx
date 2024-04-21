@@ -114,7 +114,7 @@ function TriggerMyMission() {
       <div>
         <select
           onChange={handleChange}
-          className="text-sm text-gray-900 font-bold border border-gray-300 rounded bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="mr-5 mb-5 mt-5 text-sm text-gray-900 font-bold border border-gray-300 rounded bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option>Choose a Mission Type</option>
           {missionTypes.data &&
@@ -125,7 +125,7 @@ function TriggerMyMission() {
             ))}
         </select>
         <button
-          className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
+          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
           onClick={handleTrigger}
         >
           Trigger Mission

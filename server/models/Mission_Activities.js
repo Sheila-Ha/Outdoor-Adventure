@@ -2,10 +2,10 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
 class Mission_Activities extends Model {}
-
+// create fields/columns for Mission_Activities model
 Mission_Activities.init(
   {
-/*    id: {
+    /*    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -15,14 +15,14 @@ Mission_Activities.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },*/
-    
+
     missionId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: "current_mission",
         key: "id",
-        unique : false,
+        unique: false,
       },
     },
     activityId: {

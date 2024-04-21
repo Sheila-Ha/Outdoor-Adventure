@@ -48,10 +48,16 @@ Mission_Types.hasMany(Activities, {
 Activities.belongsTo(Mission_Types, {
   foreignKey: "activityId",
 });
+// CurrentMission connection to Activities
+Current_Mission.belongsToMany(Activities, {
+  through: Mission_Activities,
+  foreignKey: "missionId",
+});
+Activities.belongsToMany(Current_Mission, {
+  through: Mission_Activities,
+  foreignKey: "activityId",
+});
 
-Current_Mission.belongsToMany(Activities, { through: Mission_Activities, foreignKey: 'missionId' });
-Activities.belongsToMany(Current_Mission, { through: Mission_Activities, foreignKey: 'activityId' });
-//
 // We package our models and export them as an object so we can import them together and use their proper names
 export {
   User,
