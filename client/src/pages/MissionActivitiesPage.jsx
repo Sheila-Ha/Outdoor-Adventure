@@ -134,7 +134,7 @@ function MissionActivitiesPage() {
         const { exploreLevelId, currentNumExpPoints, id } = loggedInUser;
         const { points } = currentMission;
         var newExpPoints = currentNumExpPoints + points;
-        console.log(newExpPoints);
+        // console.log(newExpPoints);
         /* 1. get user's current explore level
 x2. get user's current max point total
 x3. add this current score to their current max point total

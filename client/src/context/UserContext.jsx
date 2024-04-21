@@ -15,8 +15,8 @@ export function UserProvider({ children }) {
     const token = localStorage.getItem("token") || "";
     try {
       const decode = jwtDecode(token);
-      console.log(decode);
-      console.log(Date.now() / 1000);
+      // console.log(decode);
+      // console.log(Date.now() / 1000);
       const currentTimeInSec = Date.now() / 1000;
       // if the token is expired, the save token is removed and the user is navigated to login page.
       if (currentTimeInSec > decode.exp) {
