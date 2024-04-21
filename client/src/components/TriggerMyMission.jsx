@@ -112,7 +112,7 @@ function TriggerMyMission() {
   return (
     <div>
       <div >
-        <h2 className="text-lg font-bold">My Triggered Missions</h2>
+        <h2 className="text-lg text-green-600 font-bold">My Triggered Missions</h2>
         <div className="space-y-2">
           {currentMissions &&
             currentMissions.map((mission) => (
