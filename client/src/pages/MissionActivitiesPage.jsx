@@ -23,6 +23,13 @@ import {
   CardTitle,
 } from "../components/Card.jsx";
 import { Button } from "../components/Button.jsx";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../components/Dialog.jsx";
 
 function MissionActivitiesPage() {
   const { missionId } = useParams();
@@ -152,19 +159,19 @@ x3. add this current score to their current max point total
   }
 
   async function handleDeleteClick() {
-    if (window.confirm("Are you sure you want to delete this mission?")) {
-      try {
-        await deleteMission({
-          variables: {
-            id: parseInt(currentMission.id),
-          },
-        });
-        // Go back to homepage
-        window.location.href = "/";
-      } catch (err) {
-        console.log(err);
-      }
+    // if (window.confirm("Are you sure you want to delete this mission?")) {
+    try {
+      await deleteMission({
+        variables: {
+          id: parseInt(currentMission.id),
+        },
+      });
+      // Go back to homepage
+      window.location.href = "/";
+    } catch (err) {
+      console.log(err);
     }
+    // }
   }
 
   return (
@@ -212,18 +219,37 @@ x3. add this current score to their current max point total
           >
             Save
           </button>
-          <button
+          <Dialog>
+            <DialogTrigger className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit">
+              Delete Mission
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>
+                  Are you sure you want to delete this mission?
+                </DialogTitle>
+              </DialogHeader>
+              <Button
+                className="flex-none w-16"
+                onClick={handleDeleteClick}
+                variant="default"
+              >
+                Confirm
+              </Button>
+            </DialogContent>
+          </Dialog>
+          {/* <button
             type="submit"
             className="px-4 py-2 m-4 font-bold text-white bg-red-500 rounded hover:bg-red-700 w-fit"
             onClick={handleDeleteClick}
           >
             Delete Mission
-          </button>{" "}
+          </button> */}
           <span className="pl-4 text-green-600 font-bold">{saveResult}</span>
         </CardContent>
       </Card>
       <Button className="flex-none w-32">
-      <a href="/">&lt; Back to Home</a>
+        <a href="/">&lt; Back to Home</a>
       </Button>
       {/* <p>
         <a href="/">&lt; Back to Home</a>
