@@ -25,7 +25,7 @@ export default function Profile() {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 py-8">
-      <div className="bg-white shadow-xl rounded-lg p-6  w-full max-w-md">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-xl">
         <div className="flex flex-col items-center">
           {/* <button className="self-end px-3 py-1 mt-0 text-white bg-gray-400 rounded-md">
             Edit Profile
@@ -85,72 +85,105 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 external-links">
-        <a
-          href="https://www.audubon.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          Audubon
-        </a>
-        <a
-          href="https://ebird.org/home"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          eBird
-        </a>
-        <a
-          href="https://www.fws.gov/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          U.S. Fish and Wildlife Service
-        </a>
-        <a
-          href="https://astronomy.tools/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          Astronomy Tools
-        </a>
-        <a
-          href="https://www.nps.gov/index.htm"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          National Park Service
-        </a>
-        <a
-          href="https://www.alltrails.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          All Trails
-        </a>
-        <a
-          href="https://www.geocaching.com/play"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          Geocaching
-        </a>
-        <a
-          href="https://www.google.com/maps"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-4 text-purple-700 whitespace-no-wrap hover:text-purple-950"
-        >
-          Google Maps
-        </a>
-        
+      <div className="w-full max-w-md pt-4">
+        <div className="grid pl-6 md:grid-cols-2 external-links">
+          <a
+            href="https://www.audubon.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Audubon
+          </a>
+          <a
+            href="https://ebird.org/home"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            eBird
+          </a>
+          <a
+            href="https://www.fws.gov/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            U.S. Fish and Wildlife Service
+          </a>
+          <a
+            href="https://astronomy.tools/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Astronomy Tools
+          </a>
+          <a
+            href="https://apps.apple.com/us/app/stellarium-mobile-star-map/id1458716890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Apple App Stellarium Mobile Star Map
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.noctuasoftware.stellarium_free&hl=en_US&gl=US"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Google App Stellarium Mobile Star Map
+          </a>
+          <a
+            href="https://www.nps.gov/index.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            National Park Service
+          </a>
+          <a
+            href="https://www.stateparks.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            US State Parks
+          </a>
+          <a
+            href="https://www.alltrails.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            All Trails
+          </a>
+          <a
+            href="https://www.greenbelly.co/pages/animal-tracks-identification-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Animal Tracks Identification Guide
+          </a>
+          <a
+            href="https://www.geocaching.com/play"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Geocaching
+          </a>
+          <a
+            href="https://www.google.com/maps"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-purple-700 whitespace-no-wrap hover:text-purple-950"
+          >
+            Google Maps
+          </a>
+        </div>
       </div>
     </div>
   );
