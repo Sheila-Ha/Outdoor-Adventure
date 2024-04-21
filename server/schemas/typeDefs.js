@@ -127,4 +127,5 @@ type Mutation {
 }
 `;
 
+// FOR FUTURE DEVELOPMENT
 // changeLocation(newLocation: String!): String

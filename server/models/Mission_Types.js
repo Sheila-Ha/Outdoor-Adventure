@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
 class Mission_Types extends Model {}
-
+// create fields/columns for Mission_Types model
 Mission_Types.init(
   {
     id: {

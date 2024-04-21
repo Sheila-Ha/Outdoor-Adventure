@@ -48,6 +48,7 @@ const funFact = [
 ];
 
 export const FunFactQuery = {
+  // Query to get a fun fact
   async funFact(parent, args, req) {
     if (!req.userInfo) {
       throw new GraphQLError("You are not authorized to perform this action.", {

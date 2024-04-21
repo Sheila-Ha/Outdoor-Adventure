@@ -66,7 +66,6 @@ import {
       pointsRequired: 27500,
     },
   ]);
-
   const salidam = await User.create({
     username: "salidam",
     email: "email@email.com",

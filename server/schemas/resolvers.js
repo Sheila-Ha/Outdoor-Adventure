@@ -17,6 +17,7 @@ import {
   Current_Mission,
 } from "../models/index.js";
 
+// Define the resolvers object
 export const resolvers = {
   Query: {
     ...FunFactQuery,
@@ -63,7 +64,7 @@ export const resolvers = {
       return Current_Mission.findAll();
     },
   },
-
+// Define the Mutation object
   Mutation: {
     ...LogInSignUpMutation,
     ...TriggerMyMissionMutation,
@@ -72,30 +73,36 @@ export const resolvers = {
     ...UpdateImageProfileUrl,
     //...ChangeLocationMutation,
     addActivity: async (parent, { name, description, missionTypeId }) => {
+      // Create a new activity
       return Activities.create({ name, description, missionTypeId });
     },
     updateActivity: async (parent, { id, isComplete }) => {
+      // Update the activity by its id
       await Activities.update(
         { isComplete: isComplete },
         { where: { id: id } }
       );
     },
     updateCurrentMission: async (parent, { id, isComplete }) => {
+      // Update the current mission by its id
       await Current_Mission.update(
         { isComplete: isComplete },
         { where: { id: id } }
       );
     },
     deleteCurrentMission: async (parent, { id }) => {
+      // Delete the current mission by its id
       return Current_Mission.destroy({ where: { id: id } });
     },
     updateUserLevel: async (parent, { id, exploreLevelId }) => {
+      // Update the user's exploreLevelId
       await User.update(
         { exploreLevelId: exploreLevelId },
         { where: { id: id } }
       );
     },
     updateUserPoints: async (parent, { id, currentNumExpPoints }) => {
+      // Update the user's currentNumExpPoints
       await User.update(
         { currentNumExpPoints: currentNumExpPoints },
         { where: { id: id } }
