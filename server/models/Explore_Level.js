@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
 class Explore_Level extends Model {}
-
+// create fields/columns for Explore_Level model
 Explore_Level.init(
   {
     id: {
@@ -13,16 +13,12 @@ Explore_Level.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     pointsRequired: {
       type: DataTypes.INTEGER,
     },
     badge: {
       type: DataTypes.STRING,
-    },
-    sort: {
-      type: DataTypes.INTEGER,
     },
   },
   {

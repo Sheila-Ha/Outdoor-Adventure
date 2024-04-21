@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TriggerMyMission from "../components/TriggerMyMission.jsx";
 import FunFact from "../components/FunFact.jsx";
-import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx"
+import LeaderBoard from "../components/LeaderBoard/LeaderBoard.jsx";
 import MissionCard from "../components/MissionCard.jsx";
 
 const Home = () => {
@@ -28,7 +28,7 @@ const Home = () => {
     ],
     weeklyMission: {
       id: 1,
-      title: "Weekly Mission",
+      title: "Fitness Mission",
       description: "Climb a total of 1000 meters elevation.",
       category: "gold",
     },
@@ -41,21 +41,78 @@ const Home = () => {
     gold: "bg-yellow-400",
   };
 
-  //   TODO: Update with a funFact API or something
+  const [dailyTimeLeft, setDailyTimeLeft] = useState(86400); // 24 hours in seconds
+  const [weeklyTimeLeft, setWeeklyTimeLeft] = useState(604800); // 7 days in seconds
+
+  // Update daily timer every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDailyTimeLeft(dailyTimeLeft - 1);
+
+      if (dailyTimeLeft === 0) {
+        // Reset daily timer
+        setDailyTimeLeft(86400);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [dailyTimeLeft]);
+
+  // Update weekly timer every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setWeeklyTimeLeft(weeklyTimeLeft - 1);
+
+      if (weeklyTimeLeft === 0) {
+        // Reset weekly timer
+        setWeeklyTimeLeft(604800);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [weeklyTimeLeft]);
+
+  // Format weekly timer
+  const formattedWeeklyTimeLeft =
+    Math.floor(weeklyTimeLeft / 86400) +
+    "d " +
+    Math.floor((weeklyTimeLeft % 86400) / 3600) +
+    "h " +
+    Math.floor((weeklyTimeLeft % 3600) / 60) +
+    "m " +
+    (weeklyTimeLeft % 60) +
+    "s";
+
+  // Format daily timer
+  const formattedDailyTimeLeft =
+    Math.floor(dailyTimeLeft / 3600) +
+    ":" +
+    Math.floor((dailyTimeLeft % 3600) / 60) +
+    ":" +
+    (dailyTimeLeft % 60);
+
   return (
-    <div className="flex flex-col h-screen gap-4 p-4 overflow-hidden">
+    <div className="flex flex-col gap-4 p-6">
       <FunFact />
       <LeaderBoard />
-      <div style={{ height: "15vh" }}>
-        <MissionCard
-          title={missions.weeklyMission.title}
-          description={missions.weeklyMission.description}
-          categoryColor={missionCategoryColors[missions.weeklyMission.category]}
-        />
+      <div>
+        <TriggerMyMission />
       </div>
 
-      <div className="overflow-y-auto" style={{ height: "calc(45vh - 4rem)" }}>
-        <h2 className="text-lg font-bold">Daily Missions</h2>
+      <div>
+        <div className="flex justify-between">
+          <h2 className="text-lg font-bold">
+            Daily Missions{" "}
+            <span className="self-center text-sm italic text-gray-400">
+              100xp
+            </span>
+          </h2>
+
+          <h2 className="self-center">
+            Time Remaining: {formattedDailyTimeLeft}
+          </h2>
+        </div>
+
         <div className="space-y-2">
           {missions.dailyMissions.map((mission) => (
             <MissionCard
@@ -67,10 +124,24 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div className="flex justify-between">
+        <h2 className="text-lg font-bold">
+          Weekly Mission{" "}
+          <span className="self-center text-sm italic text-gray-400">
+            500xp
+          </span>
+        </h2>
 
-      <div>
-        <TriggerMyMission />
+        <div className="text-center">
+          <h2>Time Remaining: {formattedWeeklyTimeLeft}</h2>
+        </div>
       </div>
+
+      <MissionCard
+        title={missions.weeklyMission.title}
+        description={missions.weeklyMission.description}
+        categoryColor={missionCategoryColors[missions.weeklyMission.category]}
+      />
     </div>
   );
 };

@@ -26,7 +26,6 @@ const funFact = [
   "Sea otters play a key role in kelp forest health by preying on sea urchins.",
   "Beavers create wetlands that support high levels of biodiversity.",
   "Dragonflies are important predators that help regulate mosquito populations.",
-  "The Great Trail, formerly known as the Trans Canada Trail, is a network of trails that stretches across the entire country, covering over 27,000 kilometers. It's the longest recreational trail in the world and offers a wide variety of activities, including hiking, cycling, cross-country skiing, and snowmobiling.",
   "Hiking can burn between 430-550 calories per hour depending on your weight and the intensity of the hike.",
   "The largest tree in the world is a giant sequoia located in California's Sequoia National Park.",
   "Running is associated with lower rates of heart disease, stroke, and some types of cancer.",
@@ -49,6 +48,7 @@ const funFact = [
 ];
 
 export const FunFactQuery = {
+  // Query to get a fun fact
   async funFact(parent, args, req) {
     if (!req.userInfo) {
       throw new GraphQLError("You are not authorized to perform this action.", {

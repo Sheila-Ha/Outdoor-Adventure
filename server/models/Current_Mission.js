@@ -2,7 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/connection.js";
 
 class Current_Mission extends Model {}
-
+// create fields/columns for Current_Mission model
 Current_Mission.init(
   {
     id: {
@@ -28,6 +28,9 @@ Current_Mission.init(
     },
     timer: {
       type: DataTypes.INTEGER,
+    },
+    completeDate: {
+      type: DataTypes.DATE,
     },
     // This column will store a reference of the `id` of the `User` that has this ExploreLevel
     userId: {
