@@ -110,8 +110,28 @@ function TriggerMyMission() {
 
   // Display the current triggered missions, a mission type dropdown, and a button to trigger the mutation
   return (
-    <div>
-      <div >
+    <div className="flex gap-4 flex-col">
+      <div>
+        <select
+          onChange={handleChange}
+          className="text-sm text-gray-900 font-bold border border-gray-300 rounded bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option>Choose a Mission Type</option>
+          {missionTypes.data &&
+            missionTypes.data.getAllMissionTypes.map((missionType) => (
+              <option key={missionType.id} value={missionType.id}>
+                {missionType.name}
+              </option>
+            ))}
+        </select>
+        <button
+          className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
+          onClick={handleTrigger}
+        >
+          Trigger Mission
+        </button>
+      </div>
+      <div>
         <h2 className="text-lg text-green-600 font-bold">My Triggered Missions</h2>
         <div className="space-y-2">
           {currentMissions &&
@@ -120,7 +140,7 @@ function TriggerMyMission() {
                 key={mission.id}
                 title={mission.name}
                 description={mission.points + " points"}
-                categoryColor={"bg-yellow-400"}
+                categoryColor={"bg-green-400"}
                 missionId={mission.id}
                 isComplete={mission.isComplete}
                 activitiesCount={mission.activities?.length}
@@ -132,24 +152,6 @@ function TriggerMyMission() {
             ))}
         </div>
       </div>
-      <select
-        onChange={handleChange}
-        className="text-sm text-gray-900 font-bold border border-gray-300 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option>Choose a Mission Type</option>
-        {missionTypes.data &&
-          missionTypes.data.getAllMissionTypes.map((missionType) => (
-            <option key={missionType.id} value={missionType.id}>
-              {missionType.name}
-            </option>
-          ))}
-      </select>
-      <button
-        className="px-4 py-2 mx-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 w-fit"
-        onClick={handleTrigger}
-      >
-        Trigger Mission
-      </button>
     </div>
   );
 }

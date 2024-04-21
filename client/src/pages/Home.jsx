@@ -92,32 +92,14 @@ const Home = () => {
     (dailyTimeLeft % 60);
 
   return (
-    <div className="flex flex-col h-screen gap-4 p-6">
+    <div className="flex flex-col gap-4 p-6">
       <FunFact />
       <LeaderBoard />
       <div>
         <TriggerMyMission />
       </div>
-      <div className="flex justify-between">
-        <h2 className="text-lg font-bold">
-          Weekly Mission{" "}
-          <span className="self-center text-sm italic text-gray-400">
-            500xp
-          </span>
-        </h2>
 
-        <div className="text-center">
-          <h2>Time Remaining: {formattedWeeklyTimeLeft}</h2>
-        </div>
-      </div>
-
-      <MissionCard
-        title={missions.weeklyMission.title}
-        description={missions.weeklyMission.description}
-        categoryColor={missionCategoryColors[missions.weeklyMission.category]}
-      />
-
-      <div className="overflow-y-auto">
+      <div>
         <div className="flex justify-between">
           <h2 className="text-lg font-bold">
             Daily Missions{" "}
@@ -142,6 +124,24 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div className="flex justify-between">
+        <h2 className="text-lg font-bold">
+          Weekly Mission{" "}
+          <span className="self-center text-sm italic text-gray-400">
+            500xp
+          </span>
+        </h2>
+
+        <div className="text-center">
+          <h2>Time Remaining: {formattedWeeklyTimeLeft}</h2>
+        </div>
+      </div>
+
+      <MissionCard
+        title={missions.weeklyMission.title}
+        description={missions.weeklyMission.description}
+        categoryColor={missionCategoryColors[missions.weeklyMission.category]}
+      />
     </div>
   );
 };
